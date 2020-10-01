@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D036899252599890064EF98 /* AllergiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D036898252599890064EF98 /* AllergiesViewController.swift */; };
+		4D03689B252599C30064EF98 /* PhysiciansLIstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D03689A252599C30064EF98 /* PhysiciansLIstViewController.swift */; };
 		98F6A56A2523953A005D7330 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A5692523953A005D7330 /* AppDelegate.swift */; };
 		98F6A56C2523953A005D7330 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A56B2523953A005D7330 /* SceneDelegate.swift */; };
-		98F6A56E2523953A005D7330 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A56D2523953A005D7330 /* FirstViewController.swift */; };
-		98F6A5702523953A005D7330 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A56F2523953A005D7330 /* SecondViewController.swift */; };
+		98F6A56E2523953A005D7330 /* MedicationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A56D2523953A005D7330 /* MedicationListViewController.swift */; };
+		98F6A5702523953A005D7330 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A56F2523953A005D7330 /* ProfileViewController.swift */; };
 		98F6A5732523953A005D7330 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F6A5712523953A005D7330 /* Main.storyboard */; };
 		98F6A5762523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A5742523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodeld */; };
 		98F6A5782523953D005D7330 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98F6A5772523953D005D7330 /* Assets.xcassets */; };
@@ -37,11 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D036898252599890064EF98 /* AllergiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergiesViewController.swift; sourceTree = "<group>"; };
+		4D03689A252599C30064EF98 /* PhysiciansLIstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysiciansLIstViewController.swift; sourceTree = "<group>"; };
 		98F6A5662523953A005D7330 /* COSC4355_Medication_Reminder_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COSC4355_Medication_Reminder_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98F6A5692523953A005D7330 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98F6A56B2523953A005D7330 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		98F6A56D2523953A005D7330 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		98F6A56F2523953A005D7330 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		98F6A56D2523953A005D7330 /* MedicationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationListViewController.swift; sourceTree = "<group>"; };
+		98F6A56F2523953A005D7330 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		98F6A5722523953A005D7330 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		98F6A5752523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = COSC4355_Medication_Reminder_Project.xcdatamodel; sourceTree = "<group>"; };
 		98F6A5772523953D005D7330 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +84,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D03689C252599D70064EF98 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4D03689D252599E00064EF98 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				98F6A5712523953A005D7330 /* Main.storyboard */,
+				98F6A5792523953D005D7330 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4D03689E252599E60064EF98 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				98F6A56D2523953A005D7330 /* MedicationListViewController.swift */,
+				98F6A56F2523953A005D7330 /* ProfileViewController.swift */,
+				4D036898252599890064EF98 /* AllergiesViewController.swift */,
+				4D03689A252599C30064EF98 /* PhysiciansLIstViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		98F6A55D2523953A005D7330 = {
 			isa = PBXGroup;
 			children = (
@@ -103,13 +134,12 @@
 		98F6A5682523953A005D7330 /* COSC4355_Medication_Reminder_Project */ = {
 			isa = PBXGroup;
 			children = (
+				98F6A5772523953D005D7330 /* Assets.xcassets */,
 				98F6A5692523953A005D7330 /* AppDelegate.swift */,
 				98F6A56B2523953A005D7330 /* SceneDelegate.swift */,
-				98F6A56D2523953A005D7330 /* FirstViewController.swift */,
-				98F6A56F2523953A005D7330 /* SecondViewController.swift */,
-				98F6A5712523953A005D7330 /* Main.storyboard */,
-				98F6A5772523953D005D7330 /* Assets.xcassets */,
-				98F6A5792523953D005D7330 /* LaunchScreen.storyboard */,
+				4D03689C252599D70064EF98 /* Model */,
+				4D03689D252599E00064EF98 /* View */,
+				4D03689E252599E60064EF98 /* Controller */,
 				98F6A57C2523953D005D7330 /* Info.plist */,
 				98F6A5742523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodeld */,
 			);
@@ -265,9 +295,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98F6A5702523953A005D7330 /* SecondViewController.swift in Sources */,
-				98F6A56E2523953A005D7330 /* FirstViewController.swift in Sources */,
+				4D03689B252599C30064EF98 /* PhysiciansLIstViewController.swift in Sources */,
+				98F6A5702523953A005D7330 /* ProfileViewController.swift in Sources */,
+				98F6A56E2523953A005D7330 /* MedicationListViewController.swift in Sources */,
 				98F6A56A2523953A005D7330 /* AppDelegate.swift in Sources */,
+				4D036899252599890064EF98 /* AllergiesViewController.swift in Sources */,
 				98F6A56C2523953A005D7330 /* SceneDelegate.swift in Sources */,
 				98F6A5762523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodeld in Sources */,
 			);
