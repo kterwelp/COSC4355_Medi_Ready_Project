@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhysiciansLIstViewController: UIViewController {
+class DoctorsListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
