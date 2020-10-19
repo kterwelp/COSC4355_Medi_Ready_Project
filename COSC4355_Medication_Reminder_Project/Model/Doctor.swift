@@ -8,7 +8,6 @@
 
 import Foundation
 
-//This is the Doctor class
 class Doctor {
     
     var name: String
