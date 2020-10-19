@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+class Medication {
+    
+    var name: String
+    // use an array of Times?
+    var timesTakenDaily = [Int]() // store each time the med should be taken in an array
+    
+    init() {
+        self.name = ""
+        self.timesTakenDaily = [0]
+    }
+    
+}
