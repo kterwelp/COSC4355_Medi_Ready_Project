@@ -7,3 +7,25 @@
 //
 
 import Foundation
+
+class Doctor {
+    
+    var name: String
+    var specialty: String
+    var streetAddress: String
+    var city: String
+    var state: String
+    var zipCode: Int
+    var phoneNumber: Int
+    
+    init() {
+        self.name = ""
+        self.specialty = ""
+        self.streetAddress = ""
+        self.city = ""
+        self.state = ""
+        self.zipCode = 0
+        self.phoneNumber = 0
+    }
+    
+}
