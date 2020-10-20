@@ -55,6 +55,10 @@ class MedicationListViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return tempMedications.count
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.TableView.CellHeight
+    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
