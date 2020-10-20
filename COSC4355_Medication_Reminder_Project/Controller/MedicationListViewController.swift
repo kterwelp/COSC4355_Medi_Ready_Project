@@ -9,6 +9,20 @@
 import UIKit
 
 class MedicationListViewController: UITableViewController {
+    
+    var tempMedications = [Medication]()
+    
+    /*
+        TEMPORARY TESTING
+        TO BE REMOVED
+     */
+    
+    
+    
+    let med1 = Medication(name: "Amlodipine", timesTakenDaily: [8, 14, 20], hasBeenTaken: true)
+    let med2 = Medication(name: "Lisinopril", timesTakenDaily: [8, 14, 20], hasBeenTaken: false)
+    let med3 = Medication(name: "Atorvastatin", timesTakenDaily: [8, 14, 20], hasBeenTaken: true)
+    let med4 = Medication(name: "Metformin", timesTakenDaily: [8, 14, 20], hasBeenTaken: false)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,29 +32,61 @@ class MedicationListViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        /*
+           TEMPORARY TESTING
+           TO BE REMOVED
+        */
+        tempMedications.append(med1)
+        tempMedications.append(med2)
+        tempMedications.append(med3)
+        tempMedications.append(med4)
     }
 
     // MARK: - Table view data source
 
+    // TODO: Use number of times meds taken per day to calc # of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return tempMedications.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "medicationCell", for: indexPath)
 
-        // Configure the cell...
+        let medicationNameLabel = cell.viewWithTag(1) as! UILabel
+        
+        medicationNameLabel.text = tempMedications[indexPath.row].name
+        
+        cell.accessoryType = tempMedications[indexPath.row].hasBeenTaken ? .checkmark : .none // applies a checkmark to the cell based on whether or not the medication has been taken today
 
         return cell
     }
-    */
+    
+    // MARK: TableView Delegate Methods
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let medication = tempMedications[indexPath.row]
+        
+        medication.hasBeenTaken = !medication.hasBeenTaken
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.reloadData()
+    }
+    
+    // MARK: - Data Updating Methods
+    
+    // TODO: Finish implementation of adding new medication
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        // need to open Add Medication VC
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

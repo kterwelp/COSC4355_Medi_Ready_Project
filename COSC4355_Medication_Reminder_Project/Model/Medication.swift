@@ -13,10 +13,18 @@ class Medication {
     var name: String
     // use an array of Times?
     var timesTakenDaily = [Int]() // store each time the med should be taken in an array
+    var hasBeenTaken: Bool
     
     init() {
         self.name = ""
         self.timesTakenDaily = [0]
+        self.hasBeenTaken = false
+    }
+    
+    init(name: String, timesTakenDaily: [Int], hasBeenTaken: Bool) {
+        self.name = name
+        self.timesTakenDaily = timesTakenDaily
+        self.hasBeenTaken = hasBeenTaken
     }
     
 }

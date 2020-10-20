@@ -163,7 +163,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="EpW-Bk-qws" kind="relationship" relationship="viewControllers" id="P28-O6-m1Q"/>
+                        <segue destination="heR-rT-zq5" kind="relationship" relationship="viewControllers" id="P28-O6-m1Q"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="YcH-f3-GS0" kind="relationship" relationship="viewControllers" id="1cL-9b-V4S"/>
                         <segue destination="NCl-MZ-3wp" kind="relationship" relationship="viewControllers" id="v5u-3y-znr"/>
@@ -178,16 +178,31 @@
             <objects>
                 <tableViewController id="EpW-Bk-qws" customClass="MedicationListViewController" customModule="COSC4355_Medication_Reminder_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5os-N1-ygn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="QCD-wv-vOg">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="medicationCell" rowHeight="60" id="QCD-wv-vOg">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QCD-wv-vOg" id="Uu0-NI-P1q">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medication Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1R-QW-hPh">
+                                            <rect key="frame" x="31" y="12.5" width="134" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="AS5-ik-VJI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="o1R-QW-hPh" firstAttribute="leading" secondItem="Uu0-NI-P1q" secondAttribute="leadingMargin" constant="15" id="dh2-I7-9uz"/>
+                                        <constraint firstItem="o1R-QW-hPh" firstAttribute="centerY" secondItem="Uu0-NI-P1q" secondAttribute="centerY" id="mGn-t5-E28"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -196,11 +211,18 @@
                             <outlet property="delegate" destination="EpW-Bk-qws" id="ces-St-1xl"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Medications" image="list.bullet" catalog="system" id="fo6-kg-ua9"/>
+                    <navigationItem key="navigationItem" title="Medications" id="mqY-21-Y5u">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DnL-FH-DQY">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="EpW-Bk-qws" id="wAT-5I-KX9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUy-Ti-Hjc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="806" y="-275"/>
+            <point key="canvasLocation" x="1744.8" y="-275.71214392803603"/>
         </scene>
         <!--Doctors-->
         <scene sceneID="xsK-d2-Gfh">
@@ -220,6 +242,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdh-Nd-PIn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="782" y="435"/>
+        </scene>
+        <!--Medications-->
+        <scene sceneID="aJ4-23-iVl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="heR-rT-zq5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Medications" image="list.bullet" catalog="system" id="fo6-kg-ua9"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gar-kD-JrM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EpW-Bk-qws" kind="relationship" relationship="rootViewController" id="wBH-f1-nRf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="49V-C9-Wew" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="805.60000000000002" y="-275.71214392803603"/>
         </scene>
     </scenes>
     <resources>
