@@ -21,7 +21,19 @@ class DoctorDetailsViewController: UIViewController {
         doctorNameLabel.text = passedInformation.name
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showEditDoctor" {
+            let editDoctorView = segue.destination as! EditDoctorViewController
+            
+            editDoctorView.editPassedInformation = passedInformation
+        }
+    }
+    
+    @IBAction func showEditDoctor(_ sender: Any) {
+        
+        performSegue(withIdentifier: "showEditDoctor", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 
