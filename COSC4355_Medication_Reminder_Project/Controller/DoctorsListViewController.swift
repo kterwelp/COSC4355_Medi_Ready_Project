@@ -11,6 +11,7 @@ import UIKit
 class DoctorsListViewController: UITableViewController {
     
     var doctorArray = [Doctor]()
+    var selectedInformation = Doctor()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +106,19 @@ class DoctorsListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDoctorInfo" {
+            let seg = segue.destination as! DoctorDetailsViewController
+            seg.passedInformation = selectedInformation
+            seg.hidesBottomBarWhenPushed = true
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedInformation = doctorArray[indexPath.row]
+        self.performSegue(withIdentifier: "showDoctorInfo", sender: self)
     }
 
     /*
