@@ -114,12 +114,18 @@ class DoctorsListViewController: UITableViewController {
             seg.passedInformation = selectedInformation
             seg.hidesBottomBarWhenPushed = true
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedInformation = doctorArray[indexPath.row]
         self.performSegue(withIdentifier: "showDoctorInfo", sender: self)
     }
+    
+    @IBAction func showAddDoctor(_ sender: Any) {
+        performSegue(withIdentifier: "showAddDoctor", sender: self)
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
