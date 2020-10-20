@@ -15,8 +15,8 @@ class Doctor {
     var streetAddress: String
     var city: String
     var state: String
-    var zipCode: Int
-    var phoneNumber: Int
+    var zipCode: String
+    var phoneNumber: String
     
     init() {
         self.name = ""
@@ -24,8 +24,8 @@ class Doctor {
         self.streetAddress = ""
         self.city = ""
         self.state = ""
-        self.zipCode = 0
-        self.phoneNumber = 0
+        self.zipCode = ""
+        self.phoneNumber = ""
     }
     
 }
