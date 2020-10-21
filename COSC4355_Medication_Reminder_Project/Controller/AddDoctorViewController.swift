@@ -38,9 +38,7 @@ class AddDoctorViewController: UIViewController {
         guard doctorNameTextField.text!.count > 0 else {
             let missingNameAlert = UIAlertController(title: "Missing Name!", message: "Please enter the doctor's name", preferredStyle: .alert)
             
-            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in
-                self.dismiss(animated: true, completion: nil)
-            }))
+            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             
             self.present(missingNameAlert, animated: true)
             
@@ -50,9 +48,7 @@ class AddDoctorViewController: UIViewController {
         guard doctorSpecialtyTextField.text!.count > 0 else {
             let missingSpecialtyAlert = UIAlertController(title: "Missing Specialty!", message: "Please enter the doctor's specialty", preferredStyle: .alert)
             
-            missingSpecialtyAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in
-                self.dismiss(animated: true, completion: nil)
-            }))
+            missingSpecialtyAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             
             self.present(missingSpecialtyAlert, animated: true)
             
@@ -62,9 +58,7 @@ class AddDoctorViewController: UIViewController {
         guard doctorPhoneNumberTextField.text!.count > 0 else {
             let missingPhoneNumberAlert = UIAlertController(title: "Missing Phone Number!", message: "Please enter the doctor's phone number", preferredStyle: .alert)
             
-            missingPhoneNumberAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in
-                self.dismiss(animated: true, completion: nil)
-            }))
+            missingPhoneNumberAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             
             self.present(missingPhoneNumberAlert, animated: true)
             
