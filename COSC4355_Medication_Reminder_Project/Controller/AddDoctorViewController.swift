@@ -34,17 +34,60 @@ class AddDoctorViewController: UIViewController {
     
     @IBAction func addDoctor(_ sender: Any) {
         
-        addedDoctorInformation.name = doctorNameTextField.text!
-        addedDoctorInformation.specialty = doctorSpecialtyTextField.text!
-        addedDoctorInformation.phoneNumber = doctorPhoneNumberTextField.text!
-        addedDoctorInformation.streetAddress = doctorStreetAddressTextField.text!
-        addedDoctorInformation.city = doctorCityTextField.text!
-        addedDoctorInformation.state = doctorStateTextField.text!
-        addedDoctorInformation.zipCode = doctorZipCodeTextField.text!
+        //TODO:  When an alert is dismissed, it also dismisses the modal view
+        guard doctorNameTextField.text!.count > 0 else {
+            let missingNameAlert = UIAlertController(title: "Missing Name!", message: "Please enter the doctor's name", preferredStyle: .alert)
+            
+            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            
+            self.present(missingNameAlert, animated: true)
+            
+            return
+        }
         
-        delegateVar?.addDoctor(addedDoctor: addedDoctorInformation)
+        guard doctorSpecialtyTextField.text!.count > 0 else {
+            let missingSpecialtyAlert = UIAlertController(title: "Missing Specialty!", message: "Please enter the doctor's specialty", preferredStyle: .alert)
+            
+            missingSpecialtyAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            
+            self.present(missingSpecialtyAlert, animated: true)
+            
+            return
+        }
         
-        self.dismiss(animated: true, completion: nil)
+        guard doctorPhoneNumberTextField.text!.count > 0 else {
+            let missingPhoneNumberAlert = UIAlertController(title: "Missing Phone Number!", message: "Please enter the doctor's phone number", preferredStyle: .alert)
+            
+            missingPhoneNumberAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            
+            self.present(missingPhoneNumberAlert, animated: true)
+            
+            return
+        }
+        
+        if doctorNameTextField.text!.count > 0,
+            doctorSpecialtyTextField.text!.count > 0,
+            doctorPhoneNumberTextField.text!.count > 0 {
+            
+            addedDoctorInformation.name = doctorNameTextField.text!
+            addedDoctorInformation.specialty = doctorSpecialtyTextField.text!
+            addedDoctorInformation.phoneNumber = doctorPhoneNumberTextField.text!
+            addedDoctorInformation.streetAddress = doctorStreetAddressTextField.text!
+            addedDoctorInformation.city = doctorCityTextField.text!
+            addedDoctorInformation.state = doctorStateTextField.text!
+            addedDoctorInformation.zipCode = doctorZipCodeTextField.text!
+            
+            delegateVar?.addDoctor(addedDoctor: addedDoctorInformation)
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+            
     }
     
     @IBAction func cancelAddDoctor(_ sender: Any) {

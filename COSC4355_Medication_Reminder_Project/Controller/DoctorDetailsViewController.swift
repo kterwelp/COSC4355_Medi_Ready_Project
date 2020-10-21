@@ -8,16 +8,11 @@
 
 import UIKit
 
-//protocol DeleteDoctor {
-//    func deleteDoctor(currentDoctorIndex: Int)
-//}
-
 class DoctorDetailsViewController: UIViewController, UpdateDoctor, DeleteDoctor {
 
     var passedInformation = Doctor()
     var detailsDoctorArray = [Doctor]()
     var passedDoctorArrayIndex = 0
-    //var delegateVar: DeleteDoctor?
 
     @IBOutlet weak var doctorNameLabel: UILabel!
     @IBOutlet weak var doctorSpecialtyLabel: UILabel!
@@ -29,11 +24,17 @@ class DoctorDetailsViewController: UIViewController, UpdateDoctor, DeleteDoctor 
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        doctorNameLabel.text = passedInformation.name
+        doctorNameLabel.text = "Dr. " + passedInformation.name
         doctorSpecialtyLabel.text = passedInformation.specialty
         doctorPhoneNumberLabel.text = passedInformation.phoneNumber
         doctorStreetAddressLabel.text = passedInformation.streetAddress
-        doctorCityStateZipLabel.text = passedInformation.city + ", " + passedInformation.state + " " + passedInformation.zipCode
+        
+        if passedInformation.city != "" && passedInformation.state != "" {
+            doctorCityStateZipLabel.text = passedInformation.city + ", " + passedInformation.state + " " + passedInformation.zipCode
+        } else {
+            doctorCityStateZipLabel.text = passedInformation.city + " " + passedInformation.state + " " + passedInformation.zipCode
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,10 +54,6 @@ class DoctorDetailsViewController: UIViewController, UpdateDoctor, DeleteDoctor 
             
             detailsDoctorArray.remove(at: passedDoctorArrayIndex)
             doctorListView.doctorArray = detailsDoctorArray
-            
-            print(passedDoctorArrayIndex)
-            print(doctorListView.doctorArray)
-
         }
     }
     
@@ -67,11 +64,17 @@ class DoctorDetailsViewController: UIViewController, UpdateDoctor, DeleteDoctor 
     
     func updateDoctor(updatedDoctor: Doctor, currentDoctorArrayIndex: Int) {
         passedDoctorArrayIndex = currentDoctorArrayIndex
-        doctorNameLabel.text = updatedDoctor.name
+        doctorNameLabel.text = "Dr. " + updatedDoctor.name
         doctorSpecialtyLabel.text = updatedDoctor.specialty
         doctorPhoneNumberLabel.text = updatedDoctor.phoneNumber
         doctorStreetAddressLabel.text = updatedDoctor.streetAddress
-        doctorCityStateZipLabel.text = updatedDoctor.city + ", " + updatedDoctor.state + " " + updatedDoctor.zipCode
+        
+        if updatedDoctor.city != "" && updatedDoctor.state != "" {
+            doctorCityStateZipLabel.text = updatedDoctor.city + ", " + updatedDoctor.state + " " + updatedDoctor.zipCode
+        } else {
+            doctorCityStateZipLabel.text = updatedDoctor.city + " " + updatedDoctor.state + " " + updatedDoctor.zipCode
+        }
+        
     }
     
     @IBAction func deleteDoctor(_ sender: Any) {

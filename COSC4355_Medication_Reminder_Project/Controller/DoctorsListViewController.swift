@@ -122,7 +122,6 @@ class DoctorsListViewController: UITableViewController, AddDoctor {
             seg.passedInformation = selectedInformation
             seg.passedDoctorArrayIndex = doctorArrayIndex
             seg.detailsDoctorArray = doctorArray
-            //seg.delegateVar = self
             seg.hidesBottomBarWhenPushed = true
         }
         
@@ -148,13 +147,6 @@ class DoctorsListViewController: UITableViewController, AddDoctor {
         doctorArray.append(addedDoctor)
         tableView.reloadData()
     }
-    
-//    func deleteDoctor(currentDoctorIndex: Int) {
-//        doctorArray.remove(at: currentDoctorIndex)
-//        //print("Removed " + String(currentDoctorIndex))
-//        //print(doctorArray[2].name)
-//        tableView.reloadData()
-//    }
     
 
     /*
