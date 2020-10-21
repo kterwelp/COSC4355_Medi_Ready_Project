@@ -13,6 +13,7 @@
 		4D812503252D0B8F004BA034 /* Allergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D812502252D0B8F004BA034 /* Allergy.swift */; };
 		4D812505252D0BA0004BA034 /* Doctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D812504252D0BA0004BA034 /* Doctor.swift */; };
 		4D84D46C253EB94000E819BB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84D46B253EB94000E819BB /* Constants.swift */; };
+		98046A2C2540A27D00C673EE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98046A2A2540A25900C673EE /* CoreLocation.framework */; };
 		981372F8253C3A3300ACD3E4 /* PharmacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981372F7253C3A3300ACD3E4 /* PharmacyViewController.swift */; };
 		98905F20253E9A380013F656 /* DoctorDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98905F1F253E9A380013F656 /* DoctorDetailsViewController.swift */; };
 		98905F22253EABEA0013F656 /* EditDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98905F21253EABE90013F656 /* EditDoctorViewController.swift */; };
@@ -53,6 +54,7 @@
 		4D812502252D0B8F004BA034 /* Allergy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allergy.swift; sourceTree = "<group>"; };
 		4D812504252D0BA0004BA034 /* Doctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doctor.swift; sourceTree = "<group>"; };
 		4D84D46B253EB94000E819BB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		98046A2A2540A25900C673EE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		981372F7253C3A3300ACD3E4 /* PharmacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PharmacyViewController.swift; sourceTree = "<group>"; };
 		98905F1F253E9A380013F656 /* DoctorDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailsViewController.swift; sourceTree = "<group>"; };
 		98905F21253EABE90013F656 /* EditDoctorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDoctorViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98046A2C2540A27D00C673EE /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +137,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		98046A292540A25900C673EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				98046A2A2540A25900C673EE /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		98F6A55D2523953A005D7330 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +152,7 @@
 				98F6A5842523953D005D7330 /* COSC4355_Medication_Reminder_ProjectTests */,
 				98F6A58F2523953E005D7330 /* COSC4355_Medication_Reminder_ProjectUITests */,
 				98F6A5672523953A005D7330 /* Products */,
+				98046A292540A25900C673EE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

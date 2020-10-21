@@ -8,13 +8,49 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class PharmacyViewController: UIViewController {
+class PharmacyViewController: UIViewController, CLLocationManagerDelegate {
+    
+    @IBOutlet weak var pharmacyMapView: MKMapView!
+    
+    var manager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        showCurrentLocation()
+    }
+    
+    func showCurrentLocation() {
+        
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.delegate = self
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        print(locations)
+        
+        let location = locations[0]
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let myLocation = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        
+        let region = MKCoordinateRegion(center: myLocation, span: span)
+        
+        self.pharmacyMapView.setRegion(region, animated: true)
+        self.pharmacyMapView.showsUserLocation = true
+        
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = myLocation
+//        annotation.title = "My Location"
+//        annotation.subtitle = "Hi"
+//
+//        self.pharmacyMapView.addAnnotation(annotation)
     }
     
 

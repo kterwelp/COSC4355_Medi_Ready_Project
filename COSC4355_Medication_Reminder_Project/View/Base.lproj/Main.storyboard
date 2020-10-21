@@ -395,6 +395,9 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Pharmacy" image="mappin.and.ellipse" catalog="system" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="pharmacyMapView" destination="ZMJ-Xv-n7q" id="OAd-g8-nGq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
