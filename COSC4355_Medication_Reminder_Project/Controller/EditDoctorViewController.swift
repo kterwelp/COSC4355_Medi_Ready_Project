@@ -8,13 +8,24 @@
 
 import UIKit
 
+protocol UpdateDoctor {
+    func updateDoctor(updatedDoctor: Doctor, currentDoctorArrayIndex: Int)
+}
+
 class EditDoctorViewController: UIViewController {
     
     var editPassedInformation = Doctor()
+    var editPassedDoctorArrayIndex = 0
+    
+    var delegateVar: UpdateDoctor?
     
     @IBOutlet weak var doctorNameTextField: UITextField!
     @IBOutlet weak var doctorSpecialtyTextField: UITextField!
-    
+    @IBOutlet weak var doctorPhoneNumberTextField: UITextField!
+    @IBOutlet weak var doctorStreetAddressTextField: UITextField!
+    @IBOutlet weak var doctorCityTextField: UITextField!
+    @IBOutlet weak var doctorStateTextField: UITextField!
+    @IBOutlet weak var doctorZipCodeTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +33,11 @@ class EditDoctorViewController: UIViewController {
         // Do any additional setup after loading the view.
         doctorNameTextField.text = editPassedInformation.name
         doctorSpecialtyTextField.text = editPassedInformation.specialty
+        doctorPhoneNumberTextField.text = editPassedInformation.phoneNumber
+        doctorStreetAddressTextField.text = editPassedInformation.streetAddress
+        doctorCityTextField.text = editPassedInformation.city
+        doctorStateTextField.text = editPassedInformation.state
+        doctorZipCodeTextField.text = editPassedInformation.zipCode
     }
     
     @IBAction func cancelEdit(_ sender: Any) {
@@ -31,9 +47,19 @@ class EditDoctorViewController: UIViewController {
     
     @IBAction func doneEdit(_ sender: Any) {
         
+        editPassedInformation.name = doctorNameTextField.text!
+        editPassedInformation.specialty = doctorSpecialtyTextField.text!
+        editPassedInformation.phoneNumber = doctorPhoneNumberTextField.text!
+        editPassedInformation.streetAddress = doctorStreetAddressTextField.text!
+        editPassedInformation.city = doctorCityTextField.text!
+        editPassedInformation.state = doctorStateTextField.text!
+        editPassedInformation.zipCode = doctorZipCodeTextField.text!
+        
+        delegateVar?.updateDoctor(updatedDoctor: editPassedInformation, currentDoctorArrayIndex: editPassedDoctorArrayIndex)
+        
         self.dismiss(animated: true, completion: nil)
+        
     }
-    
     
     /*
     // MARK: - Navigation

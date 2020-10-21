@@ -12,6 +12,7 @@ class DoctorsListViewController: UITableViewController {
     
     var doctorArray = [Doctor]()
     var selectedInformation = Doctor()
+    var doctorArrayIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +79,8 @@ class DoctorsListViewController: UITableViewController {
         doctorArray.append(doc5)
         doctorArray.append(doc6)
         
+        print(doctorArray[2].name)
+        
     }
 
     // MARK: - Table view data source
@@ -105,13 +108,20 @@ class DoctorsListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return Constants.TableView.CellHeight
+    }
+    
+    override func viewWillAppear(_ animated:Bool) {
+       super.viewWillAppear(animated)
+       tableView.reloadData()
+        print(doctorArray[2].name)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDoctorInfo" {
             let seg = segue.destination as! DoctorDetailsViewController
             seg.passedInformation = selectedInformation
+            seg.passedDoctorArrayIndex = doctorArrayIndex
             seg.hidesBottomBarWhenPushed = true
         }
         
@@ -119,6 +129,7 @@ class DoctorsListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedInformation = doctorArray[indexPath.row]
+        doctorArrayIndex = indexPath.row
         self.performSegue(withIdentifier: "showDoctorInfo", sender: self)
     }
     
