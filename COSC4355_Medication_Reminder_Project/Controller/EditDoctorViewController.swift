@@ -12,12 +12,18 @@ protocol UpdateDoctor {
     func updateDoctor(updatedDoctor: Doctor, currentDoctorArrayIndex: Int)
 }
 
+protocol DeleteDoctor {
+    func deleteCurrentDoctor(currentDoctorArray: [Doctor], currentDoctorArrayIndex: Int)
+}
+
 class EditDoctorViewController: UIViewController {
     
     var editPassedInformation = Doctor()
     var editPassedDoctorArrayIndex = 0
+    var editDoctorArray = [Doctor]()
     
     var delegateVar: UpdateDoctor?
+    var delegateVarDelete: DeleteDoctor?
     
     @IBOutlet weak var doctorNameTextField: UITextField!
     @IBOutlet weak var doctorSpecialtyTextField: UITextField!
@@ -59,6 +65,14 @@ class EditDoctorViewController: UIViewController {
         
         self.dismiss(animated: true, completion: nil)
         
+    }
+    
+    
+    @IBAction func deleteDoctor(_ sender: Any) {
+        
+        delegateVarDelete?.deleteCurrentDoctor(currentDoctorArray: editDoctorArray, currentDoctorArrayIndex: editPassedDoctorArrayIndex)
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     /*

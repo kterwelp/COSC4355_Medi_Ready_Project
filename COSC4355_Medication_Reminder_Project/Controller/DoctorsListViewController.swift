@@ -17,69 +17,69 @@ class DoctorsListViewController: UITableViewController, AddDoctor {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let doc1 = Doctor()
-        let doc2 = Doctor()
-        let doc3 = Doctor()
-        let doc4 = Doctor()
-        let doc5 = Doctor()
-        let doc6 = Doctor()
-        
-        doc1.name = "Stephen Colbert"
-        doc1.specialty = "Family Medicine"
-        doc1.streetAddress = "123 Stephen Street"
-        doc1.city = "San Diego"
-        doc1.state = "CA"
-        doc1.zipCode = "92101-1234"
-        doc1.phoneNumber = "123-456-7890"
-        
-        doc2.name = "Jon Stewart"
-        doc2.specialty = "Oncology"
-        doc2.streetAddress = "123 Jon Street"
-        doc2.city = "San Diego"
-        doc2.state = "CA"
-        doc2.zipCode = "92101-1234"
-        doc2.phoneNumber = "123-456-7890"
-        
-        doc3.name = "Beyonce Knowles"
-        doc3.specialty = "Gynecologist"
-        doc3.streetAddress = "123 Beyonce Street"
-        doc3.city = "San Diego"
-        doc3.state = "CA"
-        doc3.zipCode = "92101-1234"
-        doc3.phoneNumber = "123-456-7890"
-        
-        doc4.name = "Elton John"
-        doc4.specialty = "Geriatrics"
-        doc4.streetAddress = "123 Elton Street"
-        doc4.city = "San Diego"
-        doc4.state = "CA"
-        doc4.zipCode = "92101-1234"
-        doc4.phoneNumber = "123-456-7890"
-        
-        doc5.name = "Mary Poppins"
-        doc5.specialty = "Orthopedics"
-        doc5.streetAddress = "123 Poppins Street"
-        doc5.city = "San Diego"
-        doc5.state = "CA"
-        doc5.zipCode = "92101-1234"
-        doc5.phoneNumber = "123-456-7890"
-        
-        doc6.name = "Mickey Mouse"
-        doc6.specialty = "Radiology"
-        doc6.streetAddress = "123 Disney Street"
-        doc6.city = "San Diego"
-        doc6.state = "CA"
-        doc6.zipCode = "92101-1234"
-        doc6.phoneNumber = "123-456-7890"
-        
-        doctorArray.append(doc1)
-        doctorArray.append(doc2)
-        doctorArray.append(doc3)
-        doctorArray.append(doc4)
-        doctorArray.append(doc5)
-        doctorArray.append(doc6)
-        
-        print(doctorArray[2].name)
+//        let doc1 = Doctor()
+//        let doc2 = Doctor()
+//        let doc3 = Doctor()
+//        let doc4 = Doctor()
+//        let doc5 = Doctor()
+//        let doc6 = Doctor()
+//
+//        doc1.name = "Stephen Colbert"
+//        doc1.specialty = "Family Medicine"
+//        doc1.streetAddress = "123 Stephen Street"
+//        doc1.city = "San Diego"
+//        doc1.state = "CA"
+//        doc1.zipCode = "92101-1234"
+//        doc1.phoneNumber = "123-456-7890"
+//
+//        doc2.name = "Jon Stewart"
+//        doc2.specialty = "Oncology"
+//        doc2.streetAddress = "123 Jon Street"
+//        doc2.city = "San Diego"
+//        doc2.state = "CA"
+//        doc2.zipCode = "92101-1234"
+//        doc2.phoneNumber = "123-456-7890"
+//
+//        doc3.name = "Beyonce Knowles"
+//        doc3.specialty = "Gynecologist"
+//        doc3.streetAddress = "123 Beyonce Street"
+//        doc3.city = "San Diego"
+//        doc3.state = "CA"
+//        doc3.zipCode = "92101-1234"
+//        doc3.phoneNumber = "123-456-7890"
+//
+//        doc4.name = "Elton John"
+//        doc4.specialty = "Geriatrics"
+//        doc4.streetAddress = "123 Elton Street"
+//        doc4.city = "San Diego"
+//        doc4.state = "CA"
+//        doc4.zipCode = "92101-1234"
+//        doc4.phoneNumber = "123-456-7890"
+//
+//        doc5.name = "Mary Poppins"
+//        doc5.specialty = "Orthopedics"
+//        doc5.streetAddress = "123 Poppins Street"
+//        doc5.city = "San Diego"
+//        doc5.state = "CA"
+//        doc5.zipCode = "92101-1234"
+//        doc5.phoneNumber = "123-456-7890"
+//
+//        doc6.name = "Mickey Mouse"
+//        doc6.specialty = "Radiology"
+//        doc6.streetAddress = "123 Disney Street"
+//        doc6.city = "San Diego"
+//        doc6.state = "CA"
+//        doc6.zipCode = "92101-1234"
+//        doc6.phoneNumber = "123-456-7890"
+//
+//        doctorArray.append(doc1)
+//        doctorArray.append(doc2)
+//        doctorArray.append(doc3)
+//        doctorArray.append(doc4)
+//        doctorArray.append(doc5)
+//        doctorArray.append(doc6)
+//
+//        print(doctorArray[2].name)
         
     }
 
@@ -121,6 +121,8 @@ class DoctorsListViewController: UITableViewController, AddDoctor {
             let seg = segue.destination as! DoctorDetailsViewController
             seg.passedInformation = selectedInformation
             seg.passedDoctorArrayIndex = doctorArrayIndex
+            seg.detailsDoctorArray = doctorArray
+            //seg.delegateVar = self
             seg.hidesBottomBarWhenPushed = true
         }
         
@@ -146,6 +148,13 @@ class DoctorsListViewController: UITableViewController, AddDoctor {
         doctorArray.append(addedDoctor)
         tableView.reloadData()
     }
+    
+//    func deleteDoctor(currentDoctorIndex: Int) {
+//        doctorArray.remove(at: currentDoctorIndex)
+//        //print("Removed " + String(currentDoctorIndex))
+//        //print(doctorArray[2].name)
+//        tableView.reloadData()
+//    }
     
 
     /*

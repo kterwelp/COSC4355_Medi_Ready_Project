@@ -10,9 +10,9 @@
         <!--Doctor List-->
         <scene sceneID="9kC-p6-lR2">
             <objects>
-                <tableViewController id="SZ2-Hs-35b" customClass="DoctorsListViewController" customModule="COSC4355_Medication_Reminder_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DoctorsListView" id="SZ2-Hs-35b" customClass="DoctorsListViewController" customModule="COSC4355_Medication_Reminder_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gDU-FK-emu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -149,7 +149,7 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="YMC-DL-WjP" customClass="DoctorDetailsViewController" customModule="COSC4355_Medication_Reminder_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="85O-O8-Uf7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rla-7o-EV5">
@@ -180,14 +180,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBR-lW-ePR">
-                                <rect key="frame" x="132" y="618" width="113" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Delete Doctor">
-                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vF1-uo-dQf">
                                 <rect key="frame" x="16" y="233" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -216,6 +208,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBR-lW-ePR">
+                                <rect key="frame" x="131" y="590" width="113" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Delete Doctor">
+                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteDoctor:" destination="YMC-DL-WjP" eventType="touchUpInside" id="uQf-nG-8Uu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="bor-Yy-kqE"/>
@@ -235,11 +238,12 @@
                         <outlet property="doctorPhoneNumberLabel" destination="vF1-uo-dQf" id="3AH-Pw-VwM"/>
                         <outlet property="doctorSpecialtyLabel" destination="Dk8-GU-GuS" id="T1N-xR-JPC"/>
                         <outlet property="doctorStreetAddressLabel" destination="15M-li-jWC" id="J6e-e4-Zsy"/>
+                        <segue destination="SZ2-Hs-35b" kind="show" identifier="showDoctorList" animates="NO" id="lVE-VJ-Ilk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCV-ts-GED" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2680.8000000000002" y="834.33283358320841"/>
+            <point key="canvasLocation" x="2689" y="775"/>
         </scene>
         <!--Edit Doctor View Controller-->
         <scene sceneID="CjE-CZ-kDR">
@@ -305,20 +309,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2k6-ya-Ggn">
-                                <rect key="frame" x="131" y="593" width="113" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Delete Doctor">
-                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dwM-Sd-Tkk">
                                 <rect key="frame" x="16" y="402" width="343" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2k6-ya-Ggn">
+                                <rect key="frame" x="131" y="574" width="113" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Delete Doctor">
+                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteDoctor:" destination="Vwf-Xb-Ihe" eventType="touchUpInside" id="Jns-E5-QlT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="evd-Lg-imD"/>
@@ -503,6 +510,9 @@
             <point key="canvasLocation" x="805.60000000000002" y="-275.71214392803603"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="lVE-VJ-Ilk"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="exclamationmark.triangle.fill" catalog="system" width="128" height="112"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>

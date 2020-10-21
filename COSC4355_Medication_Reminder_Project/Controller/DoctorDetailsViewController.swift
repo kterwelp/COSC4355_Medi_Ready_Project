@@ -8,10 +8,16 @@
 
 import UIKit
 
-class DoctorDetailsViewController: UIViewController, UpdateDoctor {
-    
+//protocol DeleteDoctor {
+//    func deleteDoctor(currentDoctorIndex: Int)
+//}
+
+class DoctorDetailsViewController: UIViewController, UpdateDoctor, DeleteDoctor {
+
     var passedInformation = Doctor()
+    var detailsDoctorArray = [Doctor]()
     var passedDoctorArrayIndex = 0
+    //var delegateVar: DeleteDoctor?
 
     @IBOutlet weak var doctorNameLabel: UILabel!
     @IBOutlet weak var doctorSpecialtyLabel: UILabel!
@@ -36,13 +42,23 @@ class DoctorDetailsViewController: UIViewController, UpdateDoctor {
             
             editDoctorView.editPassedInformation = passedInformation
             editDoctorView.editPassedDoctorArrayIndex = passedDoctorArrayIndex
+            editDoctorView.editDoctorArray = detailsDoctorArray
             editDoctorView.delegateVar = self
+            editDoctorView.delegateVarDelete = self
+        }
+        
+        if segue.identifier == "showDoctorList" {
+
+            let doctorListView = segue.destination as! DoctorsListViewController
+            
+            detailsDoctorArray.remove(at: passedDoctorArrayIndex)
+            doctorListView.doctorArray = detailsDoctorArray
+            
+            print(passedDoctorArrayIndex)
+            print(doctorListView.doctorArray)
+
         }
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        viewDidLoad()
-//    }
     
     @IBAction func showEditDoctor(_ sender: Any) {
         
@@ -57,6 +73,19 @@ class DoctorDetailsViewController: UIViewController, UpdateDoctor {
         doctorStreetAddressLabel.text = updatedDoctor.streetAddress
         doctorCityStateZipLabel.text = updatedDoctor.city + ", " + updatedDoctor.state + " " + updatedDoctor.zipCode
     }
+    
+    @IBAction func deleteDoctor(_ sender: Any) {
+
+        performSegue(withIdentifier: "showDoctorList", sender: self)
+    }
+    
+    func deleteCurrentDoctor(currentDoctorArray: [Doctor], currentDoctorArrayIndex: Int) {
+        detailsDoctorArray = currentDoctorArray
+        passedDoctorArrayIndex = currentDoctorArrayIndex
+        performSegue(withIdentifier: "showDoctorList", sender: self)
+        
+    }
+
     
     /*
     // MARK: - Navigation
