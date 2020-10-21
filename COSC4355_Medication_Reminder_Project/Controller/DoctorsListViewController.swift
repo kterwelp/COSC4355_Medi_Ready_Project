@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DoctorsListViewController: UITableViewController {
+class DoctorsListViewController: UITableViewController, AddDoctor {
     
     var doctorArray = [Doctor]()
     var selectedInformation = Doctor()
@@ -114,7 +114,6 @@ class DoctorsListViewController: UITableViewController {
     override func viewWillAppear(_ animated:Bool) {
        super.viewWillAppear(animated)
        tableView.reloadData()
-        print(doctorArray[2].name)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -123,6 +122,12 @@ class DoctorsListViewController: UITableViewController {
             seg.passedInformation = selectedInformation
             seg.passedDoctorArrayIndex = doctorArrayIndex
             seg.hidesBottomBarWhenPushed = true
+        }
+        
+        if segue.identifier == "showAddDoctor" {
+            let addDoctorView = segue.destination as! AddDoctorViewController
+            addDoctorView.delegateVar = self
+            addDoctorView.hidesBottomBarWhenPushed = true
         }
         
     }
@@ -135,6 +140,11 @@ class DoctorsListViewController: UITableViewController {
     
     @IBAction func showAddDoctor(_ sender: Any) {
         performSegue(withIdentifier: "showAddDoctor", sender: self)
+    }
+    
+    func addDoctor(addedDoctor: Doctor) {
+        doctorArray.append(addedDoctor)
+        tableView.reloadData()
     }
     
 

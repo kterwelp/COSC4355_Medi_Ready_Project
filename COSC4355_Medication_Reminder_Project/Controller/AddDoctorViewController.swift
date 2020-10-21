@@ -8,10 +8,22 @@
 
 import UIKit
 
+protocol AddDoctor {
+    func addDoctor(addedDoctor: Doctor)
+}
+
 class AddDoctorViewController: UIViewController {
+    
+    var addedDoctorInformation = Doctor()
+    var delegateVar: AddDoctor?
     
     @IBOutlet weak var doctorNameTextField: UITextField!
     @IBOutlet weak var doctorSpecialtyTextField: UITextField!
+    @IBOutlet weak var doctorPhoneNumberTextField: UITextField!
+    @IBOutlet weak var doctorStreetAddressTextField: UITextField!
+    @IBOutlet weak var doctorCityTextField: UITextField!
+    @IBOutlet weak var doctorStateTextField: UITextField!
+    @IBOutlet weak var doctorZipCodeTextField: UITextField!
     
 
     override func viewDidLoad() {
@@ -21,6 +33,17 @@ class AddDoctorViewController: UIViewController {
     }
     
     @IBAction func addDoctor(_ sender: Any) {
+        
+        addedDoctorInformation.name = doctorNameTextField.text!
+        addedDoctorInformation.specialty = doctorSpecialtyTextField.text!
+        addedDoctorInformation.phoneNumber = doctorPhoneNumberTextField.text!
+        addedDoctorInformation.streetAddress = doctorStreetAddressTextField.text!
+        addedDoctorInformation.city = doctorCityTextField.text!
+        addedDoctorInformation.state = doctorStateTextField.text!
+        addedDoctorInformation.zipCode = doctorZipCodeTextField.text!
+        
+        delegateVar?.addDoctor(addedDoctor: addedDoctorInformation)
+        
         self.dismiss(animated: true, completion: nil)
     }
     

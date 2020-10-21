@@ -131,8 +131,13 @@
                         <viewLayoutGuide key="safeArea" id="6K6-8t-6Tp"/>
                     </view>
                     <connections>
-                        <outlet property="doctorNameTextField" destination="tSm-rW-6Zu" id="M0z-4b-87x"/>
+                        <outlet property="doctorCityTextField" destination="iOQ-cn-94t" id="LcN-Vc-aCe"/>
+                        <outlet property="doctorNameTextField" destination="bsZ-i6-oao" id="RXu-Zr-a4R"/>
+                        <outlet property="doctorPhoneNumberTextField" destination="FeC-mY-qd2" id="KxC-PW-KSM"/>
                         <outlet property="doctorSpecialtyTextField" destination="tSm-rW-6Zu" id="OAA-e9-R3C"/>
+                        <outlet property="doctorStateTextField" destination="XKk-dP-zuL" id="XZN-FF-BRT"/>
+                        <outlet property="doctorStreetAddressTextField" destination="nEV-T7-tX3" id="VkW-bQ-tdT"/>
+                        <outlet property="doctorZipCodeTextField" destination="oiX-5s-6gx" id="ikU-9p-02B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZnR-DV-7Nl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
