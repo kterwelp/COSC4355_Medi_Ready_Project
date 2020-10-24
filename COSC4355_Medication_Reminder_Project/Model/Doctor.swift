@@ -10,6 +10,7 @@ import Foundation
 
 class Doctor {
     
+    //Testing newly created repository
     var name: String
     var specialty: String
     var streetAddress: String
