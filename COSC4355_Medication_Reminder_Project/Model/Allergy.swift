@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+class Allergy {
+    
+    var medicationName: String
+    var reactions: String
+    
+    init() {
+        self.medicationName = ""
+        self.reactions = ""
+    }
+}

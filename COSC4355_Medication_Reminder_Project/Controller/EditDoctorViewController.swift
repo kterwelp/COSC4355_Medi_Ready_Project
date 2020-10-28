@@ -118,7 +118,7 @@ class EditDoctorViewController: UIViewController {
         
     }
     
-    
+    //TODO:  This is causing a bug where the Tab Bar disappears - Needs new solution
     @IBAction func deleteDoctor(_ sender: Any) {
         
         delegateVarDelete?.deleteCurrentDoctor(currentDoctorArray: editDoctorArray, currentDoctorArrayIndex: editPassedDoctorArrayIndex)
