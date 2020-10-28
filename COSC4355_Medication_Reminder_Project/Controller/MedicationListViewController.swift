@@ -11,6 +11,7 @@ import UIKit
 class MedicationListViewController: UITableViewController {
     
     var tempMedications = [Medication]()
+    var selectedInformation = Medication()
     
     /*
         TEMPORARY TESTING
@@ -19,24 +20,59 @@ class MedicationListViewController: UITableViewController {
     
     
     
-    let med1 = Medication(name: "Amlodipine", timesTakenDaily: [8, 14, 20], hasBeenTaken: true)
-    let med2 = Medication(name: "Lisinopril", timesTakenDaily: [8, 14, 20], hasBeenTaken: false)
-    let med3 = Medication(name: "Atorvastatin", timesTakenDaily: [8, 14, 20], hasBeenTaken: true)
-    let med4 = Medication(name: "Metformin", timesTakenDaily: [8, 14, 20], hasBeenTaken: false)
+    let med1 = Medication()
+    let med2 = Medication()
+    let med3 = Medication()
+    let med4 = Medication()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         /*
            TEMPORARY TESTING
            TO BE REMOVED
         */
+        
+        med1.name = "Amlodipine"
+        med1.numOfTabsPerDose = 2
+        med1.timesTakenDaily = 3
+        med1.dateFilled = "10-01-2020"
+        med1.numOfTabsAvailable = 60
+        med1.reason = "High blood pressure"
+        med1.doctorFirstName = "Harry"
+        med1.doctorLastName = "Potter"
+        med1.hasBeenTaken = true
+        
+        med2.name = "Ativan"
+        med2.numOfTabsPerDose = 1
+        med2.timesTakenDaily = 1
+        med2.dateFilled = "10-21-2020"
+        med2.numOfTabsAvailable = 30
+        med2.reason = "Anxiety"
+        med2.doctorFirstName = "Mickey"
+        med2.doctorLastName = "Mouse"
+        med2.hasBeenTaken = false
+        
+        med3.name = "Atorvastatin"
+        med3.numOfTabsPerDose = 3
+        med3.timesTakenDaily = 2
+        med3.dateFilled = "08-03-2020"
+        med3.numOfTabsAvailable = 90
+        med3.reason = "High cholesterol"
+        med3.doctorFirstName = "Luke"
+        med3.doctorLastName = "Skywalker"
+        med3.hasBeenTaken = true
+        
+        med4.name = "Metformin"
+        med4.numOfTabsPerDose = 1
+        med4.timesTakenDaily = 2
+        med4.dateFilled = "09-09-2020"
+        med4.numOfTabsAvailable = 60
+        med4.reason = "Diabetes"
+        med4.doctorFirstName = "Katniss"
+        med4.doctorLastName = "Everdeen"
+        med4.hasBeenTaken = false
+        
         tempMedications.append(med1)
         tempMedications.append(med2)
         tempMedications.append(med3)
@@ -64,24 +100,50 @@ class MedicationListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "medicationCell", for: indexPath)
 
-        let medicationNameLabel = cell.viewWithTag(1) as! UILabel
+        let cellLabel = cell.viewWithTag(1) as! UILabel
         
-        medicationNameLabel.text = tempMedications[indexPath.row].name
+        cellLabel.text = tempMedications[indexPath.row].name
         
-        cell.accessoryType = tempMedications[indexPath.row].hasBeenTaken ? .checkmark : .none // applies a checkmark to the cell based on whether or not the medication has been taken today
+        //      Code below is for checking of meds - Will look into options later
+//        cell.accessoryType = tempMedications[indexPath.row].hasBeenTaken ? .checkmark : .none // applies a checkmark to the cell based on whether or not the medication has been taken today
 
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMedicationInfo" {
+            let seg = segue.destination as! MedicationDetailsViewController
+            seg.passedInformation = selectedInformation
+//            seg.passedDoctorArrayIndex = doctorArrayIndex
+//            seg.detailsDoctorArray = doctorArray
+            seg.hidesBottomBarWhenPushed = true
+        }
+        
+//        if segue.identifier == "showAddMedication" {
+//            let addDoctorView = segue.destination as! AddDoctorViewController
+//            addDoctorView.delegateVar = self
+//            addDoctorView.hidesBottomBarWhenPushed = true
+//        }
+        
     }
     
     // MARK: TableView Delegate Methods
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let medication = tempMedications[indexPath.row]
         
-        medication.hasBeenTaken = !medication.hasBeenTaken
+        selectedInformation = tempMedications[indexPath.row]
         
-        tableView.deselectRow(at: indexPath, animated: true)
-        tableView.reloadData()
+        self.performSegue(withIdentifier: "showMedicationInfo", sender: self)
+
+//      Code below is for checking of meds - Will look into options later
+//        let medication = tempMedications[indexPath.row]
+//
+//        medication.hasBeenTaken = !medication.hasBeenTaken
+//
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        tableView.reloadData()
+        
+        
     }
     
     // MARK: - Data Updating Methods

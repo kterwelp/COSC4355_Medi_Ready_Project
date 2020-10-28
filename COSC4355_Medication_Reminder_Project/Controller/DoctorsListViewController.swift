@@ -94,6 +94,10 @@ class DoctorsListViewController: UITableViewController, AddDoctor {
         // #warning Incomplete implementation, return the number of rows
         return doctorArray.count
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.TableView.CellHeight
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -105,10 +109,6 @@ class DoctorsListViewController: UITableViewController, AddDoctor {
         cellLbl.text = doctorArray[indexPath.row].firstName + " " + doctorArray[indexPath.row].lastName
 
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.TableView.CellHeight
     }
     
     override func viewWillAppear(_ animated:Bool) {

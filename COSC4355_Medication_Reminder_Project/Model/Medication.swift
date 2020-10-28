@@ -11,20 +11,36 @@ import Foundation
 class Medication {
     
     var name: String
-    // use an array of Times?
-    var timesTakenDaily = [Int]() // store each time the med should be taken in an array
+    var numOfTabsPerDose: Int
+    var timesTakenDaily: Int
+    //Store as "2020-11-30" - Will help determine what date to remind about refill
+    var dateFilled: String
+    //Number of tabs patient has on hand - Will help determine when to remind about refill
+    var numOfTabsAvailable: Int
+    //Reason patient is taking the medication (diagnosis)
+    var reason: String
+    //Name of doctor who prescribed medication
+    var doctorFirstName: String
+    var doctorLastName: String
     var hasBeenTaken: Bool
     
     init() {
         self.name = ""
-        self.timesTakenDaily = [0]
+        self.numOfTabsPerDose = 0
+        self.timesTakenDaily = 0
+        self.dateFilled = ""
+        self.numOfTabsAvailable = 0
+        self.reason = ""
+        self.doctorFirstName = ""
+        self.doctorLastName = ""
         self.hasBeenTaken = false
     }
     
-    init(name: String, timesTakenDaily: [Int], hasBeenTaken: Bool) {
-        self.name = name
-        self.timesTakenDaily = timesTakenDaily
-        self.hasBeenTaken = hasBeenTaken
-    }
+//    Include code below after deciding which fields are required
+//    init(name: String, timesTakenDaily: Int, hasBeenTaken: Bool) {
+//        self.name = name
+//        self.timesTakenDaily = timesTakenDaily
+//        self.hasBeenTaken = hasBeenTaken
+//    }
     
 }
