@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D036899252599890064EF98 /* AllergiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D036898252599890064EF98 /* AllergiesViewController.swift */; };
 		4D03689B252599C30064EF98 /* DoctorsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D03689A252599C30064EF98 /* DoctorsListViewController.swift */; };
 		4D812501252D0B75004BA034 /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D812500252D0B75004BA034 /* Medication.swift */; };
 		4D812503252D0B8F004BA034 /* Allergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D812502252D0B8F004BA034 /* Allergy.swift */; };
@@ -21,6 +20,13 @@
 		98E63CE42549193200F4BD96 /* MedicationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CE32549193200F4BD96 /* MedicationDetailsViewController.swift */; };
 		98E63CE62549307500F4BD96 /* AddMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CE52549307500F4BD96 /* AddMedicationViewController.swift */; };
 		98E63CE82549323F00F4BD96 /* EditMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CE72549323F00F4BD96 /* EditMedicationViewController.swift */; };
+		98E63CEA254947D100F4BD96 /* AllergyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CE9254947D100F4BD96 /* AllergyListViewController.swift */; };
+		98E63CEC2549587400F4BD96 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CEB2549587400F4BD96 /* Profile.swift */; };
+		98E63CEE254958B400F4BD96 /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CED254958B400F4BD96 /* Accounts.swift */; };
+		98E63CF0254968C400F4BD96 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CEF254968C400F4BD96 /* EditProfileViewController.swift */; };
+		98E63CF22549786900F4BD96 /* EditTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CF12549786900F4BD96 /* EditTimesViewController.swift */; };
+		98E63CF42549815300F4BD96 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CF32549815300F4BD96 /* LoginViewController.swift */; };
+		98E63CF625498E9B00F4BD96 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CF525498E9B00F4BD96 /* CreateAccountViewController.swift */; };
 		98F6A56A2523953A005D7330 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A5692523953A005D7330 /* AppDelegate.swift */; };
 		98F6A56C2523953A005D7330 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A56B2523953A005D7330 /* SceneDelegate.swift */; };
 		98F6A56E2523953A005D7330 /* MedicationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A56D2523953A005D7330 /* MedicationListViewController.swift */; };
@@ -51,7 +57,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4D036898252599890064EF98 /* AllergiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergiesViewController.swift; sourceTree = "<group>"; };
 		4D03689A252599C30064EF98 /* DoctorsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsListViewController.swift; sourceTree = "<group>"; };
 		4D812500252D0B75004BA034 /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
 		4D812502252D0B8F004BA034 /* Allergy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allergy.swift; sourceTree = "<group>"; };
@@ -65,6 +70,13 @@
 		98E63CE32549193200F4BD96 /* MedicationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationDetailsViewController.swift; sourceTree = "<group>"; };
 		98E63CE52549307500F4BD96 /* AddMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicationViewController.swift; sourceTree = "<group>"; };
 		98E63CE72549323F00F4BD96 /* EditMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMedicationViewController.swift; sourceTree = "<group>"; };
+		98E63CE9254947D100F4BD96 /* AllergyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyListViewController.swift; sourceTree = "<group>"; };
+		98E63CEB2549587400F4BD96 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		98E63CED254958B400F4BD96 /* Accounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accounts.swift; sourceTree = "<group>"; };
+		98E63CEF254968C400F4BD96 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		98E63CF12549786900F4BD96 /* EditTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimesViewController.swift; sourceTree = "<group>"; };
+		98E63CF32549815300F4BD96 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		98E63CF525498E9B00F4BD96 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		98F6A5662523953A005D7330 /* COSC4355_Medication_Reminder_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COSC4355_Medication_Reminder_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98F6A5692523953A005D7330 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98F6A56B2523953A005D7330 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +127,8 @@
 				4D812500252D0B75004BA034 /* Medication.swift */,
 				4D812502252D0B8F004BA034 /* Allergy.swift */,
 				4D812504252D0BA0004BA034 /* Doctor.swift */,
+				98E63CEB2549587400F4BD96 /* Profile.swift */,
+				98E63CED254958B400F4BD96 /* Accounts.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -131,17 +145,21 @@
 		4D03689E252599E60064EF98 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				98E63CF32549815300F4BD96 /* LoginViewController.swift */,
+				98E63CF525498E9B00F4BD96 /* CreateAccountViewController.swift */,
 				98F6A56D2523953A005D7330 /* MedicationListViewController.swift */,
 				98E63CE32549193200F4BD96 /* MedicationDetailsViewController.swift */,
 				98E63CE52549307500F4BD96 /* AddMedicationViewController.swift */,
 				98E63CE72549323F00F4BD96 /* EditMedicationViewController.swift */,
-				98F6A56F2523953A005D7330 /* ProfileViewController.swift */,
-				4D036898252599890064EF98 /* AllergiesViewController.swift */,
+				98E63CE9254947D100F4BD96 /* AllergyListViewController.swift */,
 				4D03689A252599C30064EF98 /* DoctorsListViewController.swift */,
 				98905F1F253E9A380013F656 /* DoctorDetailsViewController.swift */,
 				98905F23253EB3360013F656 /* AddDoctorViewController.swift */,
 				98905F21253EABE90013F656 /* EditDoctorViewController.swift */,
 				981372F7253C3A3300ACD3E4 /* PharmacyViewController.swift */,
+				98F6A56F2523953A005D7330 /* ProfileViewController.swift */,
+				98E63CEF254968C400F4BD96 /* EditProfileViewController.swift */,
+				98E63CF12549786900F4BD96 /* EditTimesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -341,23 +359,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				981372F8253C3A3300ACD3E4 /* PharmacyViewController.swift in Sources */,
+				98E63CEA254947D100F4BD96 /* AllergyListViewController.swift in Sources */,
 				98905F22253EABEA0013F656 /* EditDoctorViewController.swift in Sources */,
+				98E63CF42549815300F4BD96 /* LoginViewController.swift in Sources */,
 				98E63CE42549193200F4BD96 /* MedicationDetailsViewController.swift in Sources */,
 				98E63CE62549307500F4BD96 /* AddMedicationViewController.swift in Sources */,
+				98E63CF22549786900F4BD96 /* EditTimesViewController.swift in Sources */,
 				4D812501252D0B75004BA034 /* Medication.swift in Sources */,
 				98905F24253EB3360013F656 /* AddDoctorViewController.swift in Sources */,
 				4D812503252D0B8F004BA034 /* Allergy.swift in Sources */,
 				4D03689B252599C30064EF98 /* DoctorsListViewController.swift in Sources */,
 				98905F20253E9A380013F656 /* DoctorDetailsViewController.swift in Sources */,
+				98E63CF625498E9B00F4BD96 /* CreateAccountViewController.swift in Sources */,
 				98F6A5702523953A005D7330 /* ProfileViewController.swift in Sources */,
 				98F6A56E2523953A005D7330 /* MedicationListViewController.swift in Sources */,
 				4D84D46C253EB94000E819BB /* Constants.swift in Sources */,
 				98F6A56A2523953A005D7330 /* AppDelegate.swift in Sources */,
 				98E63CE82549323F00F4BD96 /* EditMedicationViewController.swift in Sources */,
 				4D812505252D0BA0004BA034 /* Doctor.swift in Sources */,
-				4D036899252599890064EF98 /* AllergiesViewController.swift in Sources */,
+				98E63CEC2549587400F4BD96 /* Profile.swift in Sources */,
+				98E63CEE254958B400F4BD96 /* Accounts.swift in Sources */,
 				98F6A56C2523953A005D7330 /* SceneDelegate.swift in Sources */,
 				98F6A5762523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodeld in Sources */,
+				98E63CF0254968C400F4BD96 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

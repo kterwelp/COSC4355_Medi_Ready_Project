@@ -134,6 +134,14 @@ class DoctorsListViewController: UITableViewController, AddDoctor {
             addDoctorView.hidesBottomBarWhenPushed = true
         }
         
+        if segue.identifier == "showProfile" {
+
+            let ProfileView = segue.destination as! ProfileViewController
+            
+            ProfileView.hidesBottomBarWhenPushed = true
+    
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -153,6 +161,12 @@ class DoctorsListViewController: UITableViewController, AddDoctor {
         }
         tableView.reloadData()
     }
+    
+    @IBAction func showProfile(_ sender: Any) {
+        
+        performSegue(withIdentifier: "showProfile", sender: self)
+    }
+    
     
 
     /*

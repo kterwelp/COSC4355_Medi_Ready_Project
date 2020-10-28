@@ -1,46 +1,102 @@
 //
-//  TableViewController.swift
+//  AllergyListViewController.swift
 //  COSC4355_Medication_Reminder_Project
 //
-//  Created by Jared Talbert on 10/18/20.
+//  Created by Kevin Terwelp on 10/28/20.
 //  Copyright © 2020 Kevin Terwelp. All rights reserved.
 //
 
 import UIKit
 
-class AllergiesViewController: UITableViewController {
+class AllergyListViewController: UITableViewController {
+    
+    var allergyArray = [Allergy]()
+    var selectedInformation = Allergy()
+    var allergyArrayIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let allergy1 = Allergy()
+        let allergy2 = Allergy()
+        let allergy3 = Allergy()
+        let allergy4 = Allergy()
+        let allergy5 = Allergy()
+        
+        allergy1.medicationName = "Penicillin"
+        allergy1.reactions = "Rash, Swelling"
+        
+        allergy2.medicationName = "Morphine"
+        allergy2.reactions = "Shortness of breath, Respiratory issues"
+        
+        allergy3.medicationName = "Norco"
+        allergy3.reactions = "Hives, Rash"
+        
+        allergy4.medicationName = "Nystatin"
+        allergy4.reactions = "Hives, Rash, Swelling"
+        
+        allergy5.medicationName = "Aspirin"
+        allergy5.reactions = "Bruising, High blood pressure"
+        
+        allergyArray.append(allergy1)
+        allergyArray.append(allergy2)
+        allergyArray.append(allergy3)
+        allergyArray.append(allergy4)
+        allergyArray.append(allergy5)
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return allergyArray.count
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.TableView.CellHeight
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "allergyCell", for: indexPath)
 
         // Configure the cell...
+        let cellLbl = cell.viewWithTag(1) as! UILabel
+        
+        cellLbl.text = allergyArray[indexPath.row].medicationName
 
         return cell
     }
-    */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showProfile" {
+
+            let ProfileView = segue.destination as! ProfileViewController
+            
+            ProfileView.hidesBottomBarWhenPushed = true
+    
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated:Bool) {
+       super.viewWillAppear(animated)
+        if allergyArray.count > 1 {
+            allergyArray.sort { $0.medicationName < $1.medicationName }
+        }
+       tableView.reloadData()
+    }
+    
+    @IBAction func showProfile(_ sender: Any) {
+        
+        performSegue(withIdentifier: "showProfile", sender: self)
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -58,7 +114,7 @@ class AllergiesViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
+        }    
     }
     */
 

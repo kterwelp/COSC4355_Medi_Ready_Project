@@ -53,6 +53,23 @@ class PharmacyViewController: UIViewController, CLLocationManagerDelegate {
 //        self.pharmacyMapView.addAnnotation(annotation)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "showProfile" {
+
+            let ProfileView = segue.destination as! ProfileViewController
+            
+            ProfileView.hidesBottomBarWhenPushed = true
+    
+        }
+    }
+    
+    @IBAction func showProfile(_ sender: Any) {
+        
+        performSegue(withIdentifier: "showProfile", sender: self)
+    }
+    
+    
 
     /*
     // MARK: - Navigation
