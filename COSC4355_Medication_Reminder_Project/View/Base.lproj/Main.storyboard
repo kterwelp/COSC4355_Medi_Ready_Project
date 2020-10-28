@@ -12,7 +12,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="DoctorsListView" id="SZ2-Hs-35b" customClass="DoctorsListViewController" customModule="COSC4355_Medication_Reminder_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gDU-FK-emu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -23,14 +23,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GvC-3P-ZuA">
-                                            <rect key="frame" x="16" y="19" width="343" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GvC-3P-ZuA">
+                                            <rect key="frame" x="16" y="11" width="237" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="237" id="7hl-Gm-EYG"/>
+                                                <constraint firstAttribute="height" constant="36" id="tQz-yh-Iaf"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="GvC-3P-ZuA" firstAttribute="centerY" secondItem="cLa-Km-ff2" secondAttribute="centerY" id="3un-wN-qOa"/>
+                                        <constraint firstItem="GvC-3P-ZuA" firstAttribute="leading" secondItem="cLa-Km-ff2" secondAttribute="leadingMargin" id="Gso-of-REQ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -57,7 +64,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhu-8X-tYq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1750" y="851"/>
+            <point key="canvasLocation" x="1749.5999999999999" y="850.52473763118451"/>
         </scene>
         <!--Add Doctor View Controller-->
         <scene sceneID="nZZ-Gw-Z9P">
@@ -67,75 +74,156 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hm7-oB-Rqf">
-                                <rect key="frame" x="16" y="20" width="53" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelAddDoctor:" destination="vEb-pZ-sln" eventType="touchUpInside" id="Kp4-4H-EM4"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bsZ-i6-oao">
-                                <rect key="frame" x="16" y="83" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9x-Lm-HnA">
-                                <rect key="frame" x="324" y="20" width="35" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Add"/>
-                                <connections>
-                                    <action selector="addDoctor:" destination="vEb-pZ-sln" eventType="touchUpInside" id="2mo-7K-6lj"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Specialty" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tSm-rW-6Zu">
-                                <rect key="frame" x="16" y="137" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nEV-T7-tX3">
-                                <rect key="frame" x="16" y="244" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iOQ-cn-94t">
-                                <rect key="frame" x="16" y="298" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XKk-dP-zuL">
-                                <rect key="frame" x="16" y="353" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oiX-5s-6gx">
-                                <rect key="frame" x="16" y="406" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FeC-mY-qd2">
-                                <rect key="frame" x="16" y="190" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGT-Kb-0hp" userLabel="Content View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hm7-oB-Rqf">
+                                        <rect key="frame" x="20" y="20" width="53" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelAddDoctor:" destination="vEb-pZ-sln" eventType="touchUpInside" id="Kp4-4H-EM4"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="9Rw-do-0R5" userLabel="Text Field Stack View">
+                                        <rect key="frame" x="16" y="83" width="343" height="386"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="GvR-aA-OlZ" userLabel="Name Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="184"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bsZ-i6-oao">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="eEB-g1-fsM"/>
+                                                            <constraint firstAttribute="width" constant="343" id="lRL-3O-6ZH">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QHR-Cz-SeY">
+                                                        <rect key="frame" x="0.0" y="50" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="BNa-4N-FlK"/>
+                                                            <constraint firstAttribute="width" constant="343" id="aHp-vy-lGS">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Specialty" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tSm-rW-6Zu">
+                                                        <rect key="frame" x="0.0" y="100" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="343" id="UPx-n5-PbL">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                            <constraint firstAttribute="height" constant="34" id="s4U-Id-qee"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FeC-mY-qd2">
+                                                        <rect key="frame" x="0.0" y="150" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="343" id="IFd-oV-jZW">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                            <constraint firstAttribute="height" constant="34" id="xKh-DC-eVL"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ixY-CV-XpS" userLabel="Address Stack View">
+                                                <rect key="frame" x="0.0" y="202" width="343" height="184"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nEV-T7-tX3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="981-da-tr1"/>
+                                                            <constraint firstAttribute="width" constant="343" id="hHw-fE-Yt4">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iOQ-cn-94t">
+                                                        <rect key="frame" x="0.0" y="50" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="VvM-nJ-Po7"/>
+                                                            <constraint firstAttribute="width" constant="343" id="enZ-wl-mbv">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XKk-dP-zuL">
+                                                        <rect key="frame" x="0.0" y="100" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="343" id="P0U-YL-y5N">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                            <constraint firstAttribute="height" constant="34" id="xU8-Oj-K8f"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oiX-5s-6gx">
+                                                        <rect key="frame" x="0.0" y="150" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="3Hp-R0-FjR"/>
+                                                            <constraint firstAttribute="width" constant="343" id="3kW-Uu-jHG">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <variation key="heightClass=compact-widthClass=compact" axis="horizontal" spacing="75"/>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9x-Lm-HnA">
+                                        <rect key="frame" x="322" y="20" width="33" height="33"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <state key="normal" title="Add"/>
+                                        <connections>
+                                            <action selector="addDoctor:" destination="vEb-pZ-sln" eventType="touchUpInside" id="2mo-7K-6lj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Hm7-oB-Rqf" firstAttribute="top" secondItem="CGT-Kb-0hp" secondAttribute="top" constant="20" id="Jaz-GA-Yq0"/>
+                                    <constraint firstItem="v9x-Lm-HnA" firstAttribute="top" secondItem="CGT-Kb-0hp" secondAttribute="top" constant="20" id="JbU-xw-MGp"/>
+                                    <constraint firstItem="9Rw-do-0R5" firstAttribute="top" secondItem="v9x-Lm-HnA" secondAttribute="bottom" constant="30" id="QDT-CX-4V1"/>
+                                    <constraint firstAttribute="trailing" secondItem="v9x-Lm-HnA" secondAttribute="trailing" constant="20" id="X6e-LS-vuK"/>
+                                    <constraint firstItem="9Rw-do-0R5" firstAttribute="centerX" secondItem="CGT-Kb-0hp" secondAttribute="centerX" id="XBM-uS-tnn"/>
+                                    <constraint firstItem="Hm7-oB-Rqf" firstAttribute="leading" secondItem="CGT-Kb-0hp" secondAttribute="leading" constant="20" id="ikB-6t-4x3"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="CGT-Kb-0hp" firstAttribute="top" secondItem="6K6-8t-6Tp" secondAttribute="top" id="BAe-w7-WfT"/>
+                            <constraint firstItem="6K6-8t-6Tp" firstAttribute="trailing" secondItem="CGT-Kb-0hp" secondAttribute="trailing" id="p8Y-au-xtA"/>
+                            <constraint firstItem="6K6-8t-6Tp" firstAttribute="bottom" secondItem="CGT-Kb-0hp" secondAttribute="bottom" id="yw2-zr-FWN"/>
+                            <constraint firstItem="CGT-Kb-0hp" firstAttribute="leading" secondItem="6K6-8t-6Tp" secondAttribute="leading" id="zw9-qD-mRj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6K6-8t-6Tp"/>
                     </view>
                     <connections>
                         <outlet property="doctorCityTextField" destination="iOQ-cn-94t" id="LcN-Vc-aCe"/>
-                        <outlet property="doctorNameTextField" destination="bsZ-i6-oao" id="RXu-Zr-a4R"/>
+                        <outlet property="doctorFirstNameTextField" destination="bsZ-i6-oao" id="xQK-wj-sop"/>
+                        <outlet property="doctorLastNameTextField" destination="QHR-Cz-SeY" id="tSb-47-wv6"/>
                         <outlet property="doctorPhoneNumberTextField" destination="FeC-mY-qd2" id="KxC-PW-KSM"/>
                         <outlet property="doctorSpecialtyTextField" destination="tSm-rW-6Zu" id="OAA-e9-R3C"/>
                         <outlet property="doctorStateTextField" destination="XKk-dP-zuL" id="XZN-FF-BRT"/>
@@ -145,85 +233,148 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZnR-DV-7Nl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769" y="575"/>
+            <point key="canvasLocation" x="2768.8000000000002" y="574.36281859070471"/>
         </scene>
         <!--Doctor Information-->
         <scene sceneID="xDo-Rc-oEP">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="YMC-DL-WjP" customClass="DoctorDetailsViewController" customModule="COSC4355_Medication_Reminder_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="85O-O8-Uf7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rla-7o-EV5">
-                                <rect key="frame" x="16" y="203" width="58" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Specialty:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fds-gg-5dq">
-                                <rect key="frame" x="16" y="121" width="81" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geJ-ld-IlS">
-                                <rect key="frame" x="16" y="286" width="74" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ho-z6-h1U" userLabel="DoctorName">
-                                <rect key="frame" x="16" y="64" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vF1-uo-dQf">
-                                <rect key="frame" x="16" y="233" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dk8-GU-GuS">
-                                <rect key="frame" x="16" y="151" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15M-li-jWC">
-                                <rect key="frame" x="16" y="316" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxD-3S-9g3">
-                                <rect key="frame" x="16" y="345" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBR-lW-ePR">
-                                <rect key="frame" x="131" y="590" width="113" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Delete Doctor">
-                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteDoctor:" destination="YMC-DL-WjP" eventType="touchUpInside" id="uQf-nG-8Uu"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWy-GJ-Pqa" userLabel="Content View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="4vV-fy-Kgb" userLabel="Doc Info Stack View">
+                                        <rect key="frame" x="16" y="79" width="343" height="243"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="a28-X5-L7b" userLabel="Spec-Phone Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="133"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ANw-0y-CEN" userLabel="Specialty Stack View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="51"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specialty:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fds-gg-5dq">
+                                                                <rect key="frame" x="0.0" y="0.0" width="94.5" height="23"/>
+                                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dk8-GU-GuS">
+                                                                <rect key="frame" x="0.0" y="30" width="343" height="21"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="343" id="ZA0-L3-5z4">
+                                                                        <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                                    </constraint>
+                                                                    <constraint firstAttribute="height" constant="21" id="eWz-DM-OSr"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="jyL-6W-6vu" userLabel="Phone Stack View">
+                                                        <rect key="frame" x="0.0" y="82" width="343" height="51"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rla-7o-EV5">
+                                                                <rect key="frame" x="0.0" y="0.0" width="68" height="23"/>
+                                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vF1-uo-dQf">
+                                                                <rect key="frame" x="0.0" y="30" width="343" height="21"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="343" id="bXq-49-KZU">
+                                                                        <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                                    </constraint>
+                                                                    <constraint firstAttribute="height" constant="21" id="cXm-yF-Wvo"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="vdI-k6-suc" userLabel="Address Stack View">
+                                                <rect key="frame" x="0.0" y="164" width="343" height="79"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geJ-ld-IlS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="23"/>
+                                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15M-li-jWC">
+                                                        <rect key="frame" x="0.0" y="30" width="343" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="343" id="APF-A7-xB0">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                            <constraint firstAttribute="height" constant="21" id="QqC-8b-k5H"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxD-3S-9g3">
+                                                        <rect key="frame" x="0.0" y="58" width="343" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="6NL-aB-M1L"/>
+                                                            <constraint firstAttribute="width" constant="343" id="iwr-v4-s7z">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ho-z6-h1U" userLabel="DoctorName">
+                                        <rect key="frame" x="157" y="20" width="61.5" height="29"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBR-lW-ePR">
+                                        <rect key="frame" x="131" y="472" width="113" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Delete Doctor">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteDoctor:" destination="YMC-DL-WjP" eventType="touchUpInside" id="uQf-nG-8Uu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="0Ho-z6-h1U" firstAttribute="centerX" secondItem="uWy-GJ-Pqa" secondAttribute="centerX" id="N5E-g2-Mw3"/>
+                                    <constraint firstItem="SBR-lW-ePR" firstAttribute="centerX" secondItem="uWy-GJ-Pqa" secondAttribute="centerX" id="Tgg-al-Cij"/>
+                                    <constraint firstItem="4vV-fy-Kgb" firstAttribute="centerX" secondItem="uWy-GJ-Pqa" secondAttribute="centerX" id="aOg-79-Hos"/>
+                                    <constraint firstItem="SBR-lW-ePR" firstAttribute="top" secondItem="4vV-fy-Kgb" secondAttribute="bottom" constant="150" id="na1-VP-aaD">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="60"/>
+                                    </constraint>
+                                    <constraint firstItem="4vV-fy-Kgb" firstAttribute="top" secondItem="0Ho-z6-h1U" secondAttribute="bottom" constant="30" id="tou-66-Zfz"/>
+                                    <constraint firstItem="0Ho-z6-h1U" firstAttribute="top" secondItem="uWy-GJ-Pqa" secondAttribute="top" constant="20" id="x68-2m-OoS"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="uWy-GJ-Pqa" firstAttribute="top" secondItem="bor-Yy-kqE" secondAttribute="top" id="3CW-L6-pIm"/>
+                            <constraint firstItem="bor-Yy-kqE" firstAttribute="bottom" secondItem="uWy-GJ-Pqa" secondAttribute="bottom" id="TpZ-Yi-evU"/>
+                            <constraint firstItem="bor-Yy-kqE" firstAttribute="trailing" secondItem="uWy-GJ-Pqa" secondAttribute="trailing" id="gme-6n-XW9"/>
+                            <constraint firstItem="uWy-GJ-Pqa" firstAttribute="leading" secondItem="bor-Yy-kqE" secondAttribute="leading" id="vb2-AN-6hf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bor-Yy-kqE"/>
                     </view>
                     <navigationItem key="navigationItem" title="Doctor Information" id="UwW-Jc-Irn">
@@ -247,7 +398,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCV-ts-GED" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769" y="1299"/>
+            <point key="canvasLocation" x="2768.8000000000002" y="1298.5007496251876"/>
         </scene>
         <!--Edit Doctor View Controller-->
         <scene sceneID="CjE-CZ-kDR">
@@ -257,86 +408,170 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiB-Oy-Itm">
-                                <rect key="frame" x="313" y="20" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="doneEdit:" destination="Vwf-Xb-Ihe" eventType="touchUpInside" id="SmI-vD-pqY"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6st-8f-pbX">
-                                <rect key="frame" x="16" y="20" width="53" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelEdit:" destination="Vwf-Xb-Ihe" eventType="touchUpInside" id="FOO-gn-DzE"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y4m-bn-jPN">
-                                <rect key="frame" x="16" y="79" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Specialty" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mdq-hn-9G4">
-                                <rect key="frame" x="16" y="132" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dvF-Sz-o12">
-                                <rect key="frame" x="16" y="240" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="txg-8p-s3N">
-                                <rect key="frame" x="16" y="294" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ORe-CF-ff9">
-                                <rect key="frame" x="16" y="349" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aFI-tZ-xIA">
-                                <rect key="frame" x="16" y="186" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dwM-Sd-Tkk">
-                                <rect key="frame" x="16" y="402" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2k6-ya-Ggn">
-                                <rect key="frame" x="131" y="574" width="113" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Delete Doctor">
-                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteDoctor:" destination="Vwf-Xb-Ihe" eventType="touchUpInside" id="Jns-E5-QlT"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MOw-Q5-fOO" userLabel="Content View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiB-Oy-Itm">
+                                        <rect key="frame" x="312" y="20" width="43" height="33"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="doneEdit:" destination="Vwf-Xb-Ihe" eventType="touchUpInside" id="SmI-vD-pqY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6st-8f-pbX">
+                                        <rect key="frame" x="20" y="20" width="53" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelEdit:" destination="Vwf-Xb-Ihe" eventType="touchUpInside" id="FOO-gn-DzE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2k6-ya-Ggn">
+                                        <rect key="frame" x="131" y="541" width="113" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Delete Doctor">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteDoctor:" destination="Vwf-Xb-Ihe" eventType="touchUpInside" id="Jns-E5-QlT"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="LaS-oU-qxY" userLabel="Text Field Stack View">
+                                        <rect key="frame" x="16" y="83" width="343" height="398"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="A7j-G0-Jnn" userLabel="Name Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="190"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y4m-bn-jPN">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="343" id="7Vg-F6-GQU">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                            <constraint firstAttribute="height" constant="34" id="p3x-JZ-cXc"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I33-Ua-q5e">
+                                                        <rect key="frame" x="0.0" y="52" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="NCx-q2-F0Y"/>
+                                                            <constraint firstAttribute="width" constant="343" id="YYc-5W-qGT">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Specialty" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mdq-hn-9G4">
+                                                        <rect key="frame" x="0.0" y="104" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="343" id="MBK-iN-jHX">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                            <constraint firstAttribute="height" constant="34" id="d17-UM-yLf"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aFI-tZ-xIA">
+                                                        <rect key="frame" x="0.0" y="156" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="343" id="T1y-2D-FV6">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                            <constraint firstAttribute="height" constant="34" id="dXX-Iz-zOz"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ave-xl-1aE" userLabel="Address Stack View">
+                                                <rect key="frame" x="0.0" y="208" width="343" height="190"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dvF-Sz-o12">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="343" id="RQa-hH-exl">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                            <constraint firstAttribute="height" constant="34" id="yz6-re-w21"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="txg-8p-s3N">
+                                                        <rect key="frame" x="0.0" y="52" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="Qs2-u4-lRw"/>
+                                                            <constraint firstAttribute="width" constant="343" id="gPT-BD-P3v">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ORe-CF-ff9">
+                                                        <rect key="frame" x="0.0" y="104" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="343" id="3yG-lK-6W9">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                            <constraint firstAttribute="height" constant="34" id="umS-qW-zW7"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dwM-Sd-Tkk">
+                                                        <rect key="frame" x="0.0" y="156" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="343" id="5mP-ZF-wmY">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                            </constraint>
+                                                            <constraint firstAttribute="height" constant="34" id="b7X-MW-rb1"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <variation key="heightClass=compact-widthClass=compact" axis="horizontal" spacing="75"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="6st-8f-pbX" firstAttribute="top" secondItem="MOw-Q5-fOO" secondAttribute="top" constant="20" id="1d0-Py-KOS"/>
+                                    <constraint firstAttribute="trailing" secondItem="fiB-Oy-Itm" secondAttribute="trailing" constant="20" id="5nA-sH-xVS"/>
+                                    <constraint firstItem="2k6-ya-Ggn" firstAttribute="top" secondItem="LaS-oU-qxY" secondAttribute="bottom" constant="60" id="66a-Qg-909">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="35"/>
+                                    </constraint>
+                                    <constraint firstItem="LaS-oU-qxY" firstAttribute="top" secondItem="fiB-Oy-Itm" secondAttribute="bottom" constant="30" id="AdH-rd-Mkb"/>
+                                    <constraint firstItem="6st-8f-pbX" firstAttribute="leading" secondItem="MOw-Q5-fOO" secondAttribute="leading" constant="20" id="WNo-EJ-7Sl"/>
+                                    <constraint firstItem="fiB-Oy-Itm" firstAttribute="top" secondItem="MOw-Q5-fOO" secondAttribute="top" constant="20" id="dSL-vv-XZa"/>
+                                    <constraint firstItem="LaS-oU-qxY" firstAttribute="centerX" secondItem="MOw-Q5-fOO" secondAttribute="centerX" id="l81-OP-piV"/>
+                                    <constraint firstItem="2k6-ya-Ggn" firstAttribute="centerX" secondItem="MOw-Q5-fOO" secondAttribute="centerX" id="vL1-3D-z5O"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="MOw-Q5-fOO" firstAttribute="leading" secondItem="evd-Lg-imD" secondAttribute="leading" id="2mB-TO-hdd"/>
+                            <constraint firstItem="MOw-Q5-fOO" firstAttribute="trailing" secondItem="evd-Lg-imD" secondAttribute="trailing" id="ObC-LN-YmN"/>
+                            <constraint firstItem="MOw-Q5-fOO" firstAttribute="top" secondItem="evd-Lg-imD" secondAttribute="top" id="cUy-M6-3Lg"/>
+                            <constraint firstItem="MOw-Q5-fOO" firstAttribute="bottom" secondItem="evd-Lg-imD" secondAttribute="bottom" id="ox7-zm-J6G"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="evd-Lg-imD"/>
                     </view>
                     <connections>
                         <outlet property="doctorCityTextField" destination="txg-8p-s3N" id="fgX-tL-Hez"/>
-                        <outlet property="doctorNameTextField" destination="Y4m-bn-jPN" id="Vnb-WG-K6U"/>
+                        <outlet property="doctorFirstNameTextField" destination="Y4m-bn-jPN" id="FE6-lt-bBN"/>
+                        <outlet property="doctorLastNameTextField" destination="I33-Ua-q5e" id="7et-9o-FR7"/>
                         <outlet property="doctorPhoneNumberTextField" destination="aFI-tZ-xIA" id="0ah-0Y-Pqr"/>
                         <outlet property="doctorSpecialtyTextField" destination="mdq-hn-9G4" id="OnO-VF-t0Q"/>
                         <outlet property="doctorStateTextField" destination="ORe-CF-ff9" id="cL3-zL-73r"/>
@@ -346,7 +581,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3VW-Xt-ghW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3692" y="1299"/>
+            <point key="canvasLocation" x="3692" y="1298.5007496251876"/>
         </scene>
         <!--Allergies-->
         <scene sceneID="xwp-hN-rpO">
@@ -535,7 +770,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hYF-Im-J2J"/>
+        <segue reference="lVE-VJ-Ilk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="exclamationmark.triangle.fill" catalog="system" width="128" height="112"/>

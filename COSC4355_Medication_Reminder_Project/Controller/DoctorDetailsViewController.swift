@@ -26,7 +26,7 @@ class DoctorDetailsViewController: UIViewController, UpdateDoctor, DeleteDoctor 
         // Do any additional setup after loading the view.
         self.navigationController!.navigationBar.tintColor = UIColor.darkGray
         
-        doctorNameLabel.text = "Dr. " + passedInformation.name
+        doctorNameLabel.text = "Dr. " + passedInformation.firstName + " " + passedInformation.lastName
         doctorSpecialtyLabel.text = passedInformation.specialty
         doctorPhoneNumberLabel.text = passedInformation.phoneNumber
         doctorStreetAddressLabel.text = passedInformation.streetAddress
@@ -66,7 +66,7 @@ class DoctorDetailsViewController: UIViewController, UpdateDoctor, DeleteDoctor 
     
     func updateDoctor(updatedDoctor: Doctor, currentDoctorArrayIndex: Int) {
         passedDoctorArrayIndex = currentDoctorArrayIndex
-        doctorNameLabel.text = "Dr. " + updatedDoctor.name
+        doctorNameLabel.text = "Dr. " + updatedDoctor.firstName + " " + updatedDoctor.lastName
         doctorSpecialtyLabel.text = updatedDoctor.specialty
         doctorPhoneNumberLabel.text = updatedDoctor.phoneNumber
         doctorStreetAddressLabel.text = updatedDoctor.streetAddress

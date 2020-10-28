@@ -25,7 +25,8 @@ class EditDoctorViewController: UIViewController {
     var delegateVar: UpdateDoctor?
     var delegateVarDelete: DeleteDoctor?
     
-    @IBOutlet weak var doctorNameTextField: UITextField!
+    @IBOutlet weak var doctorFirstNameTextField: UITextField!
+    @IBOutlet weak var doctorLastNameTextField: UITextField!
     @IBOutlet weak var doctorSpecialtyTextField: UITextField!
     @IBOutlet weak var doctorPhoneNumberTextField: UITextField!
     @IBOutlet weak var doctorStreetAddressTextField: UITextField!
@@ -37,7 +38,8 @@ class EditDoctorViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        doctorNameTextField.text = editPassedInformation.name
+        doctorFirstNameTextField.text = editPassedInformation.firstName
+        doctorLastNameTextField.text = editPassedInformation.lastName
         doctorSpecialtyTextField.text = editPassedInformation.specialty
         doctorPhoneNumberTextField.text = editPassedInformation.phoneNumber
         doctorStreetAddressTextField.text = editPassedInformation.streetAddress
@@ -54,8 +56,18 @@ class EditDoctorViewController: UIViewController {
     @IBAction func doneEdit(_ sender: Any) {
         
         //TODO:  When an alert is dismissed, it also dismisses the modal view
-        guard doctorNameTextField.text!.count > 0 else {
-            let missingNameAlert = UIAlertController(title: "Missing Name!", message: "Please enter the doctor's name", preferredStyle: .alert)
+        guard doctorFirstNameTextField.text!.count > 0 else {
+            let missingNameAlert = UIAlertController(title: "Missing First Name!", message: "Please enter the doctor's first name", preferredStyle: .alert)
+            
+            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(missingNameAlert, animated: true)
+            
+            return
+        }
+        
+        guard doctorLastNameTextField.text!.count > 0 else {
+            let missingNameAlert = UIAlertController(title: "Missing Last Name!", message: "Please enter the doctor's last name", preferredStyle: .alert)
             
             missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             
@@ -84,11 +96,13 @@ class EditDoctorViewController: UIViewController {
             return
         }
         
-        if doctorNameTextField.text!.count > 0,
+        if doctorFirstNameTextField.text!.count > 0,
+        doctorLastNameTextField.text!.count > 0,
         doctorSpecialtyTextField.text!.count > 0,
         doctorPhoneNumberTextField.text!.count > 0 {
             
-             editPassedInformation.name = doctorNameTextField.text!
+             editPassedInformation.firstName = doctorFirstNameTextField.text!
+            editPassedInformation.lastName = doctorLastNameTextField.text!
              editPassedInformation.specialty = doctorSpecialtyTextField.text!
              editPassedInformation.phoneNumber = doctorPhoneNumberTextField.text!
              editPassedInformation.streetAddress = doctorStreetAddressTextField.text!

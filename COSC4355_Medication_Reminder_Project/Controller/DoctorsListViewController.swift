@@ -102,7 +102,7 @@ class DoctorsListViewController: UITableViewController, AddDoctor {
         // Configure the cell...
         let cellLbl = cell.viewWithTag(1) as! UILabel
         
-        cellLbl.text = doctorArray[indexPath.row].name
+        cellLbl.text = doctorArray[indexPath.row].firstName + " " + doctorArray[indexPath.row].lastName
 
         return cell
     }
@@ -114,7 +114,7 @@ class DoctorsListViewController: UITableViewController, AddDoctor {
     override func viewWillAppear(_ animated:Bool) {
        super.viewWillAppear(animated)
         if doctorArray.count > 1 {
-            doctorArray.sort { $0.name < $1.name }
+            doctorArray.sort { $0.lastName < $1.lastName }
         }
        tableView.reloadData()
     }
@@ -149,7 +149,7 @@ class DoctorsListViewController: UITableViewController, AddDoctor {
     func addDoctor(addedDoctor: Doctor) {
         doctorArray.append(addedDoctor)
         if doctorArray.count > 1 {
-            doctorArray.sort { $0.name < $1.name }
+            doctorArray.sort { $0.lastName < $1.lastName }
         }
         tableView.reloadData()
     }
