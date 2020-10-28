@@ -129,10 +129,10 @@
 				98F6A56F2523953A005D7330 /* ProfileViewController.swift */,
 				4D036898252599890064EF98 /* AllergiesViewController.swift */,
 				4D03689A252599C30064EF98 /* DoctorsListViewController.swift */,
-				981372F7253C3A3300ACD3E4 /* PharmacyViewController.swift */,
 				98905F1F253E9A380013F656 /* DoctorDetailsViewController.swift */,
-				98905F21253EABE90013F656 /* EditDoctorViewController.swift */,
 				98905F23253EB3360013F656 /* AddDoctorViewController.swift */,
+				98905F21253EABE90013F656 /* EditDoctorViewController.swift */,
+				981372F7253C3A3300ACD3E4 /* PharmacyViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

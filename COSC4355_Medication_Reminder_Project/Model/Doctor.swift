@@ -10,7 +10,8 @@ import Foundation
 
 class Doctor {
     
-    var name: String
+    var firstName: String
+    var lastName: String
     var specialty: String
     var streetAddress: String
     var city: String
@@ -19,7 +20,8 @@ class Doctor {
     var phoneNumber: String
     
     init() {
-        self.name = ""
+        self.firstName = ""
+        self.lastName = ""
         self.specialty = ""
         self.streetAddress = ""
         self.city = ""
