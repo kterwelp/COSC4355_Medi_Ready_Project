@@ -12,18 +12,24 @@ class MedicationListViewController: UITableViewController {
     
     var tempMedications = [Medication]()
     var selectedInformation = Medication()
+    var timeArray = ["8:00 AM", "12:00 PM", "2:00 PM", "8:00 PM"]
+    
+    var eightAMMedications = [Medication]()
+    var twelvePMMedications = [Medication]()
+    var twoPMMedications = [Medication]()
+    var eightPMMedications = [Medication]()
     
     /*
         TEMPORARY TESTING
         TO BE REMOVED
      */
     
-    
-    
     let med1 = Medication()
     let med2 = Medication()
     let med3 = Medication()
     let med4 = Medication()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,10 +79,19 @@ class MedicationListViewController: UITableViewController {
         med4.doctorLastName = "Everdeen"
         med4.hasBeenTaken = false
         
-        tempMedications.append(med1)
-        tempMedications.append(med2)
-        tempMedications.append(med3)
-        tempMedications.append(med4)
+//        tempMedications.append(med1)
+//        tempMedications.append(med2)
+//        tempMedications.append(med3)
+//        tempMedications.append(med4)
+        
+        eightAMMedications.append(med1)
+        eightAMMedications.append(med3)
+        eightAMMedications.append(med4)
+        twelvePMMedications.append(med2)
+        twoPMMedications.append(med1)
+        eightPMMedications.append(med1)
+        eightPMMedications.append(med3)
+        eightPMMedications.append(med4)
     }
 
     // MARK: - Table view data source
@@ -84,12 +99,30 @@ class MedicationListViewController: UITableViewController {
     // TODO: Use number of times meds taken per day to calc # of sections
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 4
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return timeArray[section]
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.init(red: 0.149, green: 0.729, blue: 0.933, alpha: 1.0)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tempMedications.count
+        if section == 0 {
+            return eightAMMedications.count
+        } else if section == 1 {
+            return twelvePMMedications.count
+        } else if section == 2 {
+            return twoPMMedications.count
+        } else if section == 3 {
+            return eightPMMedications.count
+        }
+        
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -102,7 +135,16 @@ class MedicationListViewController: UITableViewController {
 
         let cellLabel = cell.viewWithTag(1) as! UILabel
         
-        cellLabel.text = tempMedications[indexPath.row].name
+        if indexPath.section == 0 {
+            cellLabel.text = eightAMMedications[indexPath.row].name
+        } else if indexPath.section == 1 {
+            cellLabel.text = twelvePMMedications[indexPath.row].name
+        } else if indexPath.section == 2 {
+            cellLabel.text = twoPMMedications[indexPath.row].name
+        } else if indexPath.section == 3 {
+            cellLabel.text = eightPMMedications[indexPath.row].name
+        }
+        
         
         //      Code below is for checking of meds - Will look into options later
 //        cell.accessoryType = tempMedications[indexPath.row].hasBeenTaken ? .checkmark : .none // applies a checkmark to the cell based on whether or not the medication has been taken today
@@ -125,13 +167,38 @@ class MedicationListViewController: UITableViewController {
 //            addDoctorView.hidesBottomBarWhenPushed = true
 //        }
         
+        if segue.identifier == "showProfile" {
+
+            let ProfileView = segue.destination as! ProfileViewController
+            
+            ProfileView.hidesBottomBarWhenPushed = true
+    
+        }
+        
     }
+    
+    //TODO: Consider adding later when data is not hard coded
+//    override func viewWillAppear(_ animated:Bool) {
+//       super.viewWillAppear(animated)
+//        if tempMedications.count > 1 {
+//            tempMedications.sort { $0.name < $1.name }
+//        }
+//       tableView.reloadData()
+//    }
     
     // MARK: TableView Delegate Methods
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        selectedInformation = tempMedications[indexPath.row]
+        if indexPath.section == 0 {
+            selectedInformation = eightAMMedications[indexPath.row]
+        } else if indexPath.section == 1 {
+            selectedInformation = twelvePMMedications[indexPath.row]
+        } else if indexPath.section == 2 {
+            selectedInformation = twoPMMedications[indexPath.row]
+        } else if indexPath.section == 3 {
+            selectedInformation = eightPMMedications[indexPath.row]
+        }
         
         self.performSegue(withIdentifier: "showMedicationInfo", sender: self)
 
@@ -153,7 +220,11 @@ class MedicationListViewController: UITableViewController {
         // need to open Add Medication VC
     }
     
-
+    @IBAction func showProfile(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "showProfile", sender: self)
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
