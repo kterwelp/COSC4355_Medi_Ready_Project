@@ -24,7 +24,7 @@ class DoctorDetailsViewController: UIViewController, UpdateDoctor, DeleteDoctor 
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationController!.navigationBar.tintColor = UIColor.darkGray
+       self.navigationController!.navigationBar.tintColor = UIColor.systemIndigo
         
         doctorNameLabel.text = "Dr. " + passedInformation.firstName + " " + passedInformation.lastName
         doctorSpecialtyLabel.text = passedInformation.specialty
