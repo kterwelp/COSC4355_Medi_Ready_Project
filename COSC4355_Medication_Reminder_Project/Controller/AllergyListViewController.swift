@@ -73,6 +73,13 @@ class AllergyListViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAllergyInfo" {
+            let seg = segue.destination as! AllergyDetailsViewController
+            seg.passedInformation = selectedInformation
+            // seg.passedDoctorArrayIndex = doctorArrayIndex
+            // seg.detailsDoctorArray = doctorArray
+            seg.hidesBottomBarWhenPushed = true
+        }
         
         if segue.identifier == "showProfile" {
 
@@ -82,6 +89,12 @@ class AllergyListViewController: UITableViewController {
     
         }
         
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedInformation = allergyArray[indexPath.row]
+        //allergyArrayIndex = indexPath.row
+        self.performSegue(withIdentifier: "showAllergyInfo", sender: self)
     }
     
     override func viewWillAppear(_ animated:Bool) {

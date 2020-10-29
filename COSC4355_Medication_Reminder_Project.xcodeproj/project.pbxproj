@@ -17,6 +17,9 @@
 		98905F20253E9A380013F656 /* DoctorDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98905F1F253E9A380013F656 /* DoctorDetailsViewController.swift */; };
 		98905F22253EABEA0013F656 /* EditDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98905F21253EABE90013F656 /* EditDoctorViewController.swift */; };
 		98905F24253EB3360013F656 /* AddDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98905F23253EB3360013F656 /* AddDoctorViewController.swift */; };
+		9892CAE6254A605900FF4217 /* EditAllergyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892CAE5254A605900FF4217 /* EditAllergyViewController.swift */; };
+		9892CAE8254A612500FF4217 /* AllergyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892CAE7254A612500FF4217 /* AllergyDetailsViewController.swift */; };
+		9892CAEA254A65AC00FF4217 /* AddAllergyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892CAE9254A65AC00FF4217 /* AddAllergyViewController.swift */; };
 		98E63CE42549193200F4BD96 /* MedicationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CE32549193200F4BD96 /* MedicationDetailsViewController.swift */; };
 		98E63CE62549307500F4BD96 /* AddMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CE52549307500F4BD96 /* AddMedicationViewController.swift */; };
 		98E63CE82549323F00F4BD96 /* EditMedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CE72549323F00F4BD96 /* EditMedicationViewController.swift */; };
@@ -67,6 +70,9 @@
 		98905F1F253E9A380013F656 /* DoctorDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailsViewController.swift; sourceTree = "<group>"; };
 		98905F21253EABE90013F656 /* EditDoctorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDoctorViewController.swift; sourceTree = "<group>"; };
 		98905F23253EB3360013F656 /* AddDoctorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDoctorViewController.swift; sourceTree = "<group>"; };
+		9892CAE5254A605900FF4217 /* EditAllergyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAllergyViewController.swift; sourceTree = "<group>"; };
+		9892CAE7254A612500FF4217 /* AllergyDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergyDetailsViewController.swift; sourceTree = "<group>"; };
+		9892CAE9254A65AC00FF4217 /* AddAllergyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAllergyViewController.swift; sourceTree = "<group>"; };
 		98E63CE32549193200F4BD96 /* MedicationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationDetailsViewController.swift; sourceTree = "<group>"; };
 		98E63CE52549307500F4BD96 /* AddMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicationViewController.swift; sourceTree = "<group>"; };
 		98E63CE72549323F00F4BD96 /* EditMedicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMedicationViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +158,9 @@
 				98E63CE52549307500F4BD96 /* AddMedicationViewController.swift */,
 				98E63CE72549323F00F4BD96 /* EditMedicationViewController.swift */,
 				98E63CE9254947D100F4BD96 /* AllergyListViewController.swift */,
+				9892CAE7254A612500FF4217 /* AllergyDetailsViewController.swift */,
+				9892CAE9254A65AC00FF4217 /* AddAllergyViewController.swift */,
+				9892CAE5254A605900FF4217 /* EditAllergyViewController.swift */,
 				4D03689A252599C30064EF98 /* DoctorsListViewController.swift */,
 				98905F1F253E9A380013F656 /* DoctorDetailsViewController.swift */,
 				98905F23253EB3360013F656 /* AddDoctorViewController.swift */,
@@ -366,6 +375,7 @@
 				98E63CE62549307500F4BD96 /* AddMedicationViewController.swift in Sources */,
 				98E63CF22549786900F4BD96 /* EditTimesViewController.swift in Sources */,
 				4D812501252D0B75004BA034 /* Medication.swift in Sources */,
+				9892CAE6254A605900FF4217 /* EditAllergyViewController.swift in Sources */,
 				98905F24253EB3360013F656 /* AddDoctorViewController.swift in Sources */,
 				4D812503252D0B8F004BA034 /* Allergy.swift in Sources */,
 				4D03689B252599C30064EF98 /* DoctorsListViewController.swift in Sources */,
@@ -379,9 +389,11 @@
 				4D812505252D0BA0004BA034 /* Doctor.swift in Sources */,
 				98E63CEC2549587400F4BD96 /* Profile.swift in Sources */,
 				98E63CEE254958B400F4BD96 /* Accounts.swift in Sources */,
+				9892CAE8254A612500FF4217 /* AllergyDetailsViewController.swift in Sources */,
 				98F6A56C2523953A005D7330 /* SceneDelegate.swift in Sources */,
 				98F6A5762523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodeld in Sources */,
 				98E63CF0254968C400F4BD96 /* EditProfileViewController.swift in Sources */,
+				9892CAEA254A65AC00FF4217 /* AddAllergyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
