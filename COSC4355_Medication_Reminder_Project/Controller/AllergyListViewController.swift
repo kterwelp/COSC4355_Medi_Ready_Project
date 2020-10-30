@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AllergyListViewController: UITableViewController {
+class AllergyListViewController: UITableViewController, AddAllergy {
     
     var allergyArray = [Allergy]()
     var selectedInformation = Allergy()
@@ -17,32 +17,32 @@ class AllergyListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let allergy1 = Allergy()
-        let allergy2 = Allergy()
-        let allergy3 = Allergy()
-        let allergy4 = Allergy()
-        let allergy5 = Allergy()
-        
-        allergy1.medicationName = "Penicillin"
-        allergy1.reactions = "Rash, Swelling"
-        
-        allergy2.medicationName = "Morphine"
-        allergy2.reactions = "Shortness of breath, Respiratory issues"
-        
-        allergy3.medicationName = "Norco"
-        allergy3.reactions = "Hives, Rash"
-        
-        allergy4.medicationName = "Nystatin"
-        allergy4.reactions = "Hives, Rash, Swelling"
-        
-        allergy5.medicationName = "Aspirin"
-        allergy5.reactions = "Bruising, High blood pressure"
-        
-        allergyArray.append(allergy1)
-        allergyArray.append(allergy2)
-        allergyArray.append(allergy3)
-        allergyArray.append(allergy4)
-        allergyArray.append(allergy5)
+//        let allergy1 = Allergy()
+//        let allergy2 = Allergy()
+//        let allergy3 = Allergy()
+//        let allergy4 = Allergy()
+//        let allergy5 = Allergy()
+//
+//        allergy1.medicationName = "Penicillin"
+//        allergy1.reactions = "Rash, Swelling"
+//
+//        allergy2.medicationName = "Morphine"
+//        allergy2.reactions = "Shortness of breath, Respiratory issues"
+//        
+//        allergy3.medicationName = "Norco"
+//        allergy3.reactions = "Hives, Rash"
+//
+//        allergy4.medicationName = "Nystatin"
+//        allergy4.reactions = "Hives, Rash, Swelling"
+//
+//        allergy5.medicationName = "Aspirin"
+//        allergy5.reactions = "Bruising, High blood pressure"
+//
+//        allergyArray.append(allergy1)
+//        allergyArray.append(allergy2)
+//        allergyArray.append(allergy3)
+//        allergyArray.append(allergy4)
+//        allergyArray.append(allergy5)
     }
 
     // MARK: - Table view data source
@@ -72,13 +72,27 @@ class AllergyListViewController: UITableViewController {
         return cell
     }
     
+    override func viewWillAppear(_ animated:Bool) {
+       super.viewWillAppear(animated)
+        if allergyArray.count > 1 {
+            allergyArray.sort { $0.medicationName < $1.medicationName }
+        }
+       tableView.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAllergyInfo" {
             let seg = segue.destination as! AllergyDetailsViewController
             seg.passedInformation = selectedInformation
-            // seg.passedDoctorArrayIndex = doctorArrayIndex
-            // seg.detailsDoctorArray = doctorArray
+            seg.passedAllergyArrayIndex = allergyArrayIndex
+            seg.detailsAllergyArray = allergyArray
             seg.hidesBottomBarWhenPushed = true
+        }
+        
+        if segue.identifier == "showAddAllergy" {
+            let addAllergyView = segue.destination as! AddAllergyViewController
+            addAllergyView.delegateVar = self
+            addAllergyView.hidesBottomBarWhenPushed = true
         }
         
         if segue.identifier == "showProfile" {
@@ -91,18 +105,25 @@ class AllergyListViewController: UITableViewController {
         
     }
     
+    @IBAction func showAddAllergy(_ sender: Any) {
+        
+        performSegue(withIdentifier: "showAddAllergy", sender: self)
+    }
+    
+    
+    
+    func addAllergy(addedAllergy: Allergy) {
+        allergyArray.append(addedAllergy)
+        if allergyArray.count > 1 {
+            allergyArray.sort { $0.medicationName < $1.medicationName }
+        }
+        tableView.reloadData()
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedInformation = allergyArray[indexPath.row]
         //allergyArrayIndex = indexPath.row
         self.performSegue(withIdentifier: "showAllergyInfo", sender: self)
-    }
-    
-    override func viewWillAppear(_ animated:Bool) {
-       super.viewWillAppear(animated)
-        if allergyArray.count > 1 {
-            allergyArray.sort { $0.medicationName < $1.medicationName }
-        }
-       tableView.reloadData()
     }
     
     @IBAction func showProfile(_ sender: Any) {
