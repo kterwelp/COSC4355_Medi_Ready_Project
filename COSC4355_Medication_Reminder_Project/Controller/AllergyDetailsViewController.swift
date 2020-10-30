@@ -8,9 +8,11 @@
 
 import UIKit
 
-class AllergyDetailsViewController: UIViewController {
+class AllergyDetailsViewController: UIViewController, UpdateAllergy {
 
     var passedInformation = Allergy()
+    var detailsAllergyArray = [Allergy]()
+    var passedAllergyArrayIndex = 0
     
     @IBOutlet weak var allergyMedicationNameLabel: UILabel!
     @IBOutlet weak var reactionTextView: UITextView!
@@ -31,9 +33,9 @@ class AllergyDetailsViewController: UIViewController {
             let editAllergyView = segue.destination as! EditAllergyViewController
             
             editAllergyView.editPassedInformation = passedInformation
-//            editDoctorView.editPassedDoctorArrayIndex = passedDoctorArrayIndex
-//            editDoctorView.editDoctorArray = detailsDoctorArray
-//            editDoctorView.delegateVar = self
+            editAllergyView.editPassedAllergyArrayIndex = passedAllergyArrayIndex
+            editAllergyView.editAllergyArray = detailsAllergyArray
+            editAllergyView.delegateVar = self
 //            editDoctorView.delegateVarDelete = self
         }
     }
@@ -44,6 +46,19 @@ class AllergyDetailsViewController: UIViewController {
     }
     
     @IBAction func deleteAllergy(_ sender: Any) {
+        
+    }
+    
+    func updateAllergy(updatedAllergy: Allergy, currentAllergyArrayIndex: Int) {
+        
+        if reactionTextView.text != "Please replace this text with information regarding the allergic reaction." {
+            passedAllergyArrayIndex = currentAllergyArrayIndex
+            allergyMedicationNameLabel.text = updatedAllergy.medicationName
+            reactionTextView.text = updatedAllergy.reactions
+        } else {
+            passedAllergyArrayIndex = currentAllergyArrayIndex
+            allergyMedicationNameLabel.text = updatedAllergy.medicationName
+        }
         
     }
     

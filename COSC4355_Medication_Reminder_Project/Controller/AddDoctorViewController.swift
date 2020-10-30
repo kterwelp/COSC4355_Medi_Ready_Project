@@ -34,8 +34,7 @@ class AddDoctorViewController: UIViewController {
     }
     
     @IBAction func addDoctor(_ sender: Any) {
-        
-        //TODO:  When an alert is dismissed, it also dismisses the modal view
+
         guard doctorFirstNameTextField.text!.count > 0 else {
             let missingNameAlert = UIAlertController(title: "Missing First Name!", message: "Please enter the doctor's first name", preferredStyle: .alert)
             
