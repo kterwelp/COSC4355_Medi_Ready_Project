@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DoctorDetailsViewController: UIViewController, UpdateDoctor, DeleteDoctor {
 
@@ -36,6 +37,18 @@ class DoctorDetailsViewController: UIViewController, UpdateDoctor, DeleteDoctor 
         } else {
             doctorCityStateZipLabel.text = passedInformation.city + " " + passedInformation.state + " " + passedInformation.zipCode
         }
+        
+        // get a reference to the app delegate
+        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+        
+        do {
+            print("Entered do section")
+            print(try appDelegate?.readData() ?? "No data")
+            
+        } catch {
+            print(error)
+        }
+        
         
     }
     

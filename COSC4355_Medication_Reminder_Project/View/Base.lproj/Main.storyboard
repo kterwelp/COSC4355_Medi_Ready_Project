@@ -1994,6 +1994,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8k5-TU-SA7"/>
                     </view>
+                    <connections>
+                        <outlet property="dateFilledTextField" destination="xiO-b3-hy2" id="WTa-D5-Dav"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R7C-we-eqo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

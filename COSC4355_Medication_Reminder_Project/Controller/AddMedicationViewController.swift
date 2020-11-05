@@ -9,11 +9,15 @@
 import UIKit
 
 class AddMedicationViewController: UIViewController {
+    
+    @IBOutlet weak var dateFilledTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        connectTextFields()
     }
     
     @IBAction func addMedication(_ sender: Any) {
@@ -26,6 +30,20 @@ class AddMedicationViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func connectTextFields() {
+        
+        self.dateFilledTextField.setInputViewDatePicker(target: self, selector: #selector(dateFilledTapDone))
+    }
+    
+    @objc func dateFilledTapDone() {
+        if let datePicker = self.dateFilledTextField.inputView as? UIDatePicker { // 2-1
+            let dateformatter = DateFormatter() // 2-2
+            //dateformatter.dateStyle = .short// 2-3
+            dateformatter.dateFormat = "MM-dd-yyyy"
+            self.dateFilledTextField.text = dateformatter.string(from: datePicker.date) //2-4
+        }
+        self.dateFilledTextField.resignFirstResponder() // 2-5
+    }
     
     /*
     // MARK: - Navigation

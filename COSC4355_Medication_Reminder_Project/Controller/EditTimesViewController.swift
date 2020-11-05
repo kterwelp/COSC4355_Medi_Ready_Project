@@ -10,7 +10,7 @@ import UIKit
 
 extension UITextField {
     
-    func setInputViewDatePicker(target: Any, selector: Selector) {
+    func setInputViewTimePicker(target: Any, selector: Selector) {
         // Create a UIDatePicker object and assign to inputView
         let screenWidth = UIScreen.main.bounds.width
         let timePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 125))//1
@@ -80,25 +80,25 @@ class EditTimesViewController: UIViewController {
     
     func connectTextFields() {
         
-        self.onceDailyTextField.setInputViewDatePicker(target: self, selector: #selector(onceTapDone))
+        self.onceDailyTextField.setInputViewTimePicker(target: self, selector: #selector(onceTapDone))
         
-        self.twiceDailyTextField1.setInputViewDatePicker(target: self, selector: #selector(twiceTapDone1))
+        self.twiceDailyTextField1.setInputViewTimePicker(target: self, selector: #selector(twiceTapDone1))
         
-        self.twiceDailyTextField2.setInputViewDatePicker(target: self, selector: #selector(twiceTapDone2))
+        self.twiceDailyTextField2.setInputViewTimePicker(target: self, selector: #selector(twiceTapDone2))
         
-        self.threeTimesDailyTextField1.setInputViewDatePicker(target: self, selector: #selector(threeTapDone1))
+        self.threeTimesDailyTextField1.setInputViewTimePicker(target: self, selector: #selector(threeTapDone1))
         
-        self.threeTimesDailyTextField2.setInputViewDatePicker(target: self, selector: #selector(threeTapDone2))
+        self.threeTimesDailyTextField2.setInputViewTimePicker(target: self, selector: #selector(threeTapDone2))
         
-        self.threeTimesDailyTextField3.setInputViewDatePicker(target: self, selector: #selector(threeTapDone3))
+        self.threeTimesDailyTextField3.setInputViewTimePicker(target: self, selector: #selector(threeTapDone3))
         
-        self.fourTimesDailyTextField1.setInputViewDatePicker(target: self, selector: #selector(fourTapDone1))
+        self.fourTimesDailyTextField1.setInputViewTimePicker(target: self, selector: #selector(fourTapDone1))
         
-        self.fourTimesDailyTextField2.setInputViewDatePicker(target: self, selector: #selector(fourTapDone2))
+        self.fourTimesDailyTextField2.setInputViewTimePicker(target: self, selector: #selector(fourTapDone2))
         
-        self.fourTimesDailyTextField3.setInputViewDatePicker(target: self, selector: #selector(fourTapDone3))
+        self.fourTimesDailyTextField3.setInputViewTimePicker(target: self, selector: #selector(fourTapDone3))
         
-        self.fourTimesDailyTextField4.setInputViewDatePicker(target: self, selector: #selector(fourTapDone4))
+        self.fourTimesDailyTextField4.setInputViewTimePicker(target: self, selector: #selector(fourTapDone4))
     }
     
     @objc func onceTapDone() {
