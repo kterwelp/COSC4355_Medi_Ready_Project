@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol AddDoctor {
     func addDoctor(addedDoctor: Doctor)
@@ -95,7 +96,7 @@ class AddDoctorViewController: UIViewController {
         }
             
     }
-    
+
     @IBAction func cancelAddDoctor(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

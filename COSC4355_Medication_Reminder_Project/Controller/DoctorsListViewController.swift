@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DoctorsListViewController: UITableViewController, AddDoctor {
     
@@ -107,14 +108,24 @@ class DoctorsListViewController: UITableViewController, AddDoctor {
         let cellLbl = cell.viewWithTag(1) as! UILabel
         
         cellLbl.text = doctorArray[indexPath.row].firstName + " " + doctorArray[indexPath.row].lastName
-
+        
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            //objects.remove(at: indexPath.row)
+            doctorArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
+    
     override func viewWillAppear(_ animated:Bool) {
-       super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         if doctorArray.count > 1 {
-            doctorArray.sort { $0.lastName < $1.lastName }
+            doctorArray.sort { $0.firstName < $1.lastName }
         }
        tableView.reloadData()
     }

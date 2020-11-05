@@ -77,6 +77,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func readData() throws -> [DoctorCore] {
+      
+        let context = persistentContainer.viewContext
+        let doctorFetchRequest: NSFetchRequest<DoctorCore> = DoctorCore.fetchRequest()
+        
+        let doctor = try context.fetch(doctorFetchRequest)
+        
+        // Returns the array of doctors
+        return doctor
+    }
 
 }
 
