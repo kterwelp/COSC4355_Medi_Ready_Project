@@ -125,7 +125,7 @@ class DoctorsListViewController: UITableViewController, AddDoctor {
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
         if doctorArray.count > 1 {
-            doctorArray.sort { $0.firstName < $1.lastName }
+            doctorArray.sort { $0.lastName < $1.lastName }
         }
        tableView.reloadData()
     }

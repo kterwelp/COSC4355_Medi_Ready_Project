@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DoctorDetailsViewController: UIViewController, UpdateDoctor, DeleteDoctor {
+class DoctorDetailsViewController: UIViewController, UpdateDoctor {
 
     var passedInformation = Doctor()
     var detailsDoctorArray = [Doctor]()
@@ -60,7 +60,6 @@ class DoctorDetailsViewController: UIViewController, UpdateDoctor, DeleteDoctor 
             editDoctorView.editPassedDoctorArrayIndex = passedDoctorArrayIndex
             editDoctorView.editDoctorArray = detailsDoctorArray
             editDoctorView.delegateVar = self
-            editDoctorView.delegateVarDelete = self
         }
         
         if segue.identifier == "showDoctorList" {
@@ -91,19 +90,6 @@ class DoctorDetailsViewController: UIViewController, UpdateDoctor, DeleteDoctor 
         }
         
     }
-    
-    @IBAction func deleteDoctor(_ sender: Any) {
-
-        performSegue(withIdentifier: "showDoctorList", sender: self)
-    }
-    
-    func deleteCurrentDoctor(currentDoctorArray: [Doctor], currentDoctorArrayIndex: Int) {
-        detailsDoctorArray = currentDoctorArray
-        passedDoctorArrayIndex = currentDoctorArrayIndex
-        performSegue(withIdentifier: "showDoctorList", sender: self)
-        
-    }
-
     
     /*
     // MARK: - Navigation

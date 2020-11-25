@@ -63,10 +63,6 @@ class EditAllergyViewController: UIViewController {
         }
     }
     
-    @IBAction func deleteAllergy(_ sender: Any) {
-        
-    }
-    
     /*
     // MARK: - Navigation
 

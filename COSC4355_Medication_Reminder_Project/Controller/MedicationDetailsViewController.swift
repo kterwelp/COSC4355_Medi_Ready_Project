@@ -8,9 +8,18 @@
 
 import UIKit
 
-class MedicationDetailsViewController: UIViewController, DeleteMedication {
+protocol UpdateMedTable {
+    func removeMedFromTable(removedMed: Medication) 
+    func sortMedsByTime(med: Medication)
+}
+
+class MedicationDetailsViewController: UIViewController, UpdateMedication {
     
     var passedInformation = Medication()
+    var previousMed = Medication()
+    var currentMed = Medication()
+    
+    var delegateVar: UpdateMedTable?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tabsTakenLabel: UILabel!
@@ -33,7 +42,23 @@ class MedicationDetailsViewController: UIViewController, DeleteMedication {
         dateFilledLabel.text = passedInformation.dateFilled
         numTabsAvailableLabel.text = String(passedInformation.numOfTabsAvailable)  + " tabs"
         reasonLabel.text = passedInformation.reason
-        doctorLabel.text = "Dr. " + passedInformation.doctorFirstName + " " + passedInformation.doctorLastName
+        
+        if passedInformation.doctorFirstName != "" || passedInformation.doctorLastName != "" {
+            doctorLabel.text = "Dr. " + passedInformation.doctorFirstName + " " + passedInformation.doctorLastName
+        } else {
+            
+            doctorLabel.text = passedInformation.doctorFirstName + " " + passedInformation.doctorLastName
+        }
+        
+        previousMed.name = passedInformation.name
+        previousMed.numOfTabsPerDose = passedInformation.numOfTabsPerDose
+        previousMed.timesTakenDaily = passedInformation.timesTakenDaily
+        previousMed.dateFilled = passedInformation.dateFilled
+        previousMed.numOfTabsAvailable = passedInformation.numOfTabsAvailable
+        previousMed.reason = passedInformation.reason
+        previousMed.doctorFirstName = passedInformation.doctorFirstName
+        previousMed.doctorLastName = passedInformation.doctorLastName
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -41,12 +66,12 @@ class MedicationDetailsViewController: UIViewController, DeleteMedication {
             let editMedicationView = segue.destination as! EditMedicationViewController
 
             editMedicationView.editPassedInformation = passedInformation
+            editMedicationView.delegateVar = self
             
             //TODO: Complete functionality
 //            editDoctorView.editPassedDoctorArrayIndex = passedDoctorArrayIndex
 //            editDoctorView.editDoctorArray = detailsDoctorArray
-//            editDoctorView.delegateVar = self
-            editMedicationView.delegateVarDelete = self
+            
         }
         
         if segue.identifier == "showMedicationList" {
@@ -59,25 +84,49 @@ class MedicationDetailsViewController: UIViewController, DeleteMedication {
         }
     }
     
-    @IBAction func deleteMedication(_ sender: Any) {
-        
-        performSegue(withIdentifier: "showMedicationList", sender: self)
-    }
     
     @IBAction func editMedication(_ sender: Any) {
         
         performSegue(withIdentifier: "showEditMedication", sender: self)
     }
+    
+    func updateMedication(updatedMedication: Medication) {
+        
+        nameLabel.text = updatedMedication.name
+        tabsTakenLabel.text = String(updatedMedication.numOfTabsPerDose) + " tabs"
+        timesTakenDailyLabel.text = String(updatedMedication.timesTakenDaily)  + " times daily"
+        dateFilledLabel.text = updatedMedication.dateFilled
+        numTabsAvailableLabel.text = String(updatedMedication.numOfTabsAvailable)  + " tabs"
+        reasonLabel.text = updatedMedication.reason
+        
+        if updatedMedication.doctorFirstName != "" || updatedMedication.doctorLastName != "" {
+            
+            doctorLabel.text = "Dr. " + updatedMedication.doctorFirstName + " " + updatedMedication.doctorLastName
+        } else {
+            
+            doctorLabel.text = updatedMedication.doctorFirstName + " " + updatedMedication.doctorLastName
+        }
+        
+        currentMed = updatedMedication
 
-    func deleteCurrentMedication() {
-        
-        //TODO: Complete functionality
-    //    detailsDoctorArray = currentDoctorArray
-    //    passedDoctorArrayIndex = currentDoctorArrayIndex
-        performSegue(withIdentifier: "showMedicationList", sender: self)
-        
     }
     
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // Moving from MedicationDetailsViewController to MedicationListViewController
+        if self.isMovingFromParent {
+            
+            if currentMed.name != "" {
+                
+                print("Times taken daily: " + String(previousMed.timesTakenDaily))
+                delegateVar?.removeMedFromTable(removedMed: previousMed)
+                delegateVar?.sortMedsByTime(med: currentMed)
+            }
+            
+        }
+    }
     
     /*
     // MARK: - Navigation

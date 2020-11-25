@@ -12,10 +12,6 @@ protocol UpdateDoctor {
     func updateDoctor(updatedDoctor: Doctor, currentDoctorArrayIndex: Int)
 }
 
-protocol DeleteDoctor {
-    func deleteCurrentDoctor(currentDoctorArray: [Doctor], currentDoctorArrayIndex: Int)
-}
-
 class EditDoctorViewController: UIViewController {
     
     var editPassedInformation = Doctor()
@@ -23,7 +19,6 @@ class EditDoctorViewController: UIViewController {
     var editDoctorArray = [Doctor]()
     
     var delegateVar: UpdateDoctor?
-    var delegateVarDelete: DeleteDoctor?
     
     @IBOutlet weak var doctorFirstNameTextField: UITextField!
     @IBOutlet weak var doctorLastNameTextField: UITextField!
@@ -116,14 +111,6 @@ class EditDoctorViewController: UIViewController {
             
         }
         
-    }
-    
-    //TODO:  This is causing a bug where the Tab Bar disappears - Needs new solution
-    @IBAction func deleteDoctor(_ sender: Any) {
-        
-        delegateVarDelete?.deleteCurrentDoctor(currentDoctorArray: editDoctorArray, currentDoctorArrayIndex: editPassedDoctorArrayIndex)
-        
-        self.dismiss(animated: true, completion: nil)
     }
     
     /*

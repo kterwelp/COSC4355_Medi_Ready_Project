@@ -36,17 +36,12 @@ class AllergyDetailsViewController: UIViewController, UpdateAllergy {
             editAllergyView.editPassedAllergyArrayIndex = passedAllergyArrayIndex
             editAllergyView.editAllergyArray = detailsAllergyArray
             editAllergyView.delegateVar = self
-//            editDoctorView.delegateVarDelete = self
         }
     }
     
     @IBAction func editAllergy(_ sender: Any) {
         
         performSegue(withIdentifier: "showEditAllergy", sender: self)
-    }
-    
-    @IBAction func deleteAllergy(_ sender: Any) {
-        
     }
     
     func updateAllergy(updatedAllergy: Allergy, currentAllergyArrayIndex: Int) {
