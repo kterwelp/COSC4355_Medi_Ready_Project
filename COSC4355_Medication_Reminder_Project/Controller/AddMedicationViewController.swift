@@ -8,10 +8,25 @@
 
 import UIKit
 
+protocol AddMedication {
+    func addMedication(addedMed: Medication)
+}
+
 class AddMedicationViewController: UIViewController {
     
+    var addedMedInformation = Medication()
+    var delegateVar: AddMedication?
+    
+    
+    @IBOutlet weak var medNameTextField: UITextField!
+    @IBOutlet weak var tabsTakenPerDoseTextField: UITextField!
+    @IBOutlet weak var timesTakenDailyTextField: UITextField!
     @IBOutlet weak var dateFilledTextField: UITextField!
-
+    @IBOutlet weak var numOfTabsAvailableTextField: UITextField!
+    @IBOutlet weak var reasonTextField: UITextField!
+    @IBOutlet weak var doctorFirstNameTextField: UITextField!
+    @IBOutlet weak var doctorLastNameTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +37,76 @@ class AddMedicationViewController: UIViewController {
     
     @IBAction func addMedication(_ sender: Any) {
         
-        self.dismiss(animated: true, completion: nil)
+        guard medNameTextField.text!.count > 0 else {
+            let missingNameAlert = UIAlertController(title: "Missing Medication Name!", message: "Please enter the medication name", preferredStyle: .alert)
+            
+            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(missingNameAlert, animated: true)
+            
+            return
+        }
+        
+        guard tabsTakenPerDoseTextField.text!.count > 0 else {
+            let missingNameAlert = UIAlertController(title: "Missing Number of Tablets Per Dose!", message: "Please enter the number of tablets taken per dose for this medication", preferredStyle: .alert)
+            
+            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(missingNameAlert, animated: true)
+            
+            return
+        }
+        
+        guard timesTakenDailyTextField.text!.count > 0 else {
+            let missingNameAlert = UIAlertController(title: "Missing Number of Times Taken Daily!", message: "Please enter the number of times this medication is taken each day", preferredStyle: .alert)
+            
+            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(missingNameAlert, animated: true)
+            
+            return
+        }
+        
+        guard dateFilledTextField.text!.count > 0 else {
+            let missingNameAlert = UIAlertController(title: "Missing Date Filled by Pharmacy!", message: "Please enter the date this medication was last filled by the pharmacy", preferredStyle: .alert)
+            
+            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(missingNameAlert, animated: true)
+            
+            return
+        }
+        
+        guard numOfTabsAvailableTextField.text!.count > 0 else {
+            let missingNameAlert = UIAlertController(title: "Missing Number of Tablets Available!", message: "Please enter the current number of tablets available for this medication", preferredStyle: .alert)
+            
+            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(missingNameAlert, animated: true)
+            
+            return
+        }
+        
+        if medNameTextField.text!.count > 0,
+            tabsTakenPerDoseTextField.text!.count > 0,
+            timesTakenDailyTextField.text!.count > 0,
+            dateFilledTextField.text!.count > 0,
+            numOfTabsAvailableTextField.text!.count > 0 {
+            
+            addedMedInformation.name = medNameTextField.text!
+            addedMedInformation.numOfTabsPerDose = Int(tabsTakenPerDoseTextField.text!)!
+            addedMedInformation.timesTakenDaily = Int(timesTakenDailyTextField.text!)!
+            addedMedInformation.dateFilled = dateFilledTextField.text!
+            addedMedInformation.numOfTabsAvailable = Int(numOfTabsAvailableTextField.text!)!
+            addedMedInformation.reason = reasonTextField.text!
+            addedMedInformation.doctorFirstName = doctorFirstNameTextField.text!
+            addedMedInformation.doctorLastName = doctorLastNameTextField.text!
+            
+            delegateVar?.addMedication(addedMed: addedMedInformation)
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+
     }
     
     @IBAction func cancelAddMedication(_ sender: Any) {

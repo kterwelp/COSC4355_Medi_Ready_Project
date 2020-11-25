@@ -28,15 +28,15 @@ extension UITextField {
     
 }
 
-protocol DeleteMedication {
-    func deleteCurrentMedication()
+protocol UpdateMedication {
+    func updateMedication(updatedMedication: Medication)
 }
 
 class EditMedicationViewController: UIViewController {
     
     var editPassedInformation = Medication()
     
-    var delegateVarDelete: DeleteMedication?
+    var delegateVar: UpdateMedication?
     
     @IBOutlet weak var medicationNameTextField: UITextField!
     @IBOutlet weak var numOfTabsPerDoseTextField: UITextField!
@@ -73,13 +73,87 @@ class EditMedicationViewController: UIViewController {
     
     @IBAction func doneEdit(_ sender: Any) {
         
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    //TODO:  This is causing a bug where the Tab Bar disappears - Needs new solution
-    @IBAction func deleteMedication(_ sender: Any) {
+        guard medicationNameTextField.text!.count > 0 else {
+            let missingNameAlert = UIAlertController(title: "Missing Medication Name!", message: "Please enter the medication name", preferredStyle: .alert)
+            
+            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(missingNameAlert, animated: true)
+            
+            return
+        }
         
-        delegateVarDelete?.deleteCurrentMedication()
+        guard numOfTabsPerDoseTextField.text!.count > 0 else {
+            let missingNameAlert = UIAlertController(title: "Missing Number of Tablets Per Dose!", message: "Please enter the number of tablets taken per dose for this medication", preferredStyle: .alert)
+            
+            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(missingNameAlert, animated: true)
+            
+            return
+        }
+        
+        guard timesTakenDailyTextField.text!.count > 0 else {
+            let missingNameAlert = UIAlertController(title: "Missing Number of Times Taken Daily!", message: "Please enter the number of times this medication is taken each day", preferredStyle: .alert)
+            
+            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(missingNameAlert, animated: true)
+            
+            return
+        }
+        
+        guard dateFilledTextField.text!.count > 0 else {
+            let missingNameAlert = UIAlertController(title: "Missing Date Filled by Pharmacy!", message: "Please enter the date this medication was last filled by the pharmacy", preferredStyle: .alert)
+            
+            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(missingNameAlert, animated: true)
+            
+            return
+        }
+        
+        guard numOfTabsAvailableTextField.text!.count > 0 else {
+            let missingNameAlert = UIAlertController(title: "Missing Number of Tablets Available!", message: "Please enter the current number of tablets available for this medication", preferredStyle: .alert)
+            
+            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(missingNameAlert, animated: true)
+            
+            return
+        }
+        
+        if medicationNameTextField.text!.count > 0,
+            numOfTabsPerDoseTextField.text!.count > 0,
+            timesTakenDailyTextField.text!.count > 0,
+            dateFilledTextField.text!.count > 0,
+            numOfTabsAvailableTextField.text!.count > 0 {
+            
+            editPassedInformation.name = medicationNameTextField.text!
+            
+            if let numTabsInt = Int(numOfTabsPerDoseTextField.text!) {
+                editPassedInformation.numOfTabsPerDose = numTabsInt
+            }
+            
+            if let numTimesInt = Int(timesTakenDailyTextField.text!) {
+                editPassedInformation.timesTakenDaily = numTimesInt
+                print(numTimesInt)
+            }
+            
+            editPassedInformation.dateFilled = dateFilledTextField.text!
+            
+            if let numTabsAvailInt = Int(numOfTabsAvailableTextField.text!) {
+                editPassedInformation.numOfTabsAvailable = numTabsAvailInt
+            }
+
+            editPassedInformation.reason = reasonTextField.text!
+            editPassedInformation.doctorFirstName = doctorFirstNameTextField.text!
+            editPassedInformation.doctorLastName = doctorLastNameTextField.text!
+            
+            delegateVar?.updateMedication(updatedMedication: editPassedInformation)
+            
+            self.dismiss(animated: true, completion: nil)
+        }
         
         self.dismiss(animated: true, completion: nil)
     }

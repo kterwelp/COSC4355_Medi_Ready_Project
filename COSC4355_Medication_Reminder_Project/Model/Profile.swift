@@ -24,9 +24,9 @@ class Profile {
         self.lastName = ""
         self.email = ""
         self.password = ""
-        self.onceDaily = ""
-        self.twiceDaily = []
-        self.threeTimesDaily = []
-        self.fourTimesDaily = []
+        self.onceDaily = "8:00 AM"
+        self.twiceDaily = ["8:00 AM", "8:00 PM"]
+        self.threeTimesDaily = ["8:00 AM", "2:00 PM", "8:00 PM"]
+        self.fourTimesDaily = ["8:00 AM", "12:00 PM", "4:00PM", "8:00 PM"]
     }
 }
