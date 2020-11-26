@@ -11,6 +11,7 @@ import UIKit
 protocol UpdateMedTable {
     func removeMedFromTable(removedMed: Medication) 
     func sortMedsByTime(med: Medication)
+    func updateMedNotificationMsg(addedMed: Medication)
 }
 
 class MedicationDetailsViewController: UIViewController, UpdateMedication {
@@ -123,6 +124,8 @@ class MedicationDetailsViewController: UIViewController, UpdateMedication {
                 print("Times taken daily: " + String(previousMed.timesTakenDaily))
                 delegateVar?.removeMedFromTable(removedMed: previousMed)
                 delegateVar?.sortMedsByTime(med: currentMed)
+                delegateVar?.updateMedNotificationMsg(addedMed: currentMed)
+                
             }
             
         }
