@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class MedicationListViewController: UITableViewController, AddMedication, UpdateMedTable {
     
@@ -21,6 +22,34 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
     var twoPMMedications = [Medication]()
     var fourPMMedications = [Medication]()
     var eightPMMedications = [Medication]()
+    
+    let content8AM = UNMutableNotificationContent()
+    let content12PM = UNMutableNotificationContent()
+    let content2PM = UNMutableNotificationContent()
+    let content4PM = UNMutableNotificationContent()
+    let content8PM = UNMutableNotificationContent()
+    
+    // *** Change the numbers below to test medication notifications at different times ***
+    // *** Use 24-hour clock for PM times - Example: 5PM = 17 ***
+    let eightAMHour = 23
+    let eightAMMinute = 55
+    let eightAMSecond = 0
+    
+    let twelvePMHour = 22
+    let twelvePMMinute = 59
+    let twelvePMSecond = 0
+    
+    let twoPMHour = 23
+    let twoPMMinute = 20
+    let twoPMSecond = 0
+    
+    let fourPMHour = 23
+    let fourPMMinute = 01
+    let fourPMSecond = 0
+    
+    let eightPMHour = 23
+    let eightPMMinute = 56
+    let eightPMSecond = 0
     
     /*
         TEMPORARY TESTING
@@ -49,6 +78,21 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
         let dateStr = formatter.string(from: date)
         
         timeArray = [dateStr, "8:00 AM", "12:00 PM", "2:00 PM", "4:00 PM", "8:00 PM"]
+        
+        let results8AM = update8AMContent()
+        eightAMNotification(currDate: date, title: results8AM.title, body: results8AM.body)
+        
+        let results12PM = update12PMContent()
+        twelvePMNotification(currDate: date, title: results12PM.title, body: results12PM.body)
+        
+        let results2PM = update2PMContent()
+        twoPMNotification(currDate: date, title: results2PM.title, body: results2PM.body)
+        
+        let results4PM = update4PMContent()
+        fourPMNotification(currDate: date, title: results4PM.title, body: results4PM.body)
+        
+        let results8PM = update8PMContent()
+        eightPMNotification(currDate: date, title: results8PM.title, body: results8PM.body)
         
 //        med1.name = "Amlodipine"
 //        med1.numOfTabsPerDose = 2
@@ -244,8 +288,10 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                     break
                 }
                 
+                let tempMed = eightAMMedications[indexPath.row]
                 eightAMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                updateMedNotificationMsg(addedMed: tempMed)
                 
             // Section 2 is 12PM time - Only for 4 times daily - No switch statement
             } else if indexPath.section == 2 {
@@ -262,8 +308,10 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 print(idxPath8PM.row)
                 removeMedFromTableView(indexPath: idxPath8PM)
                 
+                let tempMed = twelvePMMedications[indexPath.row]
                 twelvePMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                updateMedNotificationMsg(addedMed: tempMed)
              
             // Section 3 is 2PM time - Only for 3 times daily - No switch statement
             } else if indexPath.section == 3 {
@@ -276,8 +324,10 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 print(idxPath8PM.row)
                 removeMedFromTableView(indexPath: idxPath8PM)
                 
+                let tempMed = twoPMMedications[indexPath.row]
                 twoPMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                updateMedNotificationMsg(addedMed: tempMed)
              
             // Section 4 is 4PM time - Only for 4 times daily - No switch statement
             } else if indexPath.section == 4 {
@@ -294,8 +344,10 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 print(idxPath8PM.row)
                 removeMedFromTableView(indexPath: idxPath8PM)
                 
+                let tempMed = fourPMMedications[indexPath.row]
                 fourPMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                updateMedNotificationMsg(addedMed: tempMed)
               
             // Section 5 is 8PM
             } else {
@@ -329,8 +381,11 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                     break
                 }
                 
+                let tempMed = eightPMMedications[indexPath.row]
                 eightPMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                updateMedNotificationMsg(addedMed: tempMed)
+                
             }
             
 //            if medArray[indexPath.row].timesTakenDaily > 1 {
@@ -534,13 +589,388 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
         }
     }
     
+    func eightAMNotification(currDate: Date, title: String, body: String) {
+        
+        let center = UNUserNotificationCenter.current()
+        
+        let options: UNAuthorizationOptions = [.alert, .sound]
+        
+        center.requestAuthorization(options: options) { (granted, error) in
+            
+            if error != nil {
+                print(error!)
+            }
+            
+            if !granted {
+                print("Access was not granted!")
+            } else {
+                
+                self.content8AM.title = title
+                self.content8AM.body = body
+                self.content8AM.sound = UNNotificationSound.default
+
+                let gregorian = Calendar(identifier: .gregorian)
+                var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: currDate)
+
+                components.hour = self.eightAMHour
+                components.minute = self.eightAMMinute
+                components.second = self.eightAMSecond
+
+                let date = gregorian.date(from: components)!
+
+                let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+
+                let request = UNNotificationRequest(identifier: "eightAMNotification", content: self.content8AM, trigger: trigger)
+                print("INSIDE NOTIFICATION")
+
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
+                    if let error = error {
+                        print("SOMETHING WENT WRONG")
+                        print(error)
+                    }
+                })
+            }
+        }
+        
+    }
+    
+    func twelvePMNotification(currDate: Date, title: String, body: String) {
+        
+        let center = UNUserNotificationCenter.current()
+        
+        let options: UNAuthorizationOptions = [.alert, .sound]
+        
+        center.requestAuthorization(options: options) { (granted, error) in
+            
+            if error != nil {
+                print(error!)
+            }
+            
+            if !granted {
+                print("Access was not granted!")
+            } else {
+                
+                self.content12PM.title = title
+                self.content12PM.body = body
+                self.content12PM.sound = UNNotificationSound.default
+
+                let gregorian = Calendar(identifier: .gregorian)
+                var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: currDate)
+
+                components.hour = self.twelvePMHour
+                components.minute = self.twelvePMMinute
+                components.second = self.twelvePMSecond
+
+                let date = gregorian.date(from: components)!
+
+                let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+
+                let request = UNNotificationRequest(identifier: "twelvePMNotification", content: self.content12PM, trigger: trigger)
+                print("INSIDE NOTIFICATION")
+
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
+                    if let error = error {
+                        print("SOMETHING WENT WRONG")
+                        print(error)
+                    }
+                })
+            }
+        }
+    }
+    
+    func twoPMNotification(currDate: Date, title: String, body: String) {
+        
+        let center = UNUserNotificationCenter.current()
+        
+        let options: UNAuthorizationOptions = [.alert, .sound]
+        
+        center.requestAuthorization(options: options) { (granted, error) in
+            
+            if error != nil {
+                print(error!)
+            }
+            
+            if !granted {
+                print("Access was not granted!")
+            } else {
+                
+                self.content2PM.title = title
+                self.content2PM.body = body
+                self.content2PM.sound = UNNotificationSound.default
+
+                let gregorian = Calendar(identifier: .gregorian)
+                var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: currDate)
+
+                components.hour = self.twoPMHour
+                components.minute = self.twoPMMinute
+                components.second = self.twoPMSecond
+
+                let date = gregorian.date(from: components)!
+
+                let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+
+                let request = UNNotificationRequest(identifier: "twoPMNotification", content: self.content2PM, trigger: trigger)
+                print("INSIDE NOTIFICATION")
+
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
+                    if let error = error {
+                        print("SOMETHING WENT WRONG")
+                        print(error)
+                    }
+                })
+            }
+        }
+    }
+    
+    func fourPMNotification(currDate: Date, title: String, body: String) {
+        
+        let center = UNUserNotificationCenter.current()
+        
+        let options: UNAuthorizationOptions = [.alert, .sound]
+        
+        center.requestAuthorization(options: options) { (granted, error) in
+            
+            if error != nil {
+                print(error!)
+            }
+            
+            if !granted {
+                print("Access was not granted!")
+            } else {
+                
+                self.content4PM.title = title
+                self.content4PM.body = body
+                self.content4PM.sound = UNNotificationSound.default
+
+                let gregorian = Calendar(identifier: .gregorian)
+                var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: currDate)
+
+                components.hour = self.fourPMHour
+                components.minute = self.fourPMMinute
+                components.second = self.fourPMSecond
+
+                let date = gregorian.date(from: components)!
+
+                let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+
+                let request = UNNotificationRequest(identifier: "fourPMNotification", content: self.content4PM, trigger: trigger)
+                print("INSIDE NOTIFICATION")
+
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
+                    if let error = error {
+                        print("SOMETHING WENT WRONG")
+                        print(error)
+                    }
+                })
+            }
+        }
+    }
+    
+    func eightPMNotification(currDate: Date, title: String, body: String) {
+        
+        let center = UNUserNotificationCenter.current()
+        
+        let options: UNAuthorizationOptions = [.alert, .sound]
+        
+        center.requestAuthorization(options: options) { (granted, error) in
+            
+            if error != nil {
+                print(error!)
+            }
+            
+            if !granted {
+                print("Access was not granted!")
+            } else {
+                
+                self.content8PM.title = title
+                self.content8PM.body = body
+                self.content8PM.sound = UNNotificationSound.default
+
+                let gregorian = Calendar(identifier: .gregorian)
+                var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: currDate)
+
+                components.hour = self.eightPMHour
+                components.minute = self.eightPMMinute
+                components.second = self.eightPMSecond
+
+                let date = gregorian.date(from: components)!
+
+                let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+
+                let request = UNNotificationRequest(identifier: "eightPMNotification", content: self.content8PM, trigger: trigger)
+                print("INSIDE NOTIFICATION")
+
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
+                    if let error = error {
+                        print("SOMETHING WENT WRONG")
+                        print(error)
+                    }
+                })
+            }
+        }
+    }
+    
     func addMedication(addedMed: Medication) {
         medArray.append(addedMed)
         sortMedsByTime(med: addedMed)
+        updateMedNotificationMsg(addedMed: addedMed)
         if medArray.count > 1 {
              medArray.sort { $0.name < $1.name }
          }
         tableView.reloadData()
+    }
+    
+    func updateMedNotificationMsg(addedMed: Medication) {
+        
+        switch addedMed.timesTakenDaily {
+        case 1:
+            let results = update8AMContent()
+            
+            let date = Date()
+            eightAMNotification(currDate: date, title: results.title, body: results.body)
+        case 2:
+            let results8AM = update8AMContent()
+            let results8PM = update8PMContent()
+            
+            let date = Date()
+            eightAMNotification(currDate: date, title: results8AM.title, body: results8AM.body)
+            eightPMNotification(currDate: date, title: results8PM.title, body: results8PM.body)
+        case 3:
+            let results8AM = update8AMContent()
+            let results2PM = update2PMContent()
+            let results8PM = update8PMContent()
+            
+            let date = Date()
+            eightAMNotification(currDate: date, title: results8AM.title, body: results8AM.body)
+            twoPMNotification(currDate: date, title: results2PM.title, body: results2PM.body)
+            eightPMNotification(currDate: date, title: results8PM.title, body: results8PM.body)
+        case 4:
+            let results8AM = update8AMContent()
+            let results12PM = update12PMContent()
+            let results4PM = update4PMContent()
+            let results8PM = update8PMContent()
+            
+            let date = Date()
+            eightAMNotification(currDate: date, title: results8AM.title, body: results8AM.body)
+            twelvePMNotification(currDate: date, title: results12PM.title, body: results12PM.body)
+            fourPMNotification(currDate: date, title: results4PM.title, body: results4PM.body)
+            eightPMNotification(currDate: date, title: results8PM.title, body: results8PM.body)
+        default:
+            break
+        }
+    }
+    
+    func update8AMContent() -> (title: String, body: String) {
+        
+        if eightAMMedications.count == 0 {
+            return("No Medications at 8AM!", "There are no 8AM medications in your schedule")
+        } else {
+            content8AM.title = "Time to Take 8AM Medications!"
+            
+            for (index, food) in eightAMMedications.enumerated() {
+                
+                if index == 0 {
+                    content8AM.body = "Take the following medications: \(food.name)"
+                } else {
+                    content8AM.body += ", \(food.name)"
+                }
+            }
+            
+            return(content8AM.title, content8AM.body)
+        }
+    }
+    
+    func update12PMContent() -> (title: String, body: String) {
+        
+        if twelvePMMedications.count == 0 {
+            return("No Medications at 12PM!", "There are no 12PM medications in your schedule")
+        } else {
+            
+            content12PM.title = "Time to Take 12PM Medications!"
+            
+            for (index, food) in twelvePMMedications.enumerated() {
+                
+                if index == 0 {
+                    content12PM.body = "Take the following medications: \(food.name)"
+                } else {
+                    content12PM.body += ", \(food.name)"
+                }
+            }
+            
+            return(content12PM.title, content12PM.body)
+        }
+        
+    }
+    
+    func update2PMContent() -> (title: String, body: String) {
+        
+        if twoPMMedications.count == 0 {
+            return("No Medications at 2PM!", "There are no 2PM medications in your schedule")
+        } else {
+            
+            content2PM.title = "Time to Take 2PM Medications!"
+            
+            for (index, food) in twoPMMedications.enumerated() {
+                
+                if index == 0 {
+                    content2PM.body = "Take the following medications: \(food.name)"
+                } else {
+                    content2PM.body += ", \(food.name)"
+                }
+            }
+            
+            return(content2PM.title, content2PM.body)
+        }
+        
+    }
+    
+    func update4PMContent() -> (title: String, body: String) {
+        
+        if fourPMMedications.count == 0 {
+            return("No Medications at 4PM!", "There are no 4PM medications in your schedule")
+        } else {
+            
+            content4PM.title = "Time to Take 4PM Medications!"
+            
+            for (index, food) in fourPMMedications.enumerated() {
+                
+                if index == 0 {
+                    content4PM.body = "Take the following medications: \(food.name)"
+                } else {
+                    content4PM.body += ", \(food.name)"
+                }
+            }
+            
+            return(content4PM.title, content4PM.body)
+        }
+        
+    }
+    
+    func update8PMContent() -> (title: String, body: String) {
+        
+        if eightPMMedications.count == 0 {
+            return("No Medications at 8PM!", "There are no 8PM medications in your schedule")
+        } else {
+            
+            content8PM.title = "Time to Take 8PM Medications!"
+            
+            for (index, food) in eightPMMedications.enumerated() {
+                
+                if index == 0 {
+                    content8PM.body = "Take the following medications: \(food.name)"
+                } else {
+                    content8PM.body += ", \(food.name)"
+                }
+            }
+            
+            return(content8PM.title, content8PM.body)
+        }
+        
     }
     
     /*

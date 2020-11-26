@@ -87,6 +87,36 @@ class AddMedicationViewController: UIViewController {
             return
         }
         
+        guard Int(tabsTakenPerDoseTextField.text!) != nil else {
+            let alert = UIAlertController(title: "Number of Tablets Per Dose Integer Only!", message: "Please only enter integers for the number of tablets per dose", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
+        guard Int(timesTakenDailyTextField.text!) != nil else {
+            let alert = UIAlertController(title: "Number of Times Daily Integer Only!", message: "Please only enter integers for the number of times taken daily", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
+        guard Int(numOfTabsAvailableTextField.text!) != nil else {
+            let alert = UIAlertController(title: "Number of Tabs Available Integer Only!", message: "Please only enter integers for the number of tabs available", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
         if medNameTextField.text!.count > 0,
             tabsTakenPerDoseTextField.text!.count > 0,
             timesTakenDailyTextField.text!.count > 0,

@@ -56,10 +56,10 @@ class EditMedicationViewController: UIViewController {
         connectTextFields()
         
         medicationNameTextField.text = editPassedInformation.name
-        numOfTabsPerDoseTextField.text = String(editPassedInformation.numOfTabsPerDose) + " tabs"
-        timesTakenDailyTextField.text = String(editPassedInformation.timesTakenDaily) + " times daily"
+        numOfTabsPerDoseTextField.text = String(editPassedInformation.numOfTabsPerDose)
+        timesTakenDailyTextField.text = String(editPassedInformation.timesTakenDaily)
         dateFilledTextField.text = editPassedInformation.dateFilled
-        numOfTabsAvailableTextField.text = String(editPassedInformation.numOfTabsAvailable) + " tabs available"
+        numOfTabsAvailableTextField.text = String(editPassedInformation.numOfTabsAvailable)
         reasonTextField.text = editPassedInformation.reason
         doctorFirstNameTextField.text = editPassedInformation.doctorFirstName
         doctorLastNameTextField.text = editPassedInformation.doctorLastName
@@ -74,51 +74,81 @@ class EditMedicationViewController: UIViewController {
     @IBAction func doneEdit(_ sender: Any) {
         
         guard medicationNameTextField.text!.count > 0 else {
-            let missingNameAlert = UIAlertController(title: "Missing Medication Name!", message: "Please enter the medication name", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Missing Medication Name!", message: "Please enter the medication name", preferredStyle: .alert)
             
-            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             
-            self.present(missingNameAlert, animated: true)
+            self.present(alert, animated: true)
             
             return
         }
         
         guard numOfTabsPerDoseTextField.text!.count > 0 else {
-            let missingNameAlert = UIAlertController(title: "Missing Number of Tablets Per Dose!", message: "Please enter the number of tablets taken per dose for this medication", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Missing Number of Tablets Per Dose!", message: "Please enter the number of tablets taken per dose for this medication", preferredStyle: .alert)
             
-            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             
-            self.present(missingNameAlert, animated: true)
+            self.present(alert, animated: true)
             
             return
         }
         
         guard timesTakenDailyTextField.text!.count > 0 else {
-            let missingNameAlert = UIAlertController(title: "Missing Number of Times Taken Daily!", message: "Please enter the number of times this medication is taken each day", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Missing Number of Times Taken Daily!", message: "Please enter the number of times this medication is taken each day", preferredStyle: .alert)
             
-            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             
-            self.present(missingNameAlert, animated: true)
+            self.present(alert, animated: true)
             
             return
         }
         
         guard dateFilledTextField.text!.count > 0 else {
-            let missingNameAlert = UIAlertController(title: "Missing Date Filled by Pharmacy!", message: "Please enter the date this medication was last filled by the pharmacy", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Missing Date Filled by Pharmacy!", message: "Please enter the date this medication was last filled by the pharmacy", preferredStyle: .alert)
             
-            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             
-            self.present(missingNameAlert, animated: true)
+            self.present(alert, animated: true)
             
             return
         }
         
         guard numOfTabsAvailableTextField.text!.count > 0 else {
-            let missingNameAlert = UIAlertController(title: "Missing Number of Tablets Available!", message: "Please enter the current number of tablets available for this medication", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Missing Number of Tablets Available!", message: "Please enter the current number of tablets available for this medication", preferredStyle: .alert)
             
-            missingNameAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             
-            self.present(missingNameAlert, animated: true)
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
+        guard Int(numOfTabsPerDoseTextField.text!) != nil else {
+            let alert = UIAlertController(title: "Number of Tablets Per Dose Integer Only!", message: "Please only enter integers for the number of tablets per dose", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
+        guard Int(timesTakenDailyTextField.text!) != nil else {
+            let alert = UIAlertController(title: "Number of Times Daily Integer Only!", message: "Please only enter integers for the number of times taken daily", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
+        guard Int(numOfTabsAvailableTextField.text!) != nil else {
+            let alert = UIAlertController(title: "Number of Tabs Available Integer Only!", message: "Please only enter integers for the number of tabs available", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
             
             return
         }
@@ -130,22 +160,10 @@ class EditMedicationViewController: UIViewController {
             numOfTabsAvailableTextField.text!.count > 0 {
             
             editPassedInformation.name = medicationNameTextField.text!
-            
-            if let numTabsInt = Int(numOfTabsPerDoseTextField.text!) {
-                editPassedInformation.numOfTabsPerDose = numTabsInt
-            }
-            
-            if let numTimesInt = Int(timesTakenDailyTextField.text!) {
-                editPassedInformation.timesTakenDaily = numTimesInt
-                print(numTimesInt)
-            }
-            
+            editPassedInformation.numOfTabsPerDose = Int(numOfTabsPerDoseTextField.text!)!
+            editPassedInformation.timesTakenDaily = Int(timesTakenDailyTextField.text!)!
             editPassedInformation.dateFilled = dateFilledTextField.text!
-            
-            if let numTabsAvailInt = Int(numOfTabsAvailableTextField.text!) {
-                editPassedInformation.numOfTabsAvailable = numTabsAvailInt
-            }
-
+            editPassedInformation.numOfTabsAvailable = Int(numOfTabsAvailableTextField.text!)!
             editPassedInformation.reason = reasonTextField.text!
             editPassedInformation.doctorFirstName = doctorFirstNameTextField.text!
             editPassedInformation.doctorLastName = doctorLastNameTextField.text!
