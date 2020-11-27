@@ -9,16 +9,17 @@
 import UIKit
 
 protocol UpdateMedTable {
-    func removeMedFromTable(removedMed: Medication) 
+    func removeMedFromTable(removedMed: Medication, prevTimesTakenDaily: Int)
     func sortMedsByTime(med: Medication)
     func updateMedNotificationMsg(addedMed: Medication)
+    func updateRefillNotification()
 }
 
 class MedicationDetailsViewController: UIViewController, UpdateMedication {
     
     var passedInformation = Medication()
-    var previousMed = Medication()
     var currentMed = Medication()
+    var previousTimesTakenDaily = 0
     
     var delegateVar: UpdateMedTable?
     
@@ -51,14 +52,7 @@ class MedicationDetailsViewController: UIViewController, UpdateMedication {
             doctorLabel.text = passedInformation.doctorFirstName + " " + passedInformation.doctorLastName
         }
         
-        previousMed.name = passedInformation.name
-        previousMed.numOfTabsPerDose = passedInformation.numOfTabsPerDose
-        previousMed.timesTakenDaily = passedInformation.timesTakenDaily
-        previousMed.dateFilled = passedInformation.dateFilled
-        previousMed.numOfTabsAvailable = passedInformation.numOfTabsAvailable
-        previousMed.reason = passedInformation.reason
-        previousMed.doctorFirstName = passedInformation.doctorFirstName
-        previousMed.doctorLastName = passedInformation.doctorLastName
+        previousTimesTakenDaily = passedInformation.timesTakenDaily
         
     }
     
@@ -121,10 +115,12 @@ class MedicationDetailsViewController: UIViewController, UpdateMedication {
             
             if currentMed.name != "" {
                 
-                print("Times taken daily: " + String(previousMed.timesTakenDaily))
-                delegateVar?.removeMedFromTable(removedMed: previousMed)
+                print("Passed: " + passedInformation.name)
+                
+                delegateVar?.removeMedFromTable(removedMed: currentMed, prevTimesTakenDaily: previousTimesTakenDaily)
                 delegateVar?.sortMedsByTime(med: currentMed)
                 delegateVar?.updateMedNotificationMsg(addedMed: currentMed)
+                delegateVar?.updateRefillNotification()
                 
             }
             

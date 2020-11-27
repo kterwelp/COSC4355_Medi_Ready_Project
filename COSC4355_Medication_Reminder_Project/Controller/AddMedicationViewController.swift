@@ -15,8 +15,8 @@ protocol AddMedication {
 class AddMedicationViewController: UIViewController {
     
     var addedMedInformation = Medication()
-    var delegateVar: AddMedication?
     
+    var delegateVar: AddMedication?
     
     @IBOutlet weak var medNameTextField: UITextField!
     @IBOutlet weak var tabsTakenPerDoseTextField: UITextField!

@@ -14,7 +14,9 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
     var tempMedications = [Medication]()
     var selectedInformation = Medication()
     var timeArray = [String]()
+    //medArray is not being used and can be removed later
     var medArray = [Medication]()
+    // Is medArrayIndex being used???
     var medArrayIndex = 0
     
     var eightAMMedications = [Medication]()
@@ -28,6 +30,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
     let content2PM = UNMutableNotificationContent()
     let content4PM = UNMutableNotificationContent()
     let content8PM = UNMutableNotificationContent()
+    let contentRefill = UNMutableNotificationContent()
     
     // *** Change the numbers below to test medication notifications at different times ***
     // *** Use 24-hour clock for PM times - Example: 5PM = 17 ***
@@ -51,12 +54,16 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
     let eightPMMinute = 56
     let eightPMSecond = 0
     
+    let refillHour = 1
+    let refillMinute = 19
+    let refillSecond = 0
+    
     /*
         TEMPORARY TESTING
         TO BE REMOVED
      */
     
-//    let med1 = Medication()
+    let med1 = Medication()
 //    let med2 = Medication()
 //    let med3 = Medication()
 //    let med4 = Medication()
@@ -98,11 +105,16 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
 //        med1.numOfTabsPerDose = 2
 //        med1.timesTakenDaily = 3
 //        med1.dateFilled = "10-01-2020"
-//        med1.numOfTabsAvailable = 60
+//        med1.numOfTabsAvailable = 59
 //        med1.reason = "High blood pressure"
 //        med1.doctorFirstName = "Harry"
 //        med1.doctorLastName = "Potter"
 //        med1.hasBeenTaken = true
+        
+        updateRefillNotification()
+        
+//        calculateRefillDate(med: med1)
+        
 //
 //        medArray.append(med1)
 //
@@ -292,6 +304,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 eightAMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 updateMedNotificationMsg(addedMed: tempMed)
+                updateRefillNotification()
                 
             // Section 2 is 12PM time - Only for 4 times daily - No switch statement
             } else if indexPath.section == 2 {
@@ -312,6 +325,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 twelvePMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 updateMedNotificationMsg(addedMed: tempMed)
+                updateRefillNotification()
              
             // Section 3 is 2PM time - Only for 3 times daily - No switch statement
             } else if indexPath.section == 3 {
@@ -328,6 +342,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 twoPMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 updateMedNotificationMsg(addedMed: tempMed)
+                updateRefillNotification()
              
             // Section 4 is 4PM time - Only for 4 times daily - No switch statement
             } else if indexPath.section == 4 {
@@ -348,6 +363,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 fourPMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 updateMedNotificationMsg(addedMed: tempMed)
+                updateRefillNotification()
               
             // Section 5 is 8PM
             } else {
@@ -385,6 +401,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 eightPMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 updateMedNotificationMsg(addedMed: tempMed)
+                updateRefillNotification()
                 
             }
             
@@ -418,7 +435,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
     
     func removeMedication( tempMedArray: inout [Medication], section: Int, med: Medication) -> IndexPath {
         print("med: " + med.name)
-        print("tempMedArray: " + tempMedArray[0].name)
+//        print("tempMedArray: " + tempMedArray[0].name)
         let index = tempMedArray.firstIndex(where: { $0.name == med.name })!
         tempMedArray.removeAll(where: { $0.name == med.name })
         return IndexPath(item: index, section: section)
@@ -551,9 +568,9 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
         }
     }
     
-    func removeMedFromTable(removedMed: Medication) {
+    func removeMedFromTable(removedMed: Medication, prevTimesTakenDaily: Int) {
         
-        switch removedMed.timesTakenDaily {
+        switch prevTimesTakenDaily {
         case 1:
             let idxPath = removeMedication(tempMedArray: &eightAMMedications, section: 1, med: removedMed)
             removeMedFromTableView(indexPath: idxPath)
@@ -622,11 +639,9 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
 
                 let request = UNNotificationRequest(identifier: "eightAMNotification", content: self.content8AM, trigger: trigger)
-                print("INSIDE NOTIFICATION")
 
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
                     if let error = error {
-                        print("SOMETHING WENT WRONG")
                         print(error)
                     }
                 })
@@ -668,11 +683,9 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
 
                 let request = UNNotificationRequest(identifier: "twelvePMNotification", content: self.content12PM, trigger: trigger)
-                print("INSIDE NOTIFICATION")
 
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
                     if let error = error {
-                        print("SOMETHING WENT WRONG")
                         print(error)
                     }
                 })
@@ -713,11 +726,9 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
 
                 let request = UNNotificationRequest(identifier: "twoPMNotification", content: self.content2PM, trigger: trigger)
-                print("INSIDE NOTIFICATION")
 
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
                     if let error = error {
-                        print("SOMETHING WENT WRONG")
                         print(error)
                     }
                 })
@@ -758,11 +769,9 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
 
                 let request = UNNotificationRequest(identifier: "fourPMNotification", content: self.content4PM, trigger: trigger)
-                print("INSIDE NOTIFICATION")
 
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
                     if let error = error {
-                        print("SOMETHING WENT WRONG")
                         print(error)
                     }
                 })
@@ -803,11 +812,9 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
 
                 let request = UNNotificationRequest(identifier: "eightPMNotification", content: self.content8PM, trigger: trigger)
-                print("INSIDE NOTIFICATION")
 
                 UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
                     if let error = error {
-                        print("SOMETHING WENT WRONG")
                         print(error)
                     }
                 })
@@ -819,6 +826,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
         medArray.append(addedMed)
         sortMedsByTime(med: addedMed)
         updateMedNotificationMsg(addedMed: addedMed)
+        updateRefillNotification()
         if medArray.count > 1 {
              medArray.sort { $0.name < $1.name }
          }
@@ -971,6 +979,145 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
             return(content8PM.title, content8PM.body)
         }
         
+    }
+    
+    func updateRefillNotification() {
+        var refills = [String: Date]()
+        
+        let todayDate = Date()
+        let todayDateStr = formatDateString(date: todayDate)
+        
+        var refillTitle = "Date Today: \(todayDateStr)\n\nUpcoming Refill Dates:\n"
+        
+       // print(dateFormatter.string(from: refillDate))
+        
+        if eightAMMedications.count > 0 {
+            for medication in eightAMMedications {
+                
+                let refillDate = calculateRefillDate(med: medication)
+                refills[medication.name] = refillDate
+            }
+            
+            let sortedRefillsByDate = refills.sorted { $0.1 < $1.1 }
+            
+            print(sortedRefillsByDate)
+            
+            for refill in sortedRefillsByDate {
+                let date = formatDateString(date: refill.value)
+                refillTitle += "\(refill.key): Refill by \(date)\n"
+            }
+            
+        } else {
+            refillTitle += "No upcoming medication refills."
+        }
+        
+        print(refillTitle)
+        
+        let center = UNUserNotificationCenter.current()
+        
+        let options: UNAuthorizationOptions = [.alert, .sound]
+        
+        center.requestAuthorization(options: options) { (granted, error) in
+            
+            if error != nil {
+                print(error!)
+            }
+            
+            if !granted {
+                print("Access was not granted!")
+            } else {
+                
+                self.contentRefill.title = "Daily Refill Reminder"
+                self.contentRefill.body = refillTitle
+                self.contentRefill.sound = UNNotificationSound.default
+
+                let currDate = Date()
+                
+                let gregorian = Calendar(identifier: .gregorian)
+                var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: currDate)
+
+                components.hour = self.refillHour
+                components.minute = self.refillMinute
+                components.second = self.refillSecond
+
+                let date = gregorian.date(from: components)!
+
+                let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+
+                let request = UNNotificationRequest(identifier: "refillNotification", content: self.contentRefill, trigger: trigger)
+
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
+                    if let error = error {
+                        print(error)
+                    }
+                })
+            }
+        }
+    }
+    
+    func calculateRefillDate(med: Medication) -> Date {
+        switch med.timesTakenDaily {
+        case 1:
+            let numDaysLeft = med.numOfTabsAvailable / (med.numOfTabsPerDose * med.timesTakenDaily)
+            let refillDay = numDaysLeft - 5
+            
+            let formattedDate = formatDate(date: med.dateFilled)
+            let refillDate = Calendar.current.date(byAdding: .day, value: refillDay, to: formattedDate)!
+            
+            return refillDate
+            
+        case 2:
+            let numDaysLeft = med.numOfTabsAvailable / (med.numOfTabsPerDose * med.timesTakenDaily)
+            let refillDay = numDaysLeft - 5
+            
+            let formattedDate = formatDate(date: med.dateFilled)
+            let refillDate = Calendar.current.date(byAdding: .day, value: refillDay, to: formattedDate)!
+            
+            return refillDate
+            
+        case 3:
+            let numDaysLeft = med.numOfTabsAvailable / (med.numOfTabsPerDose * med.timesTakenDaily)
+            let refillDay = numDaysLeft - 5
+            
+            let formattedDate = formatDate(date: med.dateFilled)
+            let refillDate = Calendar.current.date(byAdding: .day, value: refillDay, to: formattedDate)!
+            
+            return refillDate
+            
+        case 4:
+            let numDaysLeft = med.numOfTabsAvailable / (med.numOfTabsPerDose * med.timesTakenDaily)
+            let refillDay = numDaysLeft - 5
+            
+            let formattedDate = formatDate(date: med.dateFilled)
+            let refillDate = Calendar.current.date(byAdding: .day, value: refillDay, to: formattedDate)!
+            
+            return refillDate
+            
+        default:
+            return Date()
+        }
+    }
+    
+    func formatDate(date: String) -> Date {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        if let date = dateFormatter.date(from: date) {
+            return date
+        }
+        
+        return Date()
+    }
+    
+    func formatDateString(date: Date) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        
+        return dateFormatter.string(from: date)
     }
     
     /*
