@@ -11,6 +11,7 @@ import UIKit
 import CoreData
 
 struct Constants {
+    
     struct TableView {
         static let CellHeight: CGFloat = 60
     }

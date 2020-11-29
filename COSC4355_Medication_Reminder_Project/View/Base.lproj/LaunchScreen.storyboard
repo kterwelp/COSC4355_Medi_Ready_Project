@@ -10,17 +10,31 @@
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Medi-Ready" translatesAutoresizingMaskIntoConstraints="NO" id="8uf-K9-kce">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8uf-K9-kce" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="LhZ-cj-pin"/>
+                            <constraint firstItem="8uf-K9-kce" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="n79-QT-qCM"/>
+                            <constraint firstItem="8uf-K9-kce" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="u9D-Ki-3SG"/>
+                            <constraint firstItem="8uf-K9-kce" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zhU-gN-nid"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Medi-Ready" width="1080" height="1920"/>
+    </resources>
 </document>
