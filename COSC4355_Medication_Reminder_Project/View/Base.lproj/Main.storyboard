@@ -1537,7 +1537,6 @@
                                         <state key="normal" title="Done"/>
                                         <connections>
                                             <action selector="createAccount:" destination="09S-HU-h7l" eventType="touchUpInside" id="qP1-Vj-0eX"/>
-                                            <segue destination="49e-Tb-3d3" kind="show" identifier="showHomeScreen" id="IiD-PE-RAu"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="qR2-C3-5JN" userLabel="Text Field Stack View">
@@ -1577,7 +1576,7 @@
                                                     <constraint firstAttribute="width" constant="343" id="u7B-Ff-FVn"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tQ9-W1-woW">
                                                 <rect key="frame" x="0.0" y="208" width="343" height="34"/>
@@ -1586,7 +1585,7 @@
                                                     <constraint firstAttribute="height" constant="34" id="SDI-ye-TlU"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -1612,6 +1611,14 @@
                         <viewLayoutGuide key="safeArea" id="EPa-Xp-FR9"/>
                     </view>
                     <navigationItem key="navigationItem" id="fTY-De-3cR"/>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="tQ9-W1-woW" id="7gb-3i-fQz"/>
+                        <outlet property="emailTextField" destination="JZW-65-7ty" id="dng-CB-ORW"/>
+                        <outlet property="firstNameTextField" destination="NRF-v2-JXT" id="tR2-Wc-CUU"/>
+                        <outlet property="lastNameTextField" destination="Txm-3h-nsY" id="kZe-FY-46a"/>
+                        <outlet property="passwordTextField" destination="a2f-LX-YUb" id="9oy-io-EI5"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="showHomeScreen" id="K3M-WU-5I3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DB0-tS-Exp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1625,118 +1632,121 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xXq-YX-cQy" userLabel="Content Stack View">
-                                <rect key="frame" x="16" y="209.5" width="343" height="248"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="vnL-5t-aKc" userLabel="Icon-Input Stack View">
+                                <rect key="frame" x="16" y="60" width="343" height="505"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Dnw-bc-RaD" userLabel="Text Field Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="83"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Medi-Ready_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="NqN-aK-eRp">
+                                        <rect key="frame" x="58" y="0.0" width="227" height="267"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="267" id="Kvg-Zn-hUW"/>
+                                            <constraint firstAttribute="width" constant="227" id="TDY-rz-DYL"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xXq-YX-cQy" userLabel="Content Stack View">
+                                        <rect key="frame" x="0.0" y="307" width="343" height="198"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oBI-5B-J2J">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="Nl3-3Y-m2E"/>
-                                                    <constraint firstAttribute="width" constant="343" id="dfN-Ec-zZw">
-                                                        <variation key="heightClass=compact-widthClass=compact" constant="250"/>
-                                                        <variation key="heightClass=compact-widthClass=regular" constant="250"/>
-                                                    </constraint>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hgu-c8-CpC">
-                                                <rect key="frame" x="0.0" y="49" width="343" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="343" id="Bgc-Lj-wPf">
-                                                        <variation key="heightClass=compact-widthClass=compact" constant="250"/>
-                                                        <variation key="heightClass=compact-widthClass=regular" constant="250"/>
-                                                    </constraint>
-                                                    <constraint firstAttribute="height" constant="34" id="T78-vQ-JdT"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="RaR-sV-om6" userLabel="Button Stack View">
-                                        <rect key="frame" x="0.0" y="113" width="343" height="135"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nP-J2-uXT">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
-                                                <color key="backgroundColor" red="0.14901960780000001" green="0.72941176470000002" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="343" id="X9K-x7-2b5">
-                                                        <variation key="heightClass=compact-widthClass=compact" constant="250"/>
-                                                        <variation key="heightClass=compact-widthClass=regular" constant="250"/>
-                                                    </constraint>
-                                                    <constraint firstAttribute="height" constant="35" id="fJf-Ly-FQl"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
-                                                <state key="normal" title="Login">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="login:" destination="TRc-JQ-Oui" eventType="touchUpInside" id="DEM-Jn-4QJ"/>
-                                                    <segue destination="49e-Tb-3d3" kind="show" identifier="showHome" id="Xml-E4-5Yn"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6Y-nS-fZQ">
-                                                <rect key="frame" x="0.0" y="50" width="343" height="35"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="343" id="6rB-Hp-2ix">
-                                                        <variation key="heightClass=compact-widthClass=compact" constant="250"/>
-                                                        <variation key="heightClass=compact-widthClass=regular" constant="250"/>
-                                                    </constraint>
-                                                    <constraint firstAttribute="height" constant="35" id="IaI-aJ-bwN"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
-                                                <state key="normal" title="Login with Apple">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="49e-Tb-3d3" kind="show" identifier="showHomeApple" id="LEh-Jj-OTs"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBP-Ri-CJf">
-                                                <rect key="frame" x="0.0" y="100" width="343" height="35"/>
-                                                <color key="backgroundColor" red="0.14901960784313725" green="0.72941176470588232" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="343" id="NZd-dV-l9V">
-                                                        <variation key="heightClass=compact-widthClass=compact" constant="250"/>
-                                                        <variation key="heightClass=compact-widthClass=regular" constant="250"/>
-                                                    </constraint>
-                                                    <constraint firstAttribute="height" constant="35" id="hu8-Te-FR2"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
-                                                <state key="normal" title="Create Account">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="09S-HU-h7l" kind="presentation" identifier="showCreateAccount" id="hzR-DZ-2mQ"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Dnw-bc-RaD" userLabel="Text Field Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="83"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oBI-5B-J2J">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="Nl3-3Y-m2E"/>
+                                                            <constraint firstAttribute="width" constant="343" id="dfN-Ec-zZw">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                                <variation key="heightClass=compact-widthClass=regular" constant="250"/>
+                                                            </constraint>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hgu-c8-CpC">
+                                                        <rect key="frame" x="0.0" y="49" width="343" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="343" id="Bgc-Lj-wPf">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                                <variation key="heightClass=compact-widthClass=regular" constant="250"/>
+                                                            </constraint>
+                                                            <constraint firstAttribute="height" constant="34" id="T78-vQ-JdT"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="RaR-sV-om6" userLabel="Button Stack View">
+                                                <rect key="frame" x="0.0" y="113" width="343" height="85"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nP-J2-uXT">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
+                                                        <color key="backgroundColor" red="0.14901960780000001" green="0.72941176470000002" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="343" id="X9K-x7-2b5">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                                <variation key="heightClass=compact-widthClass=regular" constant="250"/>
+                                                            </constraint>
+                                                            <constraint firstAttribute="height" constant="35" id="fJf-Ly-FQl"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
+                                                        <state key="normal" title="Login">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="login:" destination="TRc-JQ-Oui" eventType="touchUpInside" id="DEM-Jn-4QJ"/>
+                                                            <segue destination="49e-Tb-3d3" kind="show" identifier="showHome" id="Xml-E4-5Yn"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBP-Ri-CJf">
+                                                        <rect key="frame" x="0.0" y="50" width="343" height="35"/>
+                                                        <color key="backgroundColor" red="0.14901960784313725" green="0.72941176470588232" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="343" id="NZd-dV-l9V">
+                                                                <variation key="heightClass=compact-widthClass=compact" constant="250"/>
+                                                                <variation key="heightClass=compact-widthClass=regular" constant="250"/>
+                                                            </constraint>
+                                                            <constraint firstAttribute="height" constant="35" id="hu8-Te-FR2"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
+                                                        <state key="normal" title="Create Account">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="09S-HU-h7l" kind="presentation" identifier="showCreateAccount" id="hzR-DZ-2mQ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <variation key="heightClass=compact-widthClass=compact" axis="horizontal" spacing="80"/>
+                                <variation key="heightClass=compact-widthClass=regular" axis="horizontal" spacing="120"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="xXq-YX-cQy" firstAttribute="centerY" secondItem="bag-gc-Yz2" secondAttribute="centerY" id="3er-dy-Hkh"/>
-                            <constraint firstItem="xXq-YX-cQy" firstAttribute="centerX" secondItem="bag-gc-Yz2" secondAttribute="centerX" id="wmU-IV-XRf"/>
+                            <constraint firstItem="vnL-5t-aKc" firstAttribute="centerX" secondItem="bag-gc-Yz2" secondAttribute="centerX" id="Dfm-Pd-iPm"/>
+                            <constraint firstItem="vnL-5t-aKc" firstAttribute="top" secondItem="BJ7-St-Sy9" secondAttribute="top" constant="60" id="Gd1-FX-Get">
+                                <variation key="heightClass=compact-widthClass=compact" constant="50"/>
+                                <variation key="heightClass=compact-widthClass=regular" constant="70"/>
+                            </constraint>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BJ7-St-Sy9"/>
                     </view>
                     <navigationItem key="navigationItem" title="Medi Ready Login" id="5AK-KZ-E1g"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="oBI-5B-J2J" id="p0d-2a-nhh"/>
+                        <outlet property="passwordTextField" destination="hgu-c8-CpC" id="v7p-u0-0P7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yL-W5-PLO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-823.20000000000005" y="333.28335832083962"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="49e-Tb-3d3" customClass="TabBarViewController" customModule="COSC4355_Medication_Reminder_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="GY1-fr-N2e"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -2415,7 +2425,7 @@
         <!--Medications-->
         <scene sceneID="aJ4-23-iVl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="heR-rT-zq5" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="heR-rT-zq5" customClass="MedicationNavViewController" customModule="COSC4355_Medication_Reminder_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Medications" image="list.bullet" catalog="system" id="fo6-kg-ua9"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="cXv-fD-L4P"/>
@@ -2484,6 +2494,7 @@
         <segue reference="UJg-c2-8lX"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Medi-Ready_Icon" width="607" height="761"/>
         <image name="exclamationmark.triangle.fill" catalog="system" width="128" height="112"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>

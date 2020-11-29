@@ -56,16 +56,6 @@ class EditTimesViewController: UIViewController {
         // Do any additional setup after loading the view.
         connectTextFields()
         
-        onceDailyTextField.text = editTimesPassedInformation.onceDaily
-        twiceDailyTextField1.text = editTimesPassedInformation.twiceDaily[0]
-        twiceDailyTextField2.text = editTimesPassedInformation.twiceDaily[1]
-        threeTimesDailyTextField1.text = editTimesPassedInformation.threeTimesDaily[0]
-        threeTimesDailyTextField2.text = editTimesPassedInformation.threeTimesDaily[1]
-        threeTimesDailyTextField3.text = editTimesPassedInformation.threeTimesDaily[2]
-        fourTimesDailyTextField1.text = editTimesPassedInformation.fourTimesDaily[0]
-        fourTimesDailyTextField2.text = editTimesPassedInformation.fourTimesDaily[1]
-        fourTimesDailyTextField3.text = editTimesPassedInformation.fourTimesDaily[2]
-        fourTimesDailyTextField4.text = editTimesPassedInformation.fourTimesDaily[3]
     }
  
     @IBAction func cancelEditTimes(_ sender: Any) {

@@ -14,6 +14,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
     var tempMedications = [Medication]()
     var selectedInformation = Medication()
     var timeArray = [String]()
+    var profile = Profile()
     //medArray is not being used and can be removed later
     var medArray = [Medication]()
     // Is medArrayIndex being used???
@@ -112,6 +113,20 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
 //        med1.hasBeenTaken = true
         
         updateRefillNotification()
+        
+        let profileUD = UserDefaults.standard
+        
+        if profileUD.string(forKey: "currentUser") == "user@gmail.com" {
+            profile.firstName = profileUD.string(forKey: "firstNameUser")!
+            profile.lastName = profileUD.string(forKey: "lastNameUser")!
+            profile.email = profileUD.string(forKey: "emailUser")!
+            profile.password = profileUD.string(forKey: "passwordUser")!
+        } else {
+            profile.firstName = profileUD.string(forKey: "firstName")!
+            profile.lastName = profileUD.string(forKey: "lastName")!
+            profile.email = profileUD.string(forKey: "email")!
+            profile.password = profileUD.string(forKey: "password")!
+        }
         
 //        calculateRefillDate(med: med1)
         
@@ -472,9 +487,9 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
         
         if segue.identifier == "showProfile" {
 
-            let ProfileView = segue.destination as! ProfileViewController
-            
-            ProfileView.hidesBottomBarWhenPushed = true
+            let profileView = segue.destination as! ProfileViewController
+            profileView.profile = profile
+            profileView.hidesBottomBarWhenPushed = true
     
         }
         
