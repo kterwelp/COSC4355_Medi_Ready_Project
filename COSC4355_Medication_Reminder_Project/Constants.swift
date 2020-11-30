@@ -8,18 +8,10 @@
 
 import Foundation
 import UIKit
-import CoreData
 
 struct Constants {
     
     struct TableView {
         static let CellHeight: CGFloat = 60
-    }
-    
-    struct CoreDataManager {
-        var context: NSManagedObjectContext?{
-            return (UIApplication.shared.delegate as? AppDelegate)?
-            .persistentContainer.viewContext
-        }
     }
 }

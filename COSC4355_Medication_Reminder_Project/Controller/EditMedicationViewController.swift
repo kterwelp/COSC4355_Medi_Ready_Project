@@ -26,6 +26,10 @@ extension UITextField {
         self.inputAccessoryView = toolBar //9
     }
     
+    @objc func tapCancel() {
+        self.resignFirstResponder()
+    }
+    
 }
 
 protocol UpdateMedication {
@@ -38,7 +42,7 @@ class EditMedicationViewController: UIViewController {
     
     var delegateVar: UpdateMedication?
     
-    @IBOutlet weak var medicationNameTextField: UITextField!
+    @IBOutlet weak var medicationNameLabel: UILabel!
     @IBOutlet weak var numOfTabsPerDoseTextField: UITextField!
     @IBOutlet weak var timesTakenDailyTextField: UITextField!
     @IBOutlet weak var dateFilledTextField: UITextField!
@@ -55,7 +59,7 @@ class EditMedicationViewController: UIViewController {
         
         connectTextFields()
         
-        medicationNameTextField.text = editPassedInformation.name
+        medicationNameLabel.text = editPassedInformation.name
         numOfTabsPerDoseTextField.text = String(editPassedInformation.numOfTabsPerDose)
         timesTakenDailyTextField.text = String(editPassedInformation.timesTakenDaily)
         dateFilledTextField.text = editPassedInformation.dateFilled
@@ -72,16 +76,6 @@ class EditMedicationViewController: UIViewController {
     }
     
     @IBAction func doneEdit(_ sender: Any) {
-        
-        guard medicationNameTextField.text!.count > 0 else {
-            let alert = UIAlertController(title: "Missing Medication Name!", message: "Please enter the medication name", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
-            
-            self.present(alert, animated: true)
-            
-            return
-        }
         
         guard numOfTabsPerDoseTextField.text!.count > 0 else {
             let alert = UIAlertController(title: "Missing Number of Tablets Per Dose!", message: "Please enter the number of tablets taken per dose for this medication", preferredStyle: .alert)
@@ -124,7 +118,7 @@ class EditMedicationViewController: UIViewController {
         }
         
         guard Int(numOfTabsPerDoseTextField.text!) != nil else {
-            let alert = UIAlertController(title: "Number of Tablets Per Dose Integer Only!", message: "Please only enter integers for the number of tablets per dose", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Number of Tablets Per Dose Integer Only!", message: "Please only enter integers for the number of tablets per dose (i.e. 2)", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             
@@ -134,7 +128,7 @@ class EditMedicationViewController: UIViewController {
         }
         
         guard Int(timesTakenDailyTextField.text!) != nil else {
-            let alert = UIAlertController(title: "Number of Times Daily Integer Only!", message: "Please only enter integers for the number of times taken daily", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Number of Times Daily Integer Only!", message: "Please only enter integers for the number of times taken daily  (i.e. 4)", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             
@@ -144,7 +138,7 @@ class EditMedicationViewController: UIViewController {
         }
         
         guard Int(numOfTabsAvailableTextField.text!) != nil else {
-            let alert = UIAlertController(title: "Number of Tabs Available Integer Only!", message: "Please only enter integers for the number of tabs available", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Number of Tabs Available Integer Only!", message: "Please only enter integers for the number of tabs available (i.e. 30)", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             
@@ -153,13 +147,21 @@ class EditMedicationViewController: UIViewController {
             return
         }
         
-        if medicationNameTextField.text!.count > 0,
-            numOfTabsPerDoseTextField.text!.count > 0,
+        guard Int(timesTakenDailyTextField.text!)! >= 1 && Int(timesTakenDailyTextField.text!)! <= 4  else {
+            let alert = UIAlertController(title: "Number of Times Daily 1 to 4 Only!", message: "Please only enter integers 1 to 4 for the number of times taken daily", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
+        if numOfTabsPerDoseTextField.text!.count > 0,
             timesTakenDailyTextField.text!.count > 0,
             dateFilledTextField.text!.count > 0,
             numOfTabsAvailableTextField.text!.count > 0 {
             
-            editPassedInformation.name = medicationNameTextField.text!
             editPassedInformation.numOfTabsPerDose = Int(numOfTabsPerDoseTextField.text!)!
             editPassedInformation.timesTakenDaily = Int(timesTakenDailyTextField.text!)!
             editPassedInformation.dateFilled = dateFilledTextField.text!

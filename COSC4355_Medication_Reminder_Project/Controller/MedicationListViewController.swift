@@ -15,6 +15,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
     var selectedInformation = Medication()
     var timeArray = [String]()
     var profile = Profile()
+    var medSet = Set<String>()
     //medArray is not being used and can be removed later
     var medArray = [Medication]()
     // Is medArrayIndex being used???
@@ -318,6 +319,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 let tempMed = eightAMMedications[indexPath.row]
                 eightAMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                medSet.remove(tempMed.name.lowercased())
                 updateMedNotificationMsg(addedMed: tempMed)
                 updateRefillNotification()
                 
@@ -339,6 +341,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 let tempMed = twelvePMMedications[indexPath.row]
                 twelvePMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                medSet.remove(tempMed.name.lowercased())
                 updateMedNotificationMsg(addedMed: tempMed)
                 updateRefillNotification()
              
@@ -356,6 +359,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 let tempMed = twoPMMedications[indexPath.row]
                 twoPMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                medSet.remove(tempMed.name.lowercased())
                 updateMedNotificationMsg(addedMed: tempMed)
                 updateRefillNotification()
              
@@ -377,6 +381,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 let tempMed = fourPMMedications[indexPath.row]
                 fourPMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                medSet.remove(tempMed.name.lowercased())
                 updateMedNotificationMsg(addedMed: tempMed)
                 updateRefillNotification()
               
@@ -415,6 +420,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
                 let tempMed = eightPMMedications[indexPath.row]
                 eightPMMedications.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                medSet.remove(tempMed.name.lowercased())
                 updateMedNotificationMsg(addedMed: tempMed)
                 updateRefillNotification()
                 
@@ -482,6 +488,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
         if segue.identifier == "showAddMedication" {
             let addMedView = segue.destination as! AddMedicationViewController
             addMedView.delegateVar = self
+            addMedView.medSetAdd = medSet
             addMedView.hidesBottomBarWhenPushed = true
         }
         
@@ -840,6 +847,7 @@ class MedicationListViewController: UITableViewController, AddMedication, Update
     func addMedication(addedMed: Medication) {
         medArray.append(addedMed)
         sortMedsByTime(med: addedMed)
+        medSet.insert(addedMed.name.lowercased())
         updateMedNotificationMsg(addedMed: addedMed)
         updateRefillNotification()
         if medArray.count > 1 {

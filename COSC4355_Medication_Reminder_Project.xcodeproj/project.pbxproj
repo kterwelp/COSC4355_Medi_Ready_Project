@@ -13,7 +13,7 @@
 		4D812505252D0BA0004BA034 /* Doctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D812504252D0BA0004BA034 /* Doctor.swift */; };
 		4D84D46C253EB94000E819BB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D84D46B253EB94000E819BB /* Constants.swift */; };
 		98046A2C2540A27D00C673EE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98046A2A2540A25900C673EE /* CoreLocation.framework */; };
-		981372F8253C3A3300ACD3E4 /* PharmacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981372F7253C3A3300ACD3E4 /* PharmacyViewController.swift */; };
+		98496E832574A6870025FB6F /* MedicationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98496E822574A6870025FB6F /* MedicationList.swift */; };
 		98905F20253E9A380013F656 /* DoctorDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98905F1F253E9A380013F656 /* DoctorDetailsViewController.swift */; };
 		98905F22253EABEA0013F656 /* EditDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98905F21253EABE90013F656 /* EditDoctorViewController.swift */; };
 		98905F24253EB3360013F656 /* AddDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98905F23253EB3360013F656 /* AddDoctorViewController.swift */; };
@@ -27,7 +27,6 @@
 		98E63CEC2549587400F4BD96 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CEB2549587400F4BD96 /* Profile.swift */; };
 		98E63CEE254958B400F4BD96 /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CED254958B400F4BD96 /* Accounts.swift */; };
 		98E63CF0254968C400F4BD96 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CEF254968C400F4BD96 /* EditProfileViewController.swift */; };
-		98E63CF22549786900F4BD96 /* EditTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CF12549786900F4BD96 /* EditTimesViewController.swift */; };
 		98E63CF42549815300F4BD96 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CF32549815300F4BD96 /* LoginViewController.swift */; };
 		98E63CF625498E9B00F4BD96 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E63CF525498E9B00F4BD96 /* CreateAccountViewController.swift */; };
 		98F6A56A2523953A005D7330 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A5692523953A005D7330 /* AppDelegate.swift */; };
@@ -35,7 +34,6 @@
 		98F6A56E2523953A005D7330 /* MedicationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A56D2523953A005D7330 /* MedicationListViewController.swift */; };
 		98F6A5702523953A005D7330 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A56F2523953A005D7330 /* ProfileViewController.swift */; };
 		98F6A5732523953A005D7330 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F6A5712523953A005D7330 /* Main.storyboard */; };
-		98F6A5762523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A5742523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodeld */; };
 		98F6A5782523953D005D7330 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98F6A5772523953D005D7330 /* Assets.xcassets */; };
 		98F6A57B2523953D005D7330 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98F6A5792523953D005D7330 /* LaunchScreen.storyboard */; };
 		98F6A5862523953E005D7330 /* COSC4355_Medication_Reminder_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6A5852523953E005D7330 /* COSC4355_Medication_Reminder_ProjectTests.swift */; };
@@ -43,6 +41,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		98496E852574A6870025FB6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98F6A55E2523953A005D7330 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 98F6A5652523953A005D7330;
+			remoteInfo = COSC4355_Medication_Reminder_Project;
+		};
 		98F6A5822523953D005D7330 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 98F6A55E2523953A005D7330 /* Project object */;
@@ -66,7 +71,9 @@
 		4D812504252D0BA0004BA034 /* Doctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doctor.swift; sourceTree = "<group>"; };
 		4D84D46B253EB94000E819BB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		98046A2A2540A25900C673EE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		981372F7253C3A3300ACD3E4 /* PharmacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PharmacyViewController.swift; sourceTree = "<group>"; };
+		98496E802574A6870025FB6F /* MedicationList.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MedicationList.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		98496E822574A6870025FB6F /* MedicationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationList.swift; sourceTree = "<group>"; };
+		98496E842574A6870025FB6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98905F1F253E9A380013F656 /* DoctorDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorDetailsViewController.swift; sourceTree = "<group>"; };
 		98905F21253EABE90013F656 /* EditDoctorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDoctorViewController.swift; sourceTree = "<group>"; };
 		98905F23253EB3360013F656 /* AddDoctorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDoctorViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +87,6 @@
 		98E63CEB2549587400F4BD96 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		98E63CED254958B400F4BD96 /* Accounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accounts.swift; sourceTree = "<group>"; };
 		98E63CEF254968C400F4BD96 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		98E63CF12549786900F4BD96 /* EditTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimesViewController.swift; sourceTree = "<group>"; };
 		98E63CF32549815300F4BD96 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		98E63CF525498E9B00F4BD96 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		98F6A5662523953A005D7330 /* COSC4355_Medication_Reminder_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COSC4355_Medication_Reminder_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,7 +95,6 @@
 		98F6A56D2523953A005D7330 /* MedicationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationListViewController.swift; sourceTree = "<group>"; };
 		98F6A56F2523953A005D7330 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		98F6A5722523953A005D7330 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		98F6A5752523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = COSC4355_Medication_Reminder_Project.xcdatamodel; sourceTree = "<group>"; };
 		98F6A5772523953D005D7330 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		98F6A57A2523953D005D7330 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98F6A57C2523953D005D7330 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,6 +107,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		98496E7D2574A6870025FB6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		98F6A5632523953A005D7330 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -165,10 +177,8 @@
 				98905F1F253E9A380013F656 /* DoctorDetailsViewController.swift */,
 				98905F23253EB3360013F656 /* AddDoctorViewController.swift */,
 				98905F21253EABE90013F656 /* EditDoctorViewController.swift */,
-				981372F7253C3A3300ACD3E4 /* PharmacyViewController.swift */,
 				98F6A56F2523953A005D7330 /* ProfileViewController.swift */,
 				98E63CEF254968C400F4BD96 /* EditProfileViewController.swift */,
-				98E63CF12549786900F4BD96 /* EditTimesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -181,12 +191,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		98496E812574A6870025FB6F /* MedicationList */ = {
+			isa = PBXGroup;
+			children = (
+				98496E822574A6870025FB6F /* MedicationList.swift */,
+				98496E842574A6870025FB6F /* Info.plist */,
+			);
+			path = MedicationList;
+			sourceTree = "<group>";
+		};
 		98F6A55D2523953A005D7330 = {
 			isa = PBXGroup;
 			children = (
 				98F6A5682523953A005D7330 /* COSC4355_Medication_Reminder_Project */,
 				98F6A5842523953D005D7330 /* COSC4355_Medication_Reminder_ProjectTests */,
 				98F6A58F2523953E005D7330 /* COSC4355_Medication_Reminder_ProjectUITests */,
+				98496E812574A6870025FB6F /* MedicationList */,
 				98F6A5672523953A005D7330 /* Products */,
 				98046A292540A25900C673EE /* Frameworks */,
 			);
@@ -198,6 +218,7 @@
 				98F6A5662523953A005D7330 /* COSC4355_Medication_Reminder_Project.app */,
 				98F6A5812523953D005D7330 /* COSC4355_Medication_Reminder_ProjectTests.xctest */,
 				98F6A58C2523953E005D7330 /* COSC4355_Medication_Reminder_ProjectUITests.xctest */,
+				98496E802574A6870025FB6F /* MedicationList.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,7 +233,6 @@
 				4D03689D252599E00064EF98 /* View */,
 				4D03689E252599E60064EF98 /* Controller */,
 				98F6A57C2523953D005D7330 /* Info.plist */,
-				98F6A5742523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodeld */,
 				4D84D46B253EB94000E819BB /* Constants.swift */,
 			);
 			path = COSC4355_Medication_Reminder_Project;
@@ -239,6 +259,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		98496E7F2574A6870025FB6F /* MedicationList */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98496E872574A6870025FB6F /* Build configuration list for PBXNativeTarget "MedicationList" */;
+			buildPhases = (
+				98496E7C2574A6870025FB6F /* Sources */,
+				98496E7D2574A6870025FB6F /* Frameworks */,
+				98496E7E2574A6870025FB6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				98496E862574A6870025FB6F /* PBXTargetDependency */,
+			);
+			name = MedicationList;
+			productName = MedicationList;
+			productReference = 98496E802574A6870025FB6F /* MedicationList.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		98F6A5652523953A005D7330 /* COSC4355_Medication_Reminder_Project */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98F6A5952523953E005D7330 /* Build configuration list for PBXNativeTarget "COSC4355_Medication_Reminder_Project" */;
@@ -302,6 +340,10 @@
 				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = "Kevin Terwelp";
 				TargetAttributes = {
+					98496E7F2574A6870025FB6F = {
+						CreatedOnToolsVersion = 11.7;
+						TestTargetID = 98F6A5652523953A005D7330;
+					};
 					98F6A5652523953A005D7330 = {
 						CreatedOnToolsVersion = 11.7;
 					};
@@ -331,11 +373,19 @@
 				98F6A5652523953A005D7330 /* COSC4355_Medication_Reminder_Project */,
 				98F6A5802523953D005D7330 /* COSC4355_Medication_Reminder_ProjectTests */,
 				98F6A58B2523953E005D7330 /* COSC4355_Medication_Reminder_ProjectUITests */,
+				98496E7F2574A6870025FB6F /* MedicationList */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		98496E7E2574A6870025FB6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		98F6A5642523953A005D7330 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -363,17 +413,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		98496E7C2574A6870025FB6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98496E832574A6870025FB6F /* MedicationList.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		98F6A5622523953A005D7330 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				981372F8253C3A3300ACD3E4 /* PharmacyViewController.swift in Sources */,
 				98E63CEA254947D100F4BD96 /* AllergyListViewController.swift in Sources */,
 				98905F22253EABEA0013F656 /* EditDoctorViewController.swift in Sources */,
 				98E63CF42549815300F4BD96 /* LoginViewController.swift in Sources */,
 				98E63CE42549193200F4BD96 /* MedicationDetailsViewController.swift in Sources */,
 				98E63CE62549307500F4BD96 /* AddMedicationViewController.swift in Sources */,
-				98E63CF22549786900F4BD96 /* EditTimesViewController.swift in Sources */,
 				4D812501252D0B75004BA034 /* Medication.swift in Sources */,
 				9892CAE6254A605900FF4217 /* EditAllergyViewController.swift in Sources */,
 				98905F24253EB3360013F656 /* AddDoctorViewController.swift in Sources */,
@@ -391,7 +447,6 @@
 				98E63CEE254958B400F4BD96 /* Accounts.swift in Sources */,
 				9892CAE8254A612500FF4217 /* AllergyDetailsViewController.swift in Sources */,
 				98F6A56C2523953A005D7330 /* SceneDelegate.swift in Sources */,
-				98F6A5762523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodeld in Sources */,
 				98E63CF0254968C400F4BD96 /* EditProfileViewController.swift in Sources */,
 				9892CAEA254A65AC00FF4217 /* AddAllergyViewController.swift in Sources */,
 			);
@@ -416,6 +471,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		98496E862574A6870025FB6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 98F6A5652523953A005D7330 /* COSC4355_Medication_Reminder_Project */;
+			targetProxy = 98496E852574A6870025FB6F /* PBXContainerItemProxy */;
+		};
 		98F6A5832523953D005D7330 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 98F6A5652523953A005D7330 /* COSC4355_Medication_Reminder_Project */;
@@ -448,6 +508,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		98496E882574A6870025FB6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LH797M273K;
+				INFOPLIST_FILE = MedicationList/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.KevinTerwelp.MedicationList;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/COSC4355_Medication_Reminder_Project.app/COSC4355_Medication_Reminder_Project";
+			};
+			name = Debug;
+		};
+		98496E892574A6870025FB6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LH797M273K;
+				INFOPLIST_FILE = MedicationList/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.KevinTerwelp.MedicationList;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/COSC4355_Medication_Reminder_Project.app/COSC4355_Medication_Reminder_Project";
+			};
+			name = Release;
+		};
 		98F6A5932523953E005D7330 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -687,6 +787,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		98496E872574A6870025FB6F /* Build configuration list for PBXNativeTarget "MedicationList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98496E882574A6870025FB6F /* Debug */,
+				98496E892574A6870025FB6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		98F6A5612523953A005D7330 /* Build configuration list for PBXProject "COSC4355_Medication_Reminder_Project" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -724,19 +833,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		98F6A5742523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				98F6A5752523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodel */,
-			);
-			currentVersion = 98F6A5752523953A005D7330 /* COSC4355_Medication_Reminder_Project.xcdatamodel */;
-			path = COSC4355_Medication_Reminder_Project.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 98F6A55E2523953A005D7330 /* Project object */;
 }
