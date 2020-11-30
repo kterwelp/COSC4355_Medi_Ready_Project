@@ -15,6 +15,7 @@ protocol AddMedication {
 class AddMedicationViewController: UIViewController {
     
     var addedMedInformation = Medication()
+    var medSetAdd = Set<String>()
     
     var delegateVar: AddMedication?
     
@@ -88,7 +89,7 @@ class AddMedicationViewController: UIViewController {
         }
         
         guard Int(tabsTakenPerDoseTextField.text!) != nil else {
-            let alert = UIAlertController(title: "Number of Tablets Per Dose Integer Only!", message: "Please only enter integers for the number of tablets per dose", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Number of Tablets Per Dose Integer Only!", message: "Please only enter integers for the number of tablets per dose  (i.e. 2)", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             
@@ -98,7 +99,7 @@ class AddMedicationViewController: UIViewController {
         }
         
         guard Int(timesTakenDailyTextField.text!) != nil else {
-            let alert = UIAlertController(title: "Number of Times Daily Integer Only!", message: "Please only enter integers for the number of times taken daily", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Number of Times Daily Integer Only!", message: "Please only enter integers for the number of times taken daily  (i.e. 4)", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             
@@ -108,7 +109,27 @@ class AddMedicationViewController: UIViewController {
         }
         
         guard Int(numOfTabsAvailableTextField.text!) != nil else {
-            let alert = UIAlertController(title: "Number of Tabs Available Integer Only!", message: "Please only enter integers for the number of tabs available", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Number of Tabs Available Integer Only!", message: "Please only enter integers for the number of tabs available (i.e. 30)", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
+        guard Int(timesTakenDailyTextField.text!)! >= 1 && Int(timesTakenDailyTextField.text!)! <= 4  else {
+            let alert = UIAlertController(title: "Number of Times Daily 1 to 4 Only!", message: "Please only enter integers 1 to 4 for the number of times taken daily", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
+        guard !medSetAdd.contains((medNameTextField.text?.lowercased())!) else {
+            let alert = UIAlertController(title: "Medication Already Added!", message: "\(medNameTextField.text!) was already added to the medication list", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             

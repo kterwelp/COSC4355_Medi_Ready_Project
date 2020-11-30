@@ -17,7 +17,6 @@ class AddAllergyViewController: UIViewController {
     var addedAllergyInformation = Allergy()
     var delegateVar: AddAllergy?
     
-    
     @IBOutlet weak var medicationAllergyTextField: UITextField!
     @IBOutlet weak var reactionTextView: UITextView!
     

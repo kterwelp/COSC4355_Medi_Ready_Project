@@ -8,17 +8,13 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UpdateProfile {
     
     var profile = Profile()
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
-    @IBOutlet weak var onceDailyLabel: UILabel!
-    @IBOutlet weak var twiceDailyLabel: UILabel!
-    @IBOutlet weak var threeTimesDailyLabel: UILabel!
-    @IBOutlet weak var fourTimesDailyLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,15 +36,8 @@ class ProfileViewController: UIViewController {
         if segue.identifier == "showEditProfile" {
             
             let editProfileView = segue.destination as! EditProfileViewController
-            
+            editProfileView.delegateVar = self
             editProfileView.editPassedInformation = profile
-        }
-        
-        if segue.identifier == "showEditTimes" {
-            
-            let editTimesView = segue.destination as! EditTimesViewController
-            
-            editTimesView.editTimesPassedInformation = profile
         }
     }
     
@@ -62,7 +51,18 @@ class ProfileViewController: UIViewController {
         performSegue(withIdentifier: "showEditTimes", sender: self)
     }
     
-
+    func updateProfile() {
+        let profileUD = UserDefaults.standard
+        
+        profile.firstName = profileUD.string(forKey: "firstName")!
+        profile.lastName = profileUD.string(forKey: "lastName")!
+        profile.email = profileUD.string(forKey: "email")!
+        profile.password = profileUD.string(forKey: "password")!
+        
+        nameLabel.text = profile.firstName + " " + profile.lastName
+        emailLabel.text = profile.email
+        passwordLabel.text = profile.password
+    }
 
 }
 
